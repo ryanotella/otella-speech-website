@@ -76,7 +76,8 @@
 .E-ack{background:var(--ink);color:var(--paper);text-align:center;padding:60px 0;margin-top:76px;border-top:3px solid var(--ink)}
 .E-ack h2{font-family:var(--disp);font-weight:700;font-size:32px;letter-spacing:-.02em;margin:0 0 16px;color:var(--gold)}
 .E-ack p{font-size:18.5px;line-height:1.7;max-width:56ch;margin:0 auto;color:rgba(252,246,233,.92)}
-.E-foot{background:var(--wheat);border-top:3px solid var(--ink);margin-top:76px;padding:52px 0 36px}
+.E-foot{background:var(--wheat);border-top:3px solid var(--ink);margin-top:76px;padding:52px 0 calc(36px + 45vh)}
+#what-i-work-with,#how-i-work,#fees,#for-referrers,#referral-details{scroll-margin-top:110px}
 .E-foot .cols{display:grid;grid-template-columns:auto 1fr 1fr;gap:56px;font-size:16px;line-height:1.75;align-items:start}
 .E-foot .brand{padding-top:4px}
 .E-foot b{display:block;margin-bottom:8px;color:var(--rust);font-weight:800;font-size:12.5px;letter-spacing:.6px;text-transform:uppercase}
