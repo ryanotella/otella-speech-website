@@ -50,6 +50,14 @@ resource "aws_s3_bucket_policy" "website" {
 
 # --- CloudFront ---
 
+resource "aws_cloudfront_function" "url_rewrite" {
+  name    = "otella-speech-url-rewrite"
+  runtime = "cloudfront-js-2.0"
+  comment = "Append index.html for directory-style requests"
+  publish = true
+  code    = file("${path.module}/functions/url-rewrite.js")
+}
+
 resource "aws_cloudfront_origin_access_control" "website" {
   name                              = "otella-speech-oac"
   origin_access_control_origin_type = "s3"
@@ -79,6 +87,11 @@ resource "aws_cloudfront_distribution" "website" {
     cached_methods         = ["GET", "HEAD"]
     compress               = false
     cache_policy_id        = "658327ea-f89d-4fab-a63d-7e88639e58f6" # AWS managed: CachingOptimized
+
+    function_association {
+      event_type   = "viewer-request"
+      function_arn = aws_cloudfront_function.url_rewrite.arn
+    }
   }
 
   restrictions {
