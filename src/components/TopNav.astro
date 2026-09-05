@@ -1,0 +1,12 @@
+---
+import Nav from './Nav.astro';
+---
+<header class="E-topnav" id="site-topnav">
+  <div class="E-in"><Nav /></div>
+</header>
+<script>
+  const el = document.getElementById('site-topnav');
+  const onScroll = () => el?.classList.toggle('is-stuck', window.scrollY > 4);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+</script>

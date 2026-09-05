@@ -1,0 +1,17 @@
+---
+const steps = [
+  { title: 'You get me', body: 'Same clinician every session, for as long as you’re coming. No rotating therapists, no handover when someone goes on leave.' },
+  { title: 'The first call is free', body: 'Fifteen minutes on the phone. Some of those calls end with me saying you don’t need me yet.' },
+  { title: 'Two things, not twenty', body: 'You leave each session with a short written note and two things to practise. Enough to matter, small enough to actually do.' },
+  { title: 'The goal is to finish', body: 'I’ll tell you when we’re done, and I’ll tell your referrer why. I don’t keep people on the books because the slot is filled.' },
+];
+---
+<div class="E-in" id="how-i-work" style="padding-top:70px">
+  <h2 class="E-h2">How I work</h2>
+  <p class="E-sub">Four things, and they're the same whether you came from a specialist or found me on a noticeboard.</p>
+  <ol class="E-how">
+    {steps.map((s) => (
+      <li><div><b>{s.title}</b><p>{s.body}</p></div></li>
+    ))}
+  </ol>
+</div>

@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Otella Speech + Swallow — identity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,400..700&family=Nunito+Sans:ital,wght@0,300..800;1,400..700&family=Inter+Tight:ital,wght@0,300..800;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============ presentation shell — light ============ */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:#F3F3F1;
+  color:#23231F;
+  font:400 16px/1.6 "Inter Tight",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.doc-head{padding:64px 0 34px;border-bottom:1px solid #DCDCD6;margin-bottom:8px}
+.doc-head h1{font:600 clamp(26px,3.2vw,38px)/1.15 "Inter Tight",sans-serif;letter-spacing:-.02em;margin:0 0 10px}
+.doc-head p{margin:0;max-width:62ch;color:#5F5F58;font-size:15.5px}
+.doc-head .meta{margin-top:18px;font-size:13.5px;color:#8A8A82}
+
+section{padding:52px 0 110px}
+
+.route-head{display:grid;grid-template-columns:1.15fr 1fr;gap:48px;align-items:start;margin-bottom:52px}
+.route-head h2{font:600 30px/1.1 "Inter Tight",sans-serif;letter-spacing:-.02em;margin:0 0 4px}
+.route-head .tagline{color:#8A8A82;font-size:14.5px;margin:0 0 20px}
+.route-head p{color:#3D3D37;margin:0 0 14px;max-width:52ch;font-size:15.5px}
+.route-head dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 20px;font-size:14.5px;align-items:baseline}
+.route-head dt{color:#8A8A82}
+.route-head dd{margin:0;color:#23231F}
+
+h3.sec{font:500 13px/1 "Inter Tight",sans-serif;color:#8A8A82;letter-spacing:.02em;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid #DCDCD6}
+.block{margin:0 0 56px}
+
+.swatches{display:flex;flex-wrap:wrap;gap:10px}
+.sw{width:150px}
+.sw i{display:block;height:74px;border-radius:6px;border:1px solid rgba(35,35,31,.16)}
+.sw b{display:block;font:500 13.5px/1.5 "Inter Tight",sans-serif;margin-top:8px;color:#23231F}
+.sw span{display:block;font:400 12.5px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;color:#8A8A82}
+
+.stage{background:#FFFFFF;border:1px solid #DCDCD6;border-radius:10px;padding:30px;display:flex;gap:34px;flex-wrap:wrap;align-items:center;justify-content:center}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px}
+.bcard{aspect-ratio:85/55;border-radius:9px;overflow:hidden;position:relative;box-shadow:0 14px 30px -20px rgba(35,35,31,.55);border:1px solid rgba(35,35,31,.14)}
+.sheet{aspect-ratio:210/297;border-radius:4px;overflow:hidden;position:relative;box-shadow:0 20px 44px -24px rgba(35,35,31,.5);border:1px solid rgba(35,35,31,.12);max-width:520px}
+.artefact-grid{display:grid;grid-template-columns:minmax(0,520px) minmax(0,1fr);gap:34px;align-items:start}
+.caption{font-size:13.5px;color:#7A7A72;margin:12px 0 0;max-width:96ch}
+
+.browser{border:1px solid #DCDCD6;border-radius:11px;overflow:hidden;background:#fff}
+.chrome{display:flex;align-items:center;gap:8px;padding:11px 14px;background:#EAEAE6;border-bottom:1px solid #DCDCD6}
+.chrome i{width:10px;height:10px;border-radius:50%;background:#C8C8C2;display:block}
+.chrome span{margin-left:10px;font:400 12.5px/1 ui-monospace,Menlo,monospace;color:#7A7A72}
+.viewport{height:760px;overflow-y:auto;overflow-x:hidden;background:#fff}
+.site{width:1240px;zoom:.66}
+@media(max-width:1100px){.site{zoom:.5}}
+@media(max-width:760px){
+  .site{zoom:.34}.viewport{height:560px}
+  .route-head{grid-template-columns:1fr;gap:26px}
+  .artefact-grid{grid-template-columns:1fr}
+}
+:focus-visible{outline:2px solid #2A3FBF;outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.spec-table{width:100%;border-collapse:collapse;font-size:14px}
+.spec-table th{text-align:left;font-weight:600;font-size:12px;color:#8A8A82;padding:0 14px 9px 0;border-bottom:1px solid #DCDCD6}
+.spec-table td{padding:10px 14px 10px 0;border-bottom:1px solid #E6E6E1;vertical-align:top;color:#3D3D37;line-height:1.45}
+.spec-table td:first-child{font-weight:600;color:#23231F;white-space:nowrap}
+.notes{margin:0;padding:0;list-style:none;display:grid;gap:11px;font-size:15px;color:#3D3D37;line-height:1.55;max-width:88ch}
+.notes li{display:grid;grid-template-columns:12px 1fr;gap:10px;align-items:start}
+.notes b{color:#23231F}
+@media(max-width:760px){.spec-table{font-size:13px}}
+
+/* ================= CONCEPT E — A + D combined ================= */
+.kE{
+  --ink:#3E2A1C; --rust:#C0551E; --gold:#DFA22C; --olive:#6E7B45; --chalk:#9DB2B2;
+  --wheat:#F1E4CB; --paper:#FCF6E9;
+  --disp:"Fraunces",Georgia,serif; --body:"Nunito Sans",system-ui,sans-serif;
+}
+.E-site{background:var(--paper);color:var(--ink);font-family:var(--body)}
+.E-in{max-width:1080px;margin:0 auto;padding:0 54px}
+.E-nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0 16px}
+.E-nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:16px;font-weight:700;align-items:center}
+.E-btn{background:var(--rust);color:var(--paper);border:0;border-radius:999px;padding:13px 25px;font-weight:800;font-size:15.5px;text-decoration:none;display:inline-block}
+.E-btn.alt{background:var(--gold);color:var(--ink)}
+.E-btn.cool{background:var(--chalk);color:var(--ink)}
+.E-hero{background:var(--wheat);border-bottom:3px solid var(--ink)}
+.E-hero .grid{display:grid;grid-template-columns:1.3fr .75fr;gap:48px;align-items:center;padding:26px 0 56px}
+.E-hero h1{font-family:var(--disp);font-weight:700;font-size:84px;line-height:.95;letter-spacing:-.035em;margin:0 0 20px}
+.E-hero p{font-size:22px;line-height:1.5;margin:0 0 14px;max-width:36ch}
+.E-hero .row{display:flex;gap:13px;align-items:center;flex-wrap:wrap;margin-top:26px}
+.E-doors{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:3px solid var(--ink)}
+.E-door{padding:38px 54px 40px}
+.E-door.fam{background:var(--gold)}
+.E-door.clin{background:var(--ink);color:var(--paper);border-left:3px solid var(--ink)}
+.E-door h3{font-family:var(--disp);font-weight:700;font-size:32px;margin:0 0 8px;letter-spacing:-.02em}
+.E-door.clin h3{color:var(--chalk)}
+.E-door p{margin:0 0 18px;font-size:17.5px;line-height:1.5;max-width:40ch}
+.E-door.clin p{color:rgba(252,246,233,.82)}
+.E-door ul{margin:0 0 20px;padding-left:19px;font-size:16px;line-height:1.7}
+.E-h2{font-family:var(--disp);font-weight:700;font-size:44px;line-height:1.02;letter-spacing:-.03em;margin:0 0 10px}
+.E-sub{font-size:18.5px;line-height:1.6;color:rgba(62,42,28,.78);margin:0 0 32px;max-width:52ch}
+.E-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
+.E-list li{display:grid;grid-template-columns:46px 1fr;gap:18px;padding:20px 0;border-top:2px solid rgba(62,42,28,.18);align-items:start}
+.E-list b{display:block;font-size:19px;font-weight:800;margin-bottom:3px}
+.E-list p{margin:0;font-size:16.5px;line-height:1.5;color:rgba(62,42,28,.78)}
+.E-list li:nth-last-child(-n+2){border-bottom:2px solid rgba(62,42,28,.18)}
+.E-incl{display:grid;grid-template-columns:230px 1fr;gap:44px;align-items:center;background:var(--wheat);border:3px solid var(--ink);border-radius:34px;padding:42px 46px}
+.E-incl h2{font-family:var(--disp);font-weight:700;font-size:40px;line-height:1.02;letter-spacing:-.03em;margin:0 0 14px}
+.E-incl p{font-size:18px;line-height:1.6;margin:0 0 16px;max-width:54ch}
+.E-incl ul{margin:0;padding:0;list-style:none;display:grid;gap:12px}
+.E-incl li{display:grid;grid-template-columns:24px 1fr;gap:12px;font-size:17px;line-height:1.5;align-items:start}
+.E-incl li svg{margin-top:4px}
+.E-list .who{display:inline-block;margin-top:7px;font-size:12.5px;font-weight:800;letter-spacing:.4px;border:1.5px solid var(--olive);color:var(--olive);border-radius:999px;padding:3px 10px}
+.E-ref{background:var(--ink);color:var(--paper);padding:52px 0 56px;margin-top:76px;border-top:3px solid var(--ink)}
+.E-ref h2{font-family:var(--disp);font-weight:700;font-size:42px;margin:0 0 8px;letter-spacing:-.03em;color:var(--gold)}
+.E-ref .lead{font-size:18.5px;color:rgba(252,246,233,.78);margin:0 0 34px;max-width:58ch}
+.E-ref table{width:100%;border-collapse:collapse;font-size:16.5px}
+.E-ref th{text-align:left;font-weight:800;font-size:13px;letter-spacing:.6px;color:var(--chalk);padding:0 0 9px;border-bottom:1.5px solid rgba(157,178,178,.5)}
+.E-ref td{padding:13px 22px 13px 0;border-bottom:1px solid rgba(252,246,233,.16);vertical-align:top;line-height:1.5;color:rgba(252,246,233,.92)}
+.E-ref td:first-child{font-weight:800;width:26%;color:var(--paper)}
+.E-ref .limits{margin-top:34px;border-left:4px solid var(--chalk);padding-left:20px;max-width:62ch}
+.E-ref .limits b{display:block;font-size:17px;margin-bottom:6px;color:var(--chalk)}
+.E-ref .limits p{margin:0;font-size:17px;line-height:1.6;color:rgba(252,246,233,.88)}
+.E-how{display:grid;grid-template-columns:1fr 1fr;gap:24px 48px;list-style:none;counter-reset:e;margin:0;padding:0}
+.E-how li{counter-increment:e;display:grid;grid-template-columns:42px 1fr;gap:16px;align-items:start}
+.E-how li::before{content:counter(e);font-family:var(--disp);font-weight:700;font-size:18px;color:var(--paper);background:var(--rust);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.E-how b{display:block;font-size:19px;font-weight:800;margin-bottom:4px}
+.E-how p{margin:0;font-size:16.5px;line-height:1.55;color:rgba(62,42,28,.78)}
+.E-me{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:center}
+.E-me p{font-size:18.5px;line-height:1.65;margin:0 0 15px;max-width:52ch}
+.E-facts{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.E-facts li{font-size:14.5px;font-weight:700;border:2px solid var(--ink);border-radius:999px;padding:6px 15px}
+.E-money{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.E-money > div{border:2.5px solid var(--ink);border-radius:28px;padding:32px 34px}
+.E-money > div:first-child{background:var(--wheat)}
+.E-money > div:last-child{background:var(--olive);color:var(--paper)}
+.E-money h3{font-family:var(--disp);font-weight:700;font-size:31px;margin:0 0 16px;letter-spacing:-.02em}
+.E-money table{width:100%;border-collapse:collapse;font-size:17px}
+.E-money td{padding:10px 0;border-bottom:1.5px solid rgba(62,42,28,.28)}
+.E-money td:last-child{text-align:right;font-weight:800}
+.E-money ul{margin:0;padding-left:19px;font-size:17px;line-height:1.75}
+.E-money .note{font-size:14px;opacity:.78;margin:14px 0 0}
+.E-foot{background:var(--wheat);border-top:3px solid var(--ink);margin-top:76px;padding:40px 0 36px}
+.E-foot .cols{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:36px;font-size:16px;line-height:1.7}
+.E-foot b{display:block;margin-bottom:6px;color:var(--rust);font-weight:800}
+.E-foot .fine{margin-top:26px;padding-top:15px;border-top:2px solid rgba(62,42,28,.2);font-size:13.5px;color:rgba(62,42,28,.72)}
+</style>
+</head>
+<body>
+
+<header class="doc-head">
+  <div class="wrap">
+    <h1>Otella Speech + Swallow</h1>
+    <p>The identity for Laura Otella’s practice on the Central Coast: logo, business card, letterhead and website. One practice speaking to two audiences — families who found her themselves, and the ENT, gastroenterology, neurology and paediatric rooms that refer to her.</p>
+    <p class="meta">ABN, street address, PO boxes and the HealthLink identifier are still placeholders. Fees are indicative.</p>
+  </div>
+</header>
+
+<section class="kE">
+<div class="wrap">
+
+  <div class="route-head">
+    <div>
+      <h2>Otella Speech + Swallow</h2>
+      <p class="tagline">Primary identity — one practice, two referral pathways</p>
+      <p>An earthy seventies palette and first-name warmth, carried on a Fraunces headline voice and a plain-language list of what a family is actually noticing. Two families only — Fraunces for anything with a voice, Nunito Sans for anything with a job — and the logotype is set in Fraunces too, so the wordmark and the name on the business card are the same letterforms.</p>
+      <p>The new constraint is that a parent and an ENT registrar have to trust the same page. Rather than splitting the difference into something bland, the identity carries two registers openly: warm wheat and gold for families, chocolate and chalk for clinicians, each with its own front door on the homepage.</p>
+      <p>Swallowing goes into the name, and the welcome swallow carries it in the mark. It signals the ENT, gastro and neuro pathway to the people who refer, and it reads perfectly plainly to a parent whose two-year-old is gagging on solids.</p>
+      <p>The inclusive position is carried as clinical service and as paperwork, not as a badge. Gender-affirming voice and communication training is a real speech pathology specialty with its own referral pathway, so it is listed as a service alongside everything else. The name and pronoun fields at the top of the letterhead do more day-to-day work than any statement would.</p>
+    </div>
+    <dl>
+      <dt>Name</dt><dd>Otella Speech + Swallow</dd>
+      <dt>Caseload</dt><dd>Paediatric feeding and speech, adult dysphagia, voice, aphasia and dysarthria</dd>
+      <dt>Pathway one</dt><dd>Families direct — no referral, first call free</dd>
+      <dt>Pathway two</dt><dd>ENT, gastroenterology, neurology, paediatrics, GPs</dd>
+      <dt>Load-bearing decision</dt><dd>Publishing her clinical limits. It is what makes a specialist send a second patient</dd>
+      <dt>Stated position</dt><dd>Queer and trans affirming, and explicit about it; Acknowledgement of Country carried properly rather than as a footer line</dd>
+    </dl>
+  </div>
+
+  <div class="block">
+    <h3 class="sec">Palette</h3>
+    <div class="swatches">
+      <div class="sw"><i style="background:#3E2A1C"></i><b>Chocolate</b><span>#3E2A1C</span></div>
+      <div class="sw"><i style="background:#C0551E"></i><b>Burnt orange</b><span>#C0551E</span></div>
+      <div class="sw"><i style="background:#DFA22C"></i><b>Harvest gold</b><span>#DFA22C</span></div>
+      <div class="sw"><i style="background:#6E7B45"></i><b>Olive</b><span>#6E7B45</span></div>
+      <div class="sw"><i style="background:#9DB2B2"></i><b>Chalk</b><span>#9DB2B2</span></div>
+      <div class="sw"><i style="background:#F1E4CB"></i><b>Wheat</b><span>#F1E4CB</span></div>
+    </div>
+    <p class="caption">Chalk is the one addition to Route D’s palette, carried across from Route A’s chalk blue. It is the only cool colour in the system and it is reserved entirely for clinical material — referrer sections, report rules, scope statements. Warmth and coolness become the wayfinding, so a GP knows within a second which parts of a document were written for them.</p>
+  </div>
+
+  <div class="block">
+    <h3 class="sec">Logo</h3>
+    <div class="stage">
+      <svg width="424" height="126" viewBox="0 0 424 126" role="img" aria-label="Otella Speech + Swallow primary logo, welcome swallow mark">
+        <g transform="translate(2,3)">
+          <circle cx="60" cy="60" r="52" fill="#ECDFCD" stroke="#3E2A1C" stroke-width="3.5"/>
+          <defs><clipPath id="sw1"><circle cx="60" cy="60" r="52"/></clipPath></defs><g clip-path="url(#sw1)"><g transform="translate(60,60) scale(0.1925) translate(-688.5,-402.15)"><g transform="translate(0,784) scale(.05,-.05)" stroke-linejoin="round">
+<path fill="#ecdfcd" stroke="#ecdfcd" stroke-width="24" d="M9785 13245 c-571 -84 -1026 -388 -1338 -895 -114 -186 -232 -554
+-257 -800 -17 -174 -18 -5373 -1 -5394 20 -24 36 -20 63 17 54 70 420 482 592
+667 648 694 690 765 921 1565 287 995 584 1655 947 2105 486 603 1210 1044
+1975 1204 413 87 1005 102 1399 36 252 -43 638 -143 827 -215 91 -35 107 -46
+145 -101 10 -15 26 -19 80 -19 190 -1 816 -379 1062 -642 222 -238 491 -692
+502 -846 1 -26 7 -37 22 -40 666 -158 1164 -344 1407 -527 65 -49 103 -97 91
+-117 -12 -18 -91 -54 -125 -56 -18 -1 -35 -6 -39 -12 -4 -6 -8 -1 -9 10 -1 16
+-2 15 -8 -5 -6 -23 -28 -32 -223 -97 -350 -116 -917 -273 -1048 -289 -59 -7
+-90 -26 -90 -55 0 -23 -93 -201 -212 -408 -268 -464 -401 -719 -501 -961 -51
+-123 -67 -174 -128 -400 -30 -110 -36 -319 -14 -487 9 -73 14 -142 10 -153 -4
+-13 -1 -28 8 -38 8 -9 22 -48 31 -87 9 -38 41 -155 71 -260 135 -475 208 -912
+171 -1024 -5 -15 -5 -21 2 -17 16 9 22 -28 33 -214 36 -560 -45 -1241 -217
+-1837 -83 -288 -265 -752 -318 -812 -11 -13 -16 -21 -9 -17 6 3 14 2 18 -3 8
+-13 1908 -13 2075 -1 733 57 1403 620 1595 1341 72 272 66 -96 67 4254 0 2140
+-2 3910 -6 3935 -4 25 -16 86 -26 135 -10 50 -21 110 -25 135 -10 76 -93 307
+-155 430 -267 533 -764 897 -1350 988 -145 22 -7864 29 -8015 7z"/>
+<path fill="#11323b" stroke="#11323b" stroke-width="24" d="M13320 11784 c-906 -53 -1621 -340 -2246 -902 -618 -556 -933 -1188
+-1396 -2802 -25 -86 -115 -314 -159 -402 -115 -230 -196 -333 -614 -783 -374
+-402 -698 -774 -715 -821 -14 -36 -13 -2235 0 -2378 70 -738 556 -1352 1256
+-1585 206 -69 295 -80 742 -92 393 -10 393 -10 442 17 28 15 53 38 60 53 6 14
+51 62 101 106 50 44 180 171 289 282 952 972 1394 1831 1332 2590 -72 893
+-637 1380 -1692 1458 -131 10 -159 23 -160 71 0 50 243 181 570 307 148 57
+221 81 451 148 88 25 88 28 20 182 -335 759 -181 1363 427 1667 273 136 477
+166 1064 155 396 -7 396 -7 441 34 64 59 64 72 3 104 -521 274 -454 1044 106
+1222 560 177 1051 -404 790 -935 -47 -96 -177 -230 -269 -279 -72 -37 -73 -38
+-35 -74 71 -69 270 -62 612 19 58 14 128 29 155 34 28 5 84 20 125 34 41 15
+116 36 165 47 50 11 113 30 140 41 28 11 68 26 90 33 238 77 265 89 307 137
+63 73 52 116 -72 277 -160 207 -407 429 -583 525 -338 185 -950 349 -1066 287
+-31 -17 -66 -13 -86 9 -10 11 -24 20 -32 20 -29 0 -64 48 -57 77 19 79 122
+225 225 317 169 154 442 280 802 374 197 51 216 63 171 113 -66 73 -730 251
+-1102 294 -125 15 -481 26 -602 19z"/>
+<path fill="#c0541a" stroke="#c0541a" stroke-width="24" d="M14920 11369 c-498 -129 -768 -266 -952 -483 -133 -156 -165 -245
+-99 -278 18 -9 43 -26 55 -37 22 -20 24 -20 70 -5 187 64 864 -136 1178 -347
+238 -160 614 -575 594 -655 -8 -32 3 -54 26 -54 12 0 38 -5 59 -11 50 -16 87
+-3 358 122 291 134 462 228 480 264 50 102 -236 613 -498 887 -206 217 -583
+466 -914 603 -127 52 -135 52 -357 -6z M14735 9139 c-145 -34 -284 -56 -426
+-65 -117 -7 -128 -4 -193 53 -28 26 -44 33 -60 29 -159 -47 -237 -47 -443 1
+-15 4 -23 1 -23 -8 -1 -18 -39 -61 -76 -85 -27 -18 -56 -19 -504 -19 -413 0
+-487 -2 -565 -18 -1050 -205 -1316 -1108 -637 -2157 88 -136 127 -188 286
+-380 203 -246 327 -365 921 -886 176 -154 378 -334 449 -400 71 -65 143 -131
+160 -145 38 -33 404 -429 510 -554 316 -369 521 -685 707 -1088 79 -171 92
+-186 138 -163 311 161 881 974 1001 1426 22 83 81 204 113 231 62 53 -3 507
+-142 991 -27 95 -59 211 -71 258 -29 119 -33 126 -73 134 -19 4 -46 15 -60 26
+-31 25 -239 103 -357 135 -145 38 -262 49 -439 40 -542 -29 -705 8 -920 210
+-235 220 -157 592 196 936 188 184 658 547 903 699 396 245 925 428 1240 430
+70 0 99 25 66 55 -30 28 -24 26 -201 64 -268 58 -696 131 -766 131 -38 0 -115
+11 -172 24 -56 13 -136 27 -177 30 -115 10 -148 22 -172 62 -25 43 -46 43
+-213 3z"/>
+<path fill="#cb985f" stroke="#cb985f" stroke-width="24" d="M11649 7072 c-13 -10 -77 -33 -142 -51 -296 -81 -836 -305 -914 -380
+-66 -63 -19 -96 157 -111 444 -37 803 -149 1088 -342 524 -354 725 -1134 487
+-1887 -202 -636 -787 -1437 -1568 -2148 -68 -62 -68 -62 -54 -95 13 -33 13
+-33 723 -41 1007 -11 4162 -1 4180 14 36 29 169 351 264 638 216 652 311 1348
+276 2035 -7 141 -11 171 -26 186 -14 14 -15 21 -7 31 7 6 0 4 -16 -7 -30 -21
+-88 -134 -114 -224 -125 -437 -554 -1086 -899 -1360 -151 -120 -146 -121 -243
+87 -186 403 -391 719 -707 1088 -106 125 -472 521 -510 554 -17 14 -89 80
+-160 145 -71 66 -273 246 -449 400 -386 339 -613 545 -721 657 -212 221 -497
+596 -588 777 -30 60 -26 57 -57 34z"/>
+<path fill="#a6461c" stroke="#a6461c" stroke-width="24" d="M15435 9990 c55 -55 102 -100 105 -100 2 0 -40 45 -95 100 -55 55
+-102 100 -105 100 -2 0 40 -45 95 -100z M12783 9053 c37 -2 97 -2 135 0 37 2
+6 3 -68 3 -74 0 -105 -1 -67 -3z M16448 8798 c-21 -23 -34 -28 -74 -28 -318
+-2 -847 -184 -1244 -430 -245 -152 -715 -515 -903 -699 -353 -344 -431 -716
+-196 -936 215 -202 378 -239 920 -210 177 9 294 -2 439 -40 118 -32 326 -110
+357 -135 73 -57 91 -13 69 172 -27 232 -16 387 37 563 14 44 32 107 42 140 57
+198 232 556 507 1035 292 510 311 553 242 565 -22 4 -69 13 -105 19 -65 12
+-65 12 -91 -16z"/>
+<path fill="#cdb590" stroke="#cdb590" stroke-width="24" d="M16686 9873 c-10 -32 -344 -202 -661 -338 -114 -48 -117 -49 -226
+-30 -34 6 -39 4 -72 -37 -26 -32 -49 -48 -79 -57 -24 -7 -54 -20 -67 -28 -13
+-8 -64 -26 -112 -39 -49 -13 -100 -30 -112 -39 -13 -8 -65 -24 -115 -35 -153
+-32 -291 -80 -298 -102 -15 -48 56 -82 196 -93 78 -6 88 -3 106 30 16 29 42
+32 384 44 173 7 405 19 515 27 322 23 1080 55 1486 61 374 6 376 6 391 -15 31
+-45 81 -47 159 -7 65 34 53 68 -50 145 -221 166 -625 326 -1191 472 -253 65
+-247 64 -254 41z M8175 4790 c0 -520 1 -732 2 -472 2 259 2 685 0 945 -1 259
+-2 47 -2 -473z M16153 4550 c0 -41 2 -58 4 -37 2 20 2 54 0 75 -2 20 -4 3 -4
+-38z M16153 4255 c0 -44 2 -61 4 -37 2 23 2 59 0 80 -2 20 -4 1 -4 -43z
+M10993 2013 c141 -2 373 -2 515 0 141 1 25 2 -258 2 -283 0 -399 -1 -257 -2z
+M14713 2013 c147 -2 387 -2 535 0 147 1 26 2 -268 2 -294 0 -415 -1 -267 -2z"/>
+<path fill="#ac8d66" stroke="#ac8d66" stroke-width="24" d="M16893 9214 c-293 -12 -594 -27 -670 -33 -161 -13 -436 -27 -718 -37
+-217 -8 -243 -11 -259 -37 -28 -44 72 -84 216 -86 111 -1 824 -133 954 -176
+103 -34 281 -57 356 -45 190 29 1103 288 1245 353 27 12 29 34 7 65 -21 30
+-364 29 -1131 -4z M12423 4930 c0 -41 2 -58 4 -37 2 20 2 54 0 75 -2 20 -4 3
+-4 -38z"/>
+</g><circle cx="692.09" cy="294.85" r="33.08" fill="#8a735a"/><circle cx="691.96" cy="294.67" r="26.40" fill="#2f3030"/><circle cx="687.22" cy="285.20" r="11.33" fill="#f0eee0"/></g></g>
+        </g>
+        <text x="132" y="71" font-family="Fraunces,Georgia,serif" font-weight="700" font-size="58" textLength="276" lengthAdjust="spacing" fill="#3E2A1C">OTELLA</text>
+        <text x="132" y="95" font-family="Fraunces,Georgia,serif" font-weight="600" font-size="16" textLength="276" lengthAdjust="spacing" fill="#C0551E">SPEECH + SWALLOW</text>
+      </svg>
+
+      <svg width="176" height="176" viewBox="0 0 168 168" role="img" aria-label="Badge roundel">
+        <circle cx="84" cy="84" r="79" fill="#F1E4CB" stroke="#3E2A1C" stroke-width="3"/>
+        <circle cx="84" cy="84" r="72" fill="#ECDFCD" stroke="#3E2A1C" stroke-width="2"/>
+        
+        <g transform="translate(84,84) scale(1.3846) translate(-60,-60)">
+          <defs><clipPath id="sw2"><circle cx="60" cy="60" r="52"/></clipPath></defs><g clip-path="url(#sw2)"><g transform="translate(60,60) scale(0.1925) translate(-688.5,-402.15)"><g transform="translate(0,784) scale(.05,-.05)" stroke-linejoin="round">
+<path fill="#ecdfcd" stroke="#ecdfcd" stroke-width="24" d="M9785 13245 c-571 -84 -1026 -388 -1338 -895 -114 -186 -232 -554
+-257 -800 -17 -174 -18 -5373 -1 -5394 20 -24 36 -20 63 17 54 70 420 482 592
+667 648 694 690 765 921 1565 287 995 584 1655 947 2105 486 603 1210 1044
+1975 1204 413 87 1005 102 1399 36 252 -43 638 -143 827 -215 91 -35 107 -46
+145 -101 10 -15 26 -19 80 -19 190 -1 816 -379 1062 -642 222 -238 491 -692
+502 -846 1 -26 7 -37 22 -40 666 -158 1164 -344 1407 -527 65 -49 103 -97 91
+-117 -12 -18 -91 -54 -125 -56 -18 -1 -35 -6 -39 -12 -4 -6 -8 -1 -9 10 -1 16
+-2 15 -8 -5 -6 -23 -28 -32 -223 -97 -350 -116 -917 -273 -1048 -289 -59 -7
+-90 -26 -90 -55 0 -23 -93 -201 -212 -408 -268 -464 -401 -719 -501 -961 -51
+-123 -67 -174 -128 -400 -30 -110 -36 -319 -14 -487 9 -73 14 -142 10 -153 -4
+-13 -1 -28 8 -38 8 -9 22 -48 31 -87 9 -38 41 -155 71 -260 135 -475 208 -912
+171 -1024 -5 -15 -5 -21 2 -17 16 9 22 -28 33 -214 36 -560 -45 -1241 -217
+-1837 -83 -288 -265 -752 -318 -812 -11 -13 -16 -21 -9 -17 6 3 14 2 18 -3 8
+-13 1908 -13 2075 -1 733 57 1403 620 1595 1341 72 272 66 -96 67 4254 0 2140
+-2 3910 -6 3935 -4 25 -16 86 -26 135 -10 50 -21 110 -25 135 -10 76 -93 307
+-155 430 -267 533 -764 897 -1350 988 -145 22 -7864 29 -8015 7z"/>
+<path fill="#11323b" stroke="#11323b" stroke-width="24" d="M13320 11784 c-906 -53 -1621 -340 -2246 -902 -618 -556 -933 -1188
+-1396 -2802 -25 -86 -115 -314 -159 -402 -115 -230 -196 -333 -614 -783 -374
+-402 -698 -774 -715 -821 -14 -36 -13 -2235 0 -2378 70 -738 556 -1352 1256
+-1585 206 -69 295 -80 742 -92 393 -10 393 -10 442 17 28 15 53 38 60 53 6 14
+51 62 101 106 50 44 180 171 289 282 952 972 1394 1831 1332 2590 -72 893
+-637 1380 -1692 1458 -131 10 -159 23 -160 71 0 50 243 181 570 307 148 57
+221 81 451 148 88 25 88 28 20 182 -335 759 -181 1363 427 1667 273 136 477
+166 1064 155 396 -7 396 -7 441 34 64 59 64 72 3 104 -521 274 -454 1044 106
+1222 560 177 1051 -404 790 -935 -47 -96 -177 -230 -269 -279 -72 -37 -73 -38
+-35 -74 71 -69 270 -62 612 19 58 14 128 29 155 34 28 5 84 20 125 34 41 15
+116 36 165 47 50 11 113 30 140 41 28 11 68 26 90 33 238 77 265 89 307 137
+63 73 52 116 -72 277 -160 207 -407 429 -583 525 -338 185 -950 349 -1066 287
+-31 -17 -66 -13 -86 9 -10 11 -24 20 -32 20 -29 0 -64 48 -57 77 19 79 122
+225 225 317 169 154 442 280 802 374 197 51 216 63 171 113 -66 73 -730 251
+-1102 294 -125 15 -481 26 -602 19z"/>
+<path fill="#c0541a" stroke="#c0541a" stroke-width="24" d="M14920 11369 c-498 -129 -768 -266 -952 -483 -133 -156 -165 -245
+-99 -278 18 -9 43 -26 55 -37 22 -20 24 -20 70 -5 187 64 864 -136 1178 -347
+238 -160 614 -575 594 -655 -8 -32 3 -54 26 -54 12 0 38 -5 59 -11 50 -16 87
+-3 358 122 291 134 462 228 480 264 50 102 -236 613 -498 887 -206 217 -583
+466 -914 603 -127 52 -135 52 -357 -6z M14735 9139 c-145 -34 -284 -56 -426
+-65 -117 -7 -128 -4 -193 53 -28 26 -44 33 -60 29 -159 -47 -237 -47 -443 1
+-15 4 -23 1 -23 -8 -1 -18 -39 -61 -76 -85 -27 -18 -56 -19 -504 -19 -413 0
+-487 -2 -565 -18 -1050 -205 -1316 -1108 -637 -2157 88 -136 127 -188 286
+-380 203 -246 327 -365 921 -886 176 -154 378 -334 449 -400 71 -65 143 -131
+160 -145 38 -33 404 -429 510 -554 316 -369 521 -685 707 -1088 79 -171 92
+-186 138 -163 311 161 881 974 1001 1426 22 83 81 204 113 231 62 53 -3 507
+-142 991 -27 95 -59 211 -71 258 -29 119 -33 126 -73 134 -19 4 -46 15 -60 26
+-31 25 -239 103 -357 135 -145 38 -262 49 -439 40 -542 -29 -705 8 -920 210
+-235 220 -157 592 196 936 188 184 658 547 903 699 396 245 925 428 1240 430
+70 0 99 25 66 55 -30 28 -24 26 -201 64 -268 58 -696 131 -766 131 -38 0 -115
+11 -172 24 -56 13 -136 27 -177 30 -115 10 -148 22 -172 62 -25 43 -46 43
+-213 3z"/>
+<path fill="#cb985f" stroke="#cb985f" stroke-width="24" d="M11649 7072 c-13 -10 -77 -33 -142 -51 -296 -81 -836 -305 -914 -380
+-66 -63 -19 -96 157 -111 444 -37 803 -149 1088 -342 524 -354 725 -1134 487
+-1887 -202 -636 -787 -1437 -1568 -2148 -68 -62 -68 -62 -54 -95 13 -33 13
+-33 723 -41 1007 -11 4162 -1 4180 14 36 29 169 351 264 638 216 652 311 1348
+276 2035 -7 141 -11 171 -26 186 -14 14 -15 21 -7 31 7 6 0 4 -16 -7 -30 -21
+-88 -134 -114 -224 -125 -437 -554 -1086 -899 -1360 -151 -120 -146 -121 -243
+87 -186 403 -391 719 -707 1088 -106 125 -472 521 -510 554 -17 14 -89 80
+-160 145 -71 66 -273 246 -449 400 -386 339 -613 545 -721 657 -212 221 -497
+596 -588 777 -30 60 -26 57 -57 34z"/>
+<path fill="#a6461c" stroke="#a6461c" stroke-width="24" d="M15435 9990 c55 -55 102 -100 105 -100 2 0 -40 45 -95 100 -55 55
+-102 100 -105 100 -2 0 40 -45 95 -100z M12783 9053 c37 -2 97 -2 135 0 37 2
+6 3 -68 3 -74 0 -105 -1 -67 -3z M16448 8798 c-21 -23 -34 -28 -74 -28 -318
+-2 -847 -184 -1244 -430 -245 -152 -715 -515 -903 -699 -353 -344 -431 -716
+-196 -936 215 -202 378 -239 920 -210 177 9 294 -2 439 -40 118 -32 326 -110
+357 -135 73 -57 91 -13 69 172 -27 232 -16 387 37 563 14 44 32 107 42 140 57
+198 232 556 507 1035 292 510 311 553 242 565 -22 4 -69 13 -105 19 -65 12
+-65 12 -91 -16z"/>
+<path fill="#cdb590" stroke="#cdb590" stroke-width="24" d="M16686 9873 c-10 -32 -344 -202 -661 -338 -114 -48 -117 -49 -226
+-30 -34 6 -39 4 -72 -37 -26 -32 -49 -48 -79 -57 -24 -7 -54 -20 -67 -28 -13
+-8 -64 -26 -112 -39 -49 -13 -100 -30 -112 -39 -13 -8 -65 -24 -115 -35 -153
+-32 -291 -80 -298 -102 -15 -48 56 -82 196 -93 78 -6 88 -3 106 30 16 29 42
+32 384 44 173 7 405 19 515 27 322 23 1080 55 1486 61 374 6 376 6 391 -15 31
+-45 81 -47 159 -7 65 34 53 68 -50 145 -221 166 -625 326 -1191 472 -253 65
+-247 64 -254 41z M8175 4790 c0 -520 1 -732 2 -472 2 259 2 685 0 945 -1 259
+-2 47 -2 -473z M16153 4550 c0 -41 2 -58 4 -37 2 20 2 54 0 75 -2 20 -4 3 -4
+-38z M16153 4255 c0 -44 2 -61 4 -37 2 23 2 59 0 80 -2 20 -4 1 -4 -43z
+M10993 2013 c141 -2 373 -2 515 0 141 1 25 2 -258 2 -283 0 -399 -1 -257 -2z
+M14713 2013 c147 -2 387 -2 535 0 147 1 26 2 -268 2 -294 0 -415 -1 -267 -2z"/>
+<path fill="#ac8d66" stroke="#ac8d66" stroke-width="24" d="M16893 9214 c-293 -12 -594 -27 -670 -33 -161 -13 -436 -27 -718 -37
+-217 -8 -243 -11 -259 -37 -28 -44 72 -84 216 -86 111 -1 824 -133 954 -176
+103 -34 281 -57 356 -45 190 29 1103 288 1245 353 27 12 29 34 7 65 -21 30
+-364 29 -1131 -4z M12423 4930 c0 -41 2 -58 4 -37 2 20 2 54 0 75 -2 20 -4 3
+-4 -38z"/>
+</g><circle cx="692.09" cy="294.85" r="33.08" fill="#8a735a"/><circle cx="691.96" cy="294.67" r="26.40" fill="#2f3030"/><circle cx="687.22" cy="285.20" r="11.33" fill="#f0eee0"/></g></g>
+        </g><circle cx="84" cy="84" r="72" fill="none" stroke="#3E2A1C" stroke-width="2"/>
+      </svg>
+
+      <svg width="128" height="128" viewBox="0 0 144 144" role="img" aria-label="Mark, reversed">
+          <circle cx="72" cy="72" r="72" fill="#3E2A1C"/><g transform="translate(12,12)"><circle cx="60" cy="60" r="52" fill="#ECDFCD" stroke="#F1E4CB" stroke-width="3.5"/>
+          <defs><clipPath id="sw3"><circle cx="60" cy="60" r="52"/></clipPath></defs><g clip-path="url(#sw3)"><g transform="translate(60,60) scale(0.1925) translate(-688.5,-402.15)"><g transform="translate(0,784) scale(.05,-.05)" stroke-linejoin="round">
+<path fill="#ecdfcd" stroke="#ecdfcd" stroke-width="24" d="M9785 13245 c-571 -84 -1026 -388 -1338 -895 -114 -186 -232 -554
+-257 -800 -17 -174 -18 -5373 -1 -5394 20 -24 36 -20 63 17 54 70 420 482 592
+667 648 694 690 765 921 1565 287 995 584 1655 947 2105 486 603 1210 1044
+1975 1204 413 87 1005 102 1399 36 252 -43 638 -143 827 -215 91 -35 107 -46
+145 -101 10 -15 26 -19 80 -19 190 -1 816 -379 1062 -642 222 -238 491 -692
+502 -846 1 -26 7 -37 22 -40 666 -158 1164 -344 1407 -527 65 -49 103 -97 91
+-117 -12 -18 -91 -54 -125 -56 -18 -1 -35 -6 -39 -12 -4 -6 -8 -1 -9 10 -1 16
+-2 15 -8 -5 -6 -23 -28 -32 -223 -97 -350 -116 -917 -273 -1048 -289 -59 -7
+-90 -26 -90 -55 0 -23 -93 -201 -212 -408 -268 -464 -401 -719 -501 -961 -51
+-123 -67 -174 -128 -400 -30 -110 -36 -319 -14 -487 9 -73 14 -142 10 -153 -4
+-13 -1 -28 8 -38 8 -9 22 -48 31 -87 9 -38 41 -155 71 -260 135 -475 208 -912
+171 -1024 -5 -15 -5 -21 2 -17 16 9 22 -28 33 -214 36 -560 -45 -1241 -217
+-1837 -83 -288 -265 -752 -318 -812 -11 -13 -16 -21 -9 -17 6 3 14 2 18 -3 8
+-13 1908 -13 2075 -1 733 57 1403 620 1595 1341 72 272 66 -96 67 4254 0 2140
+-2 3910 -6 3935 -4 25 -16 86 -26 135 -10 50 -21 110 -25 135 -10 76 -93 307
+-155 430 -267 533 -764 897 -1350 988 -145 22 -7864 29 -8015 7z"/>
+<path fill="#11323b" stroke="#11323b" stroke-width="24" d="M13320 11784 c-906 -53 -1621 -340 -2246 -902 -618 -556 -933 -1188
+-1396 -2802 -25 -86 -115 -314 -159 -402 -115 -230 -196 -333 -614 -783 -374
+-402 -698 -774 -715 -821 -14 -36 -13 -2235 0 -2378 70 -738 556 -1352 1256
+-1585 206 -69 295 -80 742 -92 393 -10 393 -10 442 17 28 15 53 38 60 53 6 14
+51 62 101 106 50 44 180 171 289 282 952 972 1394 1831 1332 2590 -72 893
+-637 1380 -1692 1458 -131 10 -159 23 -160 71 0 50 243 181 570 307 148 57
+221 81 451 148 88 25 88 28 20 182 -335 759 -181 1363 427 1667 273 136 477
+166 1064 155 396 -7 396 -7 441 34 64 59 64 72 3 104 -521 274 -454 1044 106
+1222 560 177 1051 -404 790 -935 -47 -96 -177 -230 -269 -279 -72 -37 -73 -38
+-35 -74 71 -69 270 -62 612 19 58 14 128 29 155 34 28 5 84 20 125 34 41 15
+116 36 165 47 50 11 113 30 140 41 28 11 68 26 90 33 238 77 265 89 307 137
+63 73 52 116 -72 277 -160 207 -407 429 -583 525 -338 185 -950 349 -1066 287
+-31 -17 -66 -13 -86 9 -10 11 -24 20 -32 20 -29 0 -64 48 -57 77 19 79 122
+225 225 317 169 154 442 280 802 374 197 51 216 63 171 113 -66 73 -730 251
+-1102 294 -125 15 -481 26 -602 19z"/>
+<path fill="#c0541a" stroke="#c0541a" stroke-width="24" d="M14920 11369 c-498 -129 -768 -266 -952 -483 -133 -156 -165 -245
+-99 -278 18 -9 43 -26 55 -37 22 -20 24 -20 70 -5 187 64 864 -136 1178 -347
+238 -160 614 -575 594 -655 -8 -32 3 -54 26 -54 12 0 38 -5 59 -11 50 -16 87
+-3 358 122 291 134 462 228 480 264 50 102 -236 613 -498 887 -206 217 -583
+466 -914 603 -127 52 -135 52 -357 -6z M14735 9139 c-145 -34 -284 -56 -426
+-65 -117 -7 -128 -4 -193 53 -28 26 -44 33 -60 29 -159 -47 -237 -47 -443 1
+-15 4 -23 1 -23 -8 -1 -18 -39 -61 -76 -85 -27 -18 -56 -19 -504 -19 -413 0
+-487 -2 -565 -18 -1050 -205 -1316 -1108 -637 -2157 88 -136 127 -188 286
+-380 203 -246 327 -365 921 -886 176 -154 378 -334 449 -400 71 -65 143 -131
+160 -145 38 -33 404 -429 510 -554 316 -369 521 -685 707 -1088 79 -171 92
+-186 138 -163 311 161 881 974 1001 1426 22 83 81 204 113 231 62 53 -3 507
+-142 991 -27 95 -59 211 -71 258 -29 119 -33 126 -73 134 -19 4 -46 15 -60 26
+-31 25 -239 103 -357 135 -145 38 -262 49 -439 40 -542 -29 -705 8 -920 210
+-235 220 -157 592 196 936 188 184 658 547 903 699 396 245 925 428 1240 430
+70 0 99 25 66 55 -30 28 -24 26 -201 64 -268 58 -696 131 -766 131 -38 0 -115
+11 -172 24 -56 13 -136 27 -177 30 -115 10 -148 22 -172 62 -25 43 -46 43
+-213 3z"/>
+<path fill="#cb985f" stroke="#cb985f" stroke-width="24" d="M11649 7072 c-13 -10 -77 -33 -142 -51 -296 -81 -836 -305 -914 -380
+-66 -63 -19 -96 157 -111 444 -37 803 -149 1088 -342 524 -354 725 -1134 487
+-1887 -202 -636 -787 -1437 -1568 -2148 -68 -62 -68 -62 -54 -95 13 -33 13
+-33 723 -41 1007 -11 4162 -1 4180 14 36 29 169 351 264 638 216 652 311 1348
+276 2035 -7 141 -11 171 -26 186 -14 14 -15 21 -7 31 7 6 0 4 -16 -7 -30 -21
+-88 -134 -114 -224 -125 -437 -554 -1086 -899 -1360 -151 -120 -146 -121 -243
+87 -186 403 -391 719 -707 1088 -106 125 -472 521 -510 554 -17 14 -89 80
+-160 145 -71 66 -273 246 -449 400 -386 339 -613 545 -721 657 -212 221 -497
+596 -588 777 -30 60 -26 57 -57 34z"/>
+<path fill="#a6461c" stroke="#a6461c" stroke-width="24" d="M15435 9990 c55 -55 102 -100 105 -100 2 0 -40 45 -95 100 -55 55
+-102 100 -105 100 -2 0 40 -45 95 -100z M12783 9053 c37 -2 97 -2 135 0 37 2
+6 3 -68 3 -74 0 -105 -1 -67 -3z M16448 8798 c-21 -23 -34 -28 -74 -28 -318
+-2 -847 -184 -1244 -430 -245 -152 -715 -515 -903 -699 -353 -344 -431 -716
+-196 -936 215 -202 378 -239 920 -210 177 9 294 -2 439 -40 118 -32 326 -110
+357 -135 73 -57 91 -13 69 172 -27 232 -16 387 37 563 14 44 32 107 42 140 57
+198 232 556 507 1035 292 510 311 553 242 565 -22 4 -69 13 -105 19 -65 12
+-65 12 -91 -16z"/>
+<path fill="#cdb590" stroke="#cdb590" stroke-width="24" d="M16686 9873 c-10 -32 -344 -202 -661 -338 -114 -48 -117 -49 -226
+-30 -34 6 -39 4 -72 -37 -26 -32 -49 -48 -79 -57 -24 -7 -54 -20 -67 -28 -13
+-8 -64 -26 -112 -39 -49 -13 -100 -30 -112 -39 -13 -8 -65 -24 -115 -35 -153
+-32 -291 -80 -298 -102 -15 -48 56 -82 196 -93 78 -6 88 -3 106 30 16 29 42
+32 384 44 173 7 405 19 515 27 322 23 1080 55 1486 61 374 6 376 6 391 -15 31
+-45 81 -47 159 -7 65 34 53 68 -50 145 -221 166 -625 326 -1191 472 -253 65
+-247 64 -254 41z M8175 4790 c0 -520 1 -732 2 -472 2 259 2 685 0 945 -1 259
+-2 47 -2 -473z M16153 4550 c0 -41 2 -58 4 -37 2 20 2 54 0 75 -2 20 -4 3 -4
+-38z M16153 4255 c0 -44 2 -61 4 -37 2 23 2 59 0 80 -2 20 -4 1 -4 -43z
+M10993 2013 c141 -2 373 -2 515 0 141 1 25 2 -258 2 -283 0 -399 -1 -257 -2z
+M14713 2013 c147 -2 387 -2 535 0 147 1 26 2 -268 2 -294 0 -415 -1 -267 -2z"/>
+<path fill="#ac8d66" stroke="#ac8d66" stroke-width="24" d="M16893 9214 c-293 -12 -594 -27 -670 -33 -161 -13 -436 -27 -718 -37
+-217 -8 -243 -11 -259 -37 -28 -44 72 -84 216 -86 111 -1 824 -133 954 -176
+103 -34 281 -57 356 -45 190 29 1103 288 1245 353 27 12 29 34 7 65 -21 30
+-364 29 -1131 -4z M12423 4930 c0 -41 2 -58 4 -37 2 20 2 54 0 75 -2 20 -4 3
+-4 -38z"/>
+</g><circle cx="692.09" cy="294.85" r="33.08" fill="#8a735a"/><circle cx="691.96" cy="294.67" r="26.40" fill="#2f3030"/><circle cx="687.22" cy="285.20" r="11.33" fill="#f0eee0"/></g></g>
+        </g></svg>
+
+      <div style="display:flex;align-items:center;gap:14px">
+        <svg width="26" height="26" viewBox="0 0 120 120" role="img" aria-label="Mark at favicon size"><circle cx="60" cy="60" r="52" fill="#ECDFCD" stroke="#3E2A1C" stroke-width="5"/><defs><clipPath id="sw4"><circle cx="60" cy="60" r="52"/></clipPath></defs><g clip-path="url(#sw4)"><g transform="translate(60,60) scale(0.1925) translate(-688.5,-402.15)"><g transform="translate(0,784) scale(.05,-.05)" stroke-linejoin="round">
+<path fill="#ecdfcd" stroke="#ecdfcd" stroke-width="24" d="M9785 13245 c-571 -84 -1026 -388 -1338 -895 -114 -186 -232 -554
+-257 -800 -17 -174 -18 -5373 -1 -5394 20 -24 36 -20 63 17 54 70 420 482 592
+667 648 694 690 765 921 1565 287 995 584 1655 947 2105 486 603 1210 1044
+1975 1204 413 87 1005 102 1399 36 252 -43 638 -143 827 -215 91 -35 107 -46
+145 -101 10 -15 26 -19 80 -19 190 -1 816 -379 1062 -642 222 -238 491 -692
+502 -846 1 -26 7 -37 22 -40 666 -158 1164 -344 1407 -527 65 -49 103 -97 91
+-117 -12 -18 -91 -54 -125 -56 -18 -1 -35 -6 -39 -12 -4 -6 -8 -1 -9 10 -1 16
+-2 15 -8 -5 -6 -23 -28 -32 -223 -97 -350 -116 -917 -273 -1048 -289 -59 -7
+-90 -26 -90 -55 0 -23 -93 -201 -212 -408 -268 -464 -401 -719 -501 -961 -51
+-123 -67 -174 -128 -400 -30 -110 -36 -319 -14 -487 9 -73 14 -142 10 -153 -4
+-13 -1 -28 8 -38 8 -9 22 -48 31 -87 9 -38 41 -155 71 -260 135 -475 208 -912
+171 -1024 -5 -15 -5 -21 2 -17 16 9 22 -28 33 -214 36 -560 -45 -1241 -217
+-1837 -83 -288 -265 -752 -318 -812 -11 -13 -16 -21 -9 -17 6 3 14 2 18 -3 8
+-13 1908 -13 2075 -1 733 57 1403 620 1595 1341 72 272 66 -96 67 4254 0 2140
+-2 3910 -6 3935 -4 25 -16 86 -26 135 -10 50 -21 110 -25 135 -10 76 -93 307
+-155 430 -267 533 -764 897 -1350 988 -145 22 -7864 29 -8015 7z"/>
+<path fill="#11323b" stroke="#11323b" stroke-width="24" d="M13320 11784 c-906 -53 -1621 -340 -2246 -902 -618 -556 -933 -1188
+-1396 -2802 -25 -86 -115 -314 -159 -402 -115 -230 -196 -333 -614 -783 -374
+-402 -698 -774 -715 -821 -14 -36 -13 -2235 0 -2378 70 -738 556 -1352 1256
+-1585 206 -69 295 -80 742 -92 393 -10 393 -10 442 17 28 15 53 38 60 53 6 14
+51 62 101 106 50 44 180 171 289 282 952 972 1394 1831 1332 2590 -72 893
+-637 1380 -1692 1458 -131 10 -159 23 -160 71 0 50 243 181 570 307 148 57
+221 81 451 148 88 25 88 28 20 182 -335 759 -181 1363 427 1667 273 136 477
+166 1064 155 396 -7 396 -7 441 34 64 59 64 72 3 104 -521 274 -454 1044 106
+1222 560 177 1051 -404 790 -935 -47 -96 -177 -230 -269 -279 -72 -37 -73 -38
+-35 -74 71 -69 270 -62 612 19 58 14 128 29 155 34 28 5 84 20 125 34 41 15
+116 36 165 47 50 11 113 30 140 41 28 11 68 26 90 33 238 77 265 89 307 137
+63 73 52 116 -72 277 -160 207 -407 429 -583 525 -338 185 -950 349 -1066 287
+-31 -17 -66 -13 -86 9 -10 11 -24 20 -32 20 -29 0 -64 48 -57 77 19 79 122
+225 225 317 169 154 442 280 802 374 197 51 216 63 171 113 -66 73 -730 251
+-1102 294 -125 15 -481 26 -602 19z"/>
+<path fill="#c0541a" stroke="#c0541a" stroke-width="24" d="M14920 11369 c-498 -129 -768 -266 -952 -483 -133 -156 -165 -245
+-99 -278 18 -9 43 -26 55 -37 22 -20 24 -20 70 -5 187 64 864 -136 1178 -347
+238 -160 614 -575 594 -655 -8 -32 3 -54 26 -54 12 0 38 -5 59 -11 50 -16 87
+-3 358 122 291 134 462 228 480 264 50 102 -236 613 -498 887 -206 217 -583
+466 -914 603 -127 52 -135 52 -357 -6z M14735 9139 c-145 -34 -284 -56 -426
+-65 -117 -7 -128 -4 -193 53 -28 26 -44 33 -60 29 -159 -47 -237 -47 -443 1
+-15 4 -23 1 -23 -8 -1 -18 -39 -61 -76 -85 -27 -18 -56 -19 -504 -19 -413 0
+-487 -2 -565 -18 -1050 -205 -1316 -1108 -637 -2157 88 -136 127 -188 286
+-380 203 -246 327 -365 921 -886 176 -154 378 -334 449 -400 71 -65 143 -131
+160 -145 38 -33 404 -429 510 -554 316 -369 521 -685 707 -1088 79 -171 92
+-186 138 -163 311 161 881 974 1001 1426 22 83 81 204 113 231 62 53 -3 507
+-142 991 -27 95 -59 211 -71 258 -29 119 -33 126 -73 134 -19 4 -46 15 -60 26
+-31 25 -239 103 -357 135 -145 38 -262 49 -439 40 -542 -29 -705 8 -920 210
+-235 220 -157 592 196 936 188 184 658 547 903 699 396 245 925 428 1240 430
+70 0 99 25 66 55 -30 28 -24 26 -201 64 -268 58 -696 131 -766 131 -38 0 -115
+11 -172 24 -56 13 -136 27 -177 30 -115 10 -148 22 -172 62 -25 43 -46 43
+-213 3z"/>
+<path fill="#cb985f" stroke="#cb985f" stroke-width="24" d="M11649 7072 c-13 -10 -77 -33 -142 -51 -296 -81 -836 -305 -914 -380
+-66 -63 -19 -96 157 -111 444 -37 803 -149 1088 -342 524 -354 725 -1134 487
+-1887 -202 -636 -787 -1437 -1568 -2148 -68 -62 -68 -62 -54 -95 13 -33 13
+-33 723 -41 1007 -11 4162 -1 4180 14 36 29 169 351 264 638 216 652 311 1348
+276 2035 -7 141 -11 171 -26 186 -14 14 -15 21 -7 31 7 6 0 4 -16 -7 -30 -21
+-88 -134 -114 -224 -125 -437 -554 -1086 -899 -1360 -151 -120 -146 -121 -243
+87 -186 403 -391 719 -707 1088 -106 125 -472 521 -510 554 -17 14 -89 80
+-160 145 -71 66 -273 246 -449 400 -386 339 -613 545 -721 657 -212 221 -497
+596 -588 777 -30 60 -26 57 -57 34z"/>
+<path fill="#a6461c" stroke="#a6461c" stroke-width="24" d="M15435 9990 c55 -55 102 -100 105 -100 2 0 -40 45 -95 100 -55 55
+-102 100 -105 100 -2 0 40 -45 95 -100z M12783 9053 c37 -2 97 -2 135 0 37 2
+6 3 -68 3 -74 0 -105 -1 -67 -3z M16448 8798 c-21 -23 -34 -28 -74 -28 -318
+-2 -847 -184 -1244 -430 -245 -152 -715 -515 -903 -699 -353 -344 -431 -716
+-196 -936 215 -202 378 -239 920 -210 177 9 294 -2 439 -40 118 -32 326 -110
+357 -135 73 -57 91 -13 69 172 -27 232 -16 387 37 563 14 44 32 107 42 140 57
+198 232 556 507 1035 292 510 311 553 242 565 -22 4 -69 13 -105 19 -65 12
+-65 12 -91 -16z"/>
+<path fill="#cdb590" stroke="#cdb590" stroke-width="24" d="M16686 9873 c-10 -32 -344 -202 -661 -338 -114 -48 -117 -49 -226
+-30 -34 6 -39 4 -72 -37 -26 -32 -49 -48 -79 -57 -24 -7 -54 -20 -67 -28 -13
+-8 -64 -26 -112 -39 -49 -13 -100 -30 -112 -39 -13 -8 -65 -24 -115 -35 -153
+-32 -291 -80 -298 -102 -15 -48 56 -82 196 -93 78 -6 88 -3 106 30 16 29 42
+32 384 44 173 7 405 19 515 27 322 23 1080 55 1486 61 374 6 376 6 391 -15 31
+-45 81 -47 159 -7 65 34 53 68 -50 145 -221 166 -625 326 -1191 472 -253 65
+-247 64 -254 41z M8175 4790 c0 -520 1 -732 2 -472 2 259 2 685 0 945 -1 259
+-2 47 -2 -473z M16153 4550 c0 -41 2 -58 4 -37 2 20 2 54 0 75 -2 20 -4 3 -4
+-38z M16153 4255 c0 -44 2 -61 4 -37 2 23 2 59 0 80 -2 20 -4 1 -4 -43z
+M10993 2013 c141 -2 373 -2 515 0 141 1 25 2 -258 2 -283 0 -399 -1 -257 -2z
+M14713 2013 c147 -2 387 -2 535 0 147 1 26 2 -268 2 -294 0 -415 -1 -267 -2z"/>
+<path fill="#ac8d66" stroke="#ac8d66" stroke-width="24" d="M16893 9214 c-293 -12 -594 -27 -670 -33 -161 -13 -436 -27 -718 -37
+-217 -8 -243 -11 -259 -37 -28 -44 72 -84 216 -86 111 -1 824 -133 954 -176
+103 -34 281 -57 356 -45 190 29 1103 288 1245 353 27 12 29 34 7 65 -21 30
+-364 29 -1131 -4z M12423 4930 c0 -41 2 -58 4 -37 2 20 2 54 0 75 -2 20 -4 3
+-4 -38z"/>
+</g><circle cx="692.09" cy="294.85" r="33.08" fill="#8a735a"/><circle cx="691.96" cy="294.67" r="26.40" fill="#2f3030"/><circle cx="687.22" cy="285.20" r="11.33" fill="#f0eee0"/></g></g><circle cx="60" cy="60" r="52" fill="none" stroke="#3E2A1C" stroke-width="5"/></svg>
+        <svg width="40" height="40" viewBox="0 0 120 120" role="img" aria-label="Mark at small size"><circle cx="60" cy="60" r="52" fill="#ECDFCD" stroke="#3E2A1C" stroke-width="4"/><defs><clipPath id="sw5"><circle cx="60" cy="60" r="52"/></clipPath></defs><g clip-path="url(#sw5)"><g transform="translate(60,60) scale(0.1925) translate(-688.5,-402.15)"><g transform="translate(0,784) scale(.05,-.05)" stroke-linejoin="round">
+<path fill="#ecdfcd" stroke="#ecdfcd" stroke-width="24" d="M9785 13245 c-571 -84 -1026 -388 -1338 -895 -114 -186 -232 -554
+-257 -800 -17 -174 -18 -5373 -1 -5394 20 -24 36 -20 63 17 54 70 420 482 592
+667 648 694 690 765 921 1565 287 995 584 1655 947 2105 486 603 1210 1044
+1975 1204 413 87 1005 102 1399 36 252 -43 638 -143 827 -215 91 -35 107 -46
+145 -101 10 -15 26 -19 80 -19 190 -1 816 -379 1062 -642 222 -238 491 -692
+502 -846 1 -26 7 -37 22 -40 666 -158 1164 -344 1407 -527 65 -49 103 -97 91
+-117 -12 -18 -91 -54 -125 -56 -18 -1 -35 -6 -39 -12 -4 -6 -8 -1 -9 10 -1 16
+-2 15 -8 -5 -6 -23 -28 -32 -223 -97 -350 -116 -917 -273 -1048 -289 -59 -7
+-90 -26 -90 -55 0 -23 -93 -201 -212 -408 -268 -464 -401 -719 -501 -961 -51
+-123 -67 -174 -128 -400 -30 -110 -36 -319 -14 -487 9 -73 14 -142 10 -153 -4
+-13 -1 -28 8 -38 8 -9 22 -48 31 -87 9 -38 41 -155 71 -260 135 -475 208 -912
+171 -1024 -5 -15 -5 -21 2 -17 16 9 22 -28 33 -214 36 -560 -45 -1241 -217
+-1837 -83 -288 -265 -752 -318 -812 -11 -13 -16 -21 -9 -17 6 3 14 2 18 -3 8
+-13 1908 -13 2075 -1 733 57 1403 620 1595 1341 72 272 66 -96 67 4254 0 2140
+-2 3910 -6 3935 -4 25 -16 86 -26 135 -10 50 -21 110 -25 135 -10 76 -93 307
+-155 430 -267 533 -764 897 -1350 988 -145 22 -7864 29 -8015 7z"/>
+<path fill="#11323b" stroke="#11323b" stroke-width="24" d="M13320 11784 c-906 -53 -1621 -340 -2246 -902 -618 -556 -933 -1188
+-1396 -2802 -25 -86 -115 -314 -159 -402 -115 -230 -196 -333 -614 -783 -374
+-402 -698 -774 -715 -821 -14 -36 -13 -2235 0 -2378 70 -738 556 -1352 1256
+-1585 206 -69 295 -80 742 -92 393 -10 393 -10 442 17 28 15 53 38 60 53 6 14
+51 62 101 106 50 44 180 171 289 282 952 972 1394 1831 1332 2590 -72 893
+-637 1380 -1692 1458 -131 10 -159 23 -160 71 0 50 243 181 570 307 148 57
+221 81 451 148 88 25 88 28 20 182 -335 759 -181 1363 427 1667 273 136 477
+166 1064 155 396 -7 396 -7 441 34 64 59 64 72 3 104 -521 274 -454 1044 106
+1222 560 177 1051 -404 790 -935 -47 -96 -177 -230 -269 -279 -72 -37 -73 -38
+-35 -74 71 -69 270 -62 612 19 58 14 128 29 155 34 28 5 84 20 125 34 41 15
+116 36 165 47 50 11 113 30 140 41 28 11 68 26 90 33 238 77 265 89 307 137
+63 73 52 116 -72 277 -160 207 -407 429 -583 525 -338 185 -950 349 -1066 287
+-31 -17 -66 -13 -86 9 -10 11 -24 20 -32 20 -29 0 -64 48 -57 77 19 79 122
+225 225 317 169 154 442 280 802 374 197 51 216 63 171 113 -66 73 -730 251
+-1102 294 -125 15 -481 26 -602 19z"/>
+<path fill="#c0541a" stroke="#c0541a" stroke-width="24" d="M14920 11369 c-498 -129 -768 -266 -952 -483 -133 -156 -165 -245
+-99 -278 18 -9 43 -26 55 -37 22 -20 24 -20 70 -5 187 64 864 -136 1178 -347
+238 -160 614 -575 594 -655 -8 -32 3 -54 26 -54 12 0 38 -5 59 -11 50 -16 87
+-3 358 122 291 134 462 228 480 264 50 102 -236 613 -498 887 -206 217 -583
+466 -914 603 -127 52 -135 52 -357 -6z M14735 9139 c-145 -34 -284 -56 -426
+-65 -117 -7 -128 -4 -193 53 -28 26 -44 33 -60 29 -159 -47 -237 -47 -443 1
+-15 4 -23 1 -23 -8 -1 -18 -39 -61 -76 -85 -27 -18 -56 -19 -504 -19 -413 0
+-487 -2 -565 -18 -1050 -205 -1316 -1108 -637 -2157 88 -136 127 -188 286
+-380 203 -246 327 -365 921 -886 176 -154 378 -334 449 -400 71 -65 143 -131
+160 -145 38 -33 404 -429 510 -554 316 -369 521 -685 707 -1088 79 -171 92
+-186 138 -163 311 161 881 974 1001 1426 22 83 81 204 113 231 62 53 -3 507
+-142 991 -27 95 -59 211 -71 258 -29 119 -33 126 -73 134 -19 4 -46 15 -60 26
+-31 25 -239 103 -357 135 -145 38 -262 49 -439 40 -542 -29 -705 8 -920 210
+-235 220 -157 592 196 936 188 184 658 547 903 699 396 245 925 428 1240 430
+70 0 99 25 66 55 -30 28 -24 26 -201 64 -268 58 -696 131 -766 131 -38 0 -115
+11 -172 24 -56 13 -136 27 -177 30 -115 10 -148 22 -172 62 -25 43 -46 43
+-213 3z"/>
+<path fill="#cb985f" stroke="#cb985f" stroke-width="24" d="M11649 7072 c-13 -10 -77 -33 -142 -51 -296 -81 -836 -305 -914 -380
+-66 -63 -19 -96 157 -111 444 -37 803 -149 1088 -342 524 -354 725 -1134 487
+-1887 -202 -636 -787 -1437 -1568 -2148 -68 -62 -68 -62 -54 -95 13 -33 13
+-33 723 -41 1007 -11 4162 -1 4180 14 36 29 169 351 264 638 216 652 311 1348
+276 2035 -7 141 -11 171 -26 186 -14 14 -15 21 -7 31 7 6 0 4 -16 -7 -30 -21
+-88 -134 -114 -224 -125 -437 -554 -1086 -899 -1360 -151 -120 -146 -121 -243
+87 -186 403 -391 719 -707 1088 -106 125 -472 521 -510 554 -17 14 -89 80
+-160 145 -71 66 -273 246 -449 400 -386 339 -613 545 -721 657 -212 221 -497
+596 -588 777 -30 60 -26 57 -57 34z"/>
+<path fill="#a6461c" stroke="#a6461c" stroke-width="24" d="M15435 9990 c55 -55 102 -100 105 -100 2 0 -40 45 -95 100 -55 55
+-102 100 -105 100 -2 0 40 -45 95 -100z M12783 9053 c37 -2 97 -2 135 0 37 2
+6 3 -68 3 -74 0 -105 -1 -67 -3z M16448 8798 c-21 -23 -34 -28 -74 -28 -318
+-2 -847 -184 -1244 -430 -245 -152 -715 -515 -903 -699 -353 -344 -431 -716
+-196 -936 215 -202 378 -239 920 -210 177 9 294 -2 439 -40 118 -32 326 -110
+357 -135 73 -57 91 -13 69 172 -27 232 -16 387 37 563 14 44 32 107 42 140 57
+198 232 556 507 1035 292 510 311 553 242 565 -22 4 -69 13 -105 19 -65 12
+-65 12 -91 -16z"/>
+<path fill="#cdb590" stroke="#cdb590" stroke-width="24" d="M16686 9873 c-10 -32 -344 -202 -661 -338 -114 -48 -117 -49 -226
+-30 -34 6 -39 4 -72 -37 -26 -32 -49 -48 -79 -57 -24 -7 -54 -20 -67 -28 -13
+-8 -64 -26 -112 -39 -49 -13 -100 -30 -112 -39 -13 -8 -65 -24 -115 -35 -153
+-32 -291 -80 -298 -102 -15 -48 56 -82 196 -93 78 -6 88 -3 106 30 16 29 42
+32 384 44 173 7 405 19 515 27 322 23 1080 55 1486 61 374 6 376 6 391 -15 31
+-45 81 -47 159 -7 65 34 53 68 -50 145 -221 166 -625 326 -1191 472 -253 65
+-247 64 -254 41z M8175 4790 c0 -520 1 -732 2 -472 2 259 2 685 0 945 -1 259
+-2 47 -2 -473z M16153 4550 c0 -41 2 -58 4 -37 2 20 2 54 0 75 -2 20 -4 3 -4
+-38z M16153 4255 c0 -44 2 -61 4 -37 2 23 2 59 0 80 -2 20 -4 1 -4 -43z
+M10993 2013 c141 -2 373 -2 515 0 141 1 25 2 -258 2 -283 0 -399 -1 -257 -2z
+M14713 2013 c147 -2 387 -2 535 0 147 1 26 2 -268 2 -294 0 -415 -1 -267 -2z"/>
+<path fill="#ac8d66" stroke="#ac8d66" stroke-width="24" d="M16893 9214 c-293 -12 -594 -27 -670 -33 -161 -13 -436 -27 -718 -37
+-217 -8 -243 -11 -259 -37 -28 -44 72 -84 216 -86 111 -1 824 -133 954 -176
+103 -34 281 -57 356 -45 190 29 1103 288 1245 353 27 12 29 34 7 65 -21 30
+-364 29 -1131 -4z M12423 4930 c0 -41 2 -58 4 -37 2 20 2 54 0 75 -2 20 -4 3
+-4 -38z"/>
+</g><circle cx="692.09" cy="294.85" r="33.08" fill="#8a735a"/><circle cx="691.96" cy="294.67" r="26.40" fill="#2f3030"/><circle cx="687.22" cy="285.20" r="11.33" fill="#f0eee0"/></g></g><circle cx="60" cy="60" r="52" fill="none" stroke="#3E2A1C" stroke-width="4"/></svg>
+        <span style="font:400 13px/1.4 'Inter Tight',sans-serif;color:#7A7A72">16px and 24px</span>
+      </div>
+    </div>
+    <p class="caption">The supplied asset, dropped into every application. It is cropped by the roundel rather than sitting in a rounded square, which is the one thing worth changing from the reference — an app tile reads as software, a roundel reads as a stamp, and a stamp is what a solo practice actually needs. No text around the ring: the bird now fills the disc out to a thin double keyline, so the badge carries the mark alone and the name is always set beside it rather than bent around it. <i>Hirundo neoxena</i>, the welcome swallow, is local without resorting to a wave or a headland, and its common name is already what the door decal is trying to say.</p>
+<p class="caption">One thing to decide. The asset is a seven-colour traced illustration, so it cannot invert and it cannot reduce. Two derived variants handle that and are shown here: a single-colour chocolate silhouette with the eye knocked out, for stamps, embroidery, foil and faxed correspondence; and for dark applications the mark keeps its own light disc rather than reversing, since inverting a painted bird produces a negative rather than a logo. The favicon and the 24px mark stay in full colour — the rust throat is what makes it read as this bird at that size, and dropping it just makes a dark blob. Both need to come out of the same source file when the artwork is finalised.</p>
+<p class="caption">The crown in the asset is #11323B, a blue-black that sits outside the palette. On wheat it reads as a very dark cool and it is what the real bird looks like, so it is defensible — but it is the only cool dark in a system where chalk was meant to be the sole cool colour and to mean “this part is for clinicians”. Swapping the crown to chocolate is a one-line change if you want that distinction kept clean.</p>
+  </div>
+
+  <div class="block">
+    <h3 class="sec">Business card — 85 × 55 mm, one front and two backs</h3>
+    <div class="cards">
+      <div class="bcard" style="background:#F1E4CB">
+        <div style="position:absolute;inset:0;padding:20px 24px;display:flex;align-items:center;gap:18px">
+          <svg width="108" height="108" viewBox="0 0 168 168" style="flex:none">
+            <circle cx="84" cy="84" r="79" fill="#FCF6E9" stroke="#3E2A1C" stroke-width="3"/>
+            <circle cx="84" cy="84" r="72" fill="#ECDFCD" stroke="#3E2A1C" stroke-width="2"/>
+            
+            <g transform="translate(84,84) scale(1.3846) translate(-60,-60)">
+              <defs><clipPath id="sw6"><circle cx="60" cy="60" r="52"/></clipPath></defs><g clip-path="url(#sw6)"><g transform="translate(60,60) scale(0.1925) translate(-688.5,-402.15)"><g transform="translate(0,784) scale(.05,-.05)" stroke-linejoin="round">
+<path fill="#ecdfcd" stroke="#ecdfcd" stroke-width="24" d="M9785 13245 c-571 -84 -1026 -388 -1338 -895 -114 -186 -232 -554
+-257 -800 -17 -174 -18 -5373 -1 -5394 20 -24 36 -20 63 17 54 70 420 482 592
+667 648 694 690 765 921 1565 287 995 584 1655 947 2105 486 603 1210 1044
+1975 1204 413 87 1005 102 1399 36 252 -43 638 -143 827 -215 91 -35 107 -46
+145 -101 10 -15 26 -19 80 -19 190 -1 816 -379 1062 -642 222 -238 491 -692
+502 -846 1 -26 7 -37 22 -40 666 -158 1164 -344 1407 -527 65 -49 103 -97 91
+-117 -12 -18 -91 -54 -125 -56 -18 -1 -35 -6 -39 -12 -4 -6 -8 -1 -9 10 -1 16
+-2 15 -8 -5 -6 -23 -28 -32 -223 -97 -350 -116 -917 -273 -1048 -289 -59 -7
+-90 -26 -90 -55 0 -23 -93 -201 -212 -408 -268 -464 -401 -719 -501 -961 -51
+-123 -67 -174 -128 -400 -30 -110 -36 -319 -14 -487 9 -73 14 -142 10 -153 -4
+-13 -1 -28 8 -38 8 -9 22 -48 31 -87 9 -38 41 -155 71 -260 135 -475 208 -912
+171 -1024 -5 -15 -5 -21 2 -17 16 9 22 -28 33 -214 36 -560 -45 -1241 -217
+-1837 -83 -288 -265 -752 -318 -812 -11 -13 -16 -21 -9 -17 6 3 14 2 18 -3 8
+-13 1908 -13 2075 -1 733 57 1403 620 1595 1341 72 272 66 -96 67 4254 0 2140
+-2 3910 -6 3935 -4 25 -16 86 -26 135 -10 50 -21 110 -25 135 -10 76 -93 307
+-155 430 -267 533 -764 897 -1350 988 -145 22 -7864 29 -8015 7z"/>
+<path fill="#11323b" stroke="#11323b" stroke-width="24" d="M13320 11784 c-906 -53 -1621 -340 -2246 -902 -618 -556 -933 -1188
+-1396 -2802 -25 -86 -115 -314 -159 -402 -115 -230 -196 -333 -614 -783 -374
+-402 -698 -774 -715 -821 -14 -36 -13 -2235 0 -2378 70 -738 556 -1352 1256
+-1585 206 -69 295 -80 742 -92 393 -10 393 -10 442 17 28 15 53 38 60 53 6 14
+51 62 101 106 50 44 180 171 289 282 952 972 1394 1831 1332 2590 -72 893
+-637 1380 -1692 1458 -131 10 -159 23 -160 71 0 50 243 181 570 307 148 57
+221 81 451 148 88 25 88 28 20 182 -335 759 -181 1363 427 1667 273 136 477
+166 1064 155 396 -7 396 -7 441 34 64 59 64 72 3 104 -521 274 -454 1044 106
+1222 560 177 1051 -404 790 -935 -47 -96 -177 -230 -269 -279 -72 -37 -73 -38
+-35 -74 71 -69 270 -62 612 19 58 14 128 29 155 34 28 5 84 20 125 34 41 15
+116 36 165 47 50 11 113 30 140 41 28 11 68 26 90 33 238 77 265 89 307 137
+63 73 52 116 -72 277 -160 207 -407 429 -583 525 -338 185 -950 349 -1066 287
+-31 -17 -66 -13 -86 9 -10 11 -24 20 -32 20 -29 0 -64 48 -57 77 19 79 122
+225 225 317 169 154 442 280 802 374 197 51 216 63 171 113 -66 73 -730 251
+-1102 294 -125 15 -481 26 -602 19z"/>
+<path fill="#c0541a" stroke="#c0541a" stroke-width="24" d="M14920 11369 c-498 -129 -768 -266 -952 -483 -133 -156 -165 -245
+-99 -278 18 -9 43 -26 55 -37 22 -20 24 -20 70 -5 187 64 864 -136 1178 -347
+238 -160 614 -575 594 -655 -8 -32 3 -54 26 -54 12 0 38 -5 59 -11 50 -16 87
+-3 358 122 291 134 462 228 480 264 50 102 -236 613 -498 887 -206 217 -583
+466 -914 603 -127 52 -135 52 -357 -6z M14735 9139 c-145 -34 -284 -56 -426
+-65 -117 -7 -128 -4 -193 53 -28 26 -44 33 -60 29 -159 -47 -237 -47 -443 1
+-15 4 -23 1 -23 -8 -1 -18 -39 -61 -76 -85 -27 -18 -56 -19 -504 -19 -413 0
+-487 -2 -565 -18 -1050 -205 -1316 -1108 -637 -2157 88 -136 127 -188 286
+-380 203 -246 327 -365 921 -886 176 -154 378 -334 449 -400 71 -65 143 -131
+160 -145 38 -33 404 -429 510 -554 316 -369 521 -685 707 -1088 79 -171 92
+-186 138 -163 311 161 881 974 1001 1426 22 83 81 204 113 231 62 53 -3 507
+-142 991 -27 95 -59 211 -71 258 -29 119 -33 126 -73 134 -19 4 -46 15 -60 26
+-31 25 -239 103 -357 135 -145 38 -262 49 -439 40 -542 -29 -705 8 -920 210
+-235 220 -157 592 196 936 188 184 658 547 903 699 396 245 925 428 1240 430
+70 0 99 25 66 55 -30 28 -24 26 -201 64 -268 58 -696 131 -766 131 -38 0 -115
+11 -172 24 -56 13 -136 27 -177 30 -115 10 -148 22 -172 62 -25 43 -46 43
+-213 3z"/>
+<path fill="#cb985f" stroke="#cb985f" stroke-width="24" d="M11649 7072 c-13 -10 -77 -33 -142 -51 -296 -81 -836 -305 -914 -380
+-66 -63 -19 -96 157 -111 444 -37 803 -149 1088 -342 524 -354 725 -1134 487
+-1887 -202 -636 -787 -1437 -1568 -2148 -68 -62 -68 -62 -54 -95 13 -33 13
+-33 723 -41 1007 -11 4162 -1 4180 14 36 29 169 351 264 638 216 652 311 1348
+276 2035 -7 141 -11 171 -26 186 -14 14 -15 21 -7 31 7 6 0 4 -16 -7 -30 -21
+-88 -134 -114 -224 -125 -437 -554 -1086 -899 -1360 -151 -120 -146 -121 -243
+87 -186 403 -391 719 -707 1088 -106 125 -472 521 -510 554 -17 14 -89 80
+-160 145 -71 66 -273 246 -449 400 -386 339 -613 545 -721 657 -212 221 -497
+596 -588 777 -30 60 -26 57 -57 34z"/>
+<path fill="#a6461c" stroke="#a6461c" stroke-width="24" d="M15435 9990 c55 -55 102 -100 105 -100 2 0 -40 45 -95 100 -55 55
+-102 100 -105 100 -2 0 40 -45 95 -100z M12783 9053 c37 -2 97 -2 135 0 37 2
+6 3 -68 3 -74 0 -105 -1 -67 -3z M16448 8798 c-21 -23 -34 -28 -74 -28 -318
+-2 -847 -184 -1244 -430 -245 -152 -715 -515 -903 -699 -353 -344 -431 -716
+-196 -936 215 -202 378 -239 920 -210 177 9 294 -2 439 -40 118 -32 326 -110
+357 -135 73 -57 91 -13 69 172 -27 232 -16 387 37 563 14 44 32 107 42 140 57
+198 232 556 507 1035 292 510 311 553 242 565 -22 4 -69 13 -105 19 -65 12
+-65 12 -91 -16z"/>
+<path fill="#cdb590" stroke="#cdb590" stroke-width="24" d="M16686 9873 c-10 -32 -344 -202 -661 -338 -114 -48 -117 -49 -226
+-30 -34 6 -39 4 -72 -37 -26 -32 -49 -48 -79 -57 -24 -7 -54 -20 -67 -28 -13
+-8 -64 -26 -112 -39 -49 -13 -100 -30 -112 -39 -13 -8 -65 -24 -115 -35 -153
+-32 -291 -80 -298 -102 -15 -48 56 -82 196 -93 78 -6 88 -3 106 30 16 29 42
+32 384 44 173 7 405 19 515 27 322 23 1080 55 1486 61 374 6 376 6 391 -15 31
+-45 81 -47 159 -7 65 34 53 68 -50 145 -221 166 -625 326 -1191 472 -253 65
+-247 64 -254 41z M8175 4790 c0 -520 1 -732 2 -472 2 259 2 685 0 945 -1 259
+-2 47 -2 -473z M16153 4550 c0 -41 2 -58 4 -37 2 20 2 54 0 75 -2 20 -4 3 -4
+-38z M16153 4255 c0 -44 2 -61 4 -37 2 23 2 59 0 80 -2 20 -4 1 -4 -43z
+M10993 2013 c141 -2 373 -2 515 0 141 1 25 2 -258 2 -283 0 -399 -1 -257 -2z
+M14713 2013 c147 -2 387 -2 535 0 147 1 26 2 -268 2 -294 0 -415 -1 -267 -2z"/>
+<path fill="#ac8d66" stroke="#ac8d66" stroke-width="24" d="M16893 9214 c-293 -12 -594 -27 -670 -33 -161 -13 -436 -27 -718 -37
+-217 -8 -243 -11 -259 -37 -28 -44 72 -84 216 -86 111 -1 824 -133 954 -176
+103 -34 281 -57 356 -45 190 29 1103 288 1245 353 27 12 29 34 7 65 -21 30
+-364 29 -1131 -4z M12423 4930 c0 -41 2 -58 4 -37 2 20 2 54 0 75 -2 20 -4 3
+-4 -38z"/>
+</g><circle cx="692.09" cy="294.85" r="33.08" fill="#8a735a"/><circle cx="691.96" cy="294.67" r="26.40" fill="#2f3030"/><circle cx="687.22" cy="285.20" r="11.33" fill="#f0eee0"/></g></g>
+            </g><circle cx="84" cy="84" r="72" fill="none" stroke="#3E2A1C" stroke-width="2"/>
+          </svg>
+          <div>
+            <div style="font:700 27px/.98 'Fraunces',Georgia,serif;color:#3E2A1C;letter-spacing:-.7px">Laura<br>Otella</div>
+            <div style="font:700 10.5px/1.6 'Nunito Sans',sans-serif;color:#6E7B45;margin-top:8px;letter-spacing:.3px">CERTIFIED PRACTISING<br>SPEECH PATHOLOGIST</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bcard" style="background:#DFA22C">
+        <div style="position:absolute;inset:0;padding:24px 26px;display:flex;flex-direction:column;justify-content:space-between;color:#3E2A1C">
+          <div style="font:700 19px/1.35 'Fraunces',Georgia,serif;max-width:23ch">Not sure if it’s a problem yet? Ring me and ask.</div>
+          <div>
+            <div style="font:800 24px/1 'Nunito Sans',sans-serif">0477 022 828</div>
+            <div style="font:600 11.5px/1.7 'Nunito Sans',sans-serif;margin-top:6px">laura@otellaspeech.com.au<br>12 West Street, Umina Beach</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bcard" style="background:#3E2A1C">
+        <div style="position:absolute;inset:0;padding:24px 26px;display:flex;flex-direction:column;justify-content:space-between;color:#FCF6E9">
+          <div style="font:800 9px/1 'Nunito Sans',sans-serif;letter-spacing:1.6px;color:#9DB2B2">FOR REFERRERS</div>
+          <div style="font:600 11.5px/1.75 'Nunito Sans',sans-serif">
+            ENT · gastroenterology · neurology · paediatrics · GP<br>
+            HealthLink SW: OTELLASP · secure messaging accepted<br>
+            Seen within 10 working days, report back within 5<br>
+            Instrumental assessment referred on, not attempted
+          </div>
+          <div style="font:600 11px/1.5 'Nunito Sans',sans-serif;color:#9DB2B2">0477 022 828 · otellaspeech.com.au/referrers</div>
+        </div>
+      </div>
+    </div>
+    <p class="caption">Same front, two backs, printed as two short runs off one artwork — trivial cost, and it means the card handed to a paediatric ENT is not the card stuck on a fridge. The family back is written for the noticeboard it will sit on for four months before anyone rings: it gives a hesitant parent permission to make the call without having to have decided anything first. The referrer back leads with the specialties by name, because a registrar scanning a card wants to see their own department on it. The last line is the one that gets the second referral: she tells them up front what she will not attempt.</p>
+  </div>
+
+  <div class="block">
+    <h3 class="sec">Letterhead — A4</h3>
+    <div class="artefact-grid">
+      <div class="sheet" style="background:#FCF6E9">
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column">
+          <div style="background:#F1E4CB;border-bottom:2.5px solid #3E2A1C;padding:22px 42px 18px;display:flex;justify-content:space-between;align-items:center">
+            <svg width="236" height="70" viewBox="0 0 424 126"><g transform="translate(2,3)"><circle cx="60" cy="60" r="52" fill="#ECDFCD" stroke="#3E2A1C" stroke-width="3.5"/><defs><clipPath id="sw7"><circle cx="60" cy="60" r="52"/></clipPath></defs><g clip-path="url(#sw7)"><g transform="translate(60,60) scale(0.1925) translate(-688.5,-402.15)"><g transform="translate(0,784) scale(.05,-.05)" stroke-linejoin="round">
+<path fill="#ecdfcd" stroke="#ecdfcd" stroke-width="24" d="M9785 13245 c-571 -84 -1026 -388 -1338 -895 -114 -186 -232 -554
+-257 -800 -17 -174 -18 -5373 -1 -5394 20 -24 36 -20 63 17 54 70 420 482 592
+667 648 694 690 765 921 1565 287 995 584 1655 947 2105 486 603 1210 1044
+1975 1204 413 87 1005 102 1399 36 252 -43 638 -143 827 -215 91 -35 107 -46
+145 -101 10 -15 26 -19 80 -19 190 -1 816 -379 1062 -642 222 -238 491 -692
+502 -846 1 -26 7 -37 22 -40 666 -158 1164 -344 1407 -527 65 -49 103 -97 91
+-117 -12 -18 -91 -54 -125 -56 -18 -1 -35 -6 -39 -12 -4 -6 -8 -1 -9 10 -1 16
+-2 15 -8 -5 -6 -23 -28 -32 -223 -97 -350 -116 -917 -273 -1048 -289 -59 -7
+-90 -26 -90 -55 0 -23 -93 -201 -212 -408 -268 -464 -401 -719 -501 -961 -51
+-123 -67 -174 -128 -400 -30 -110 -36 -319 -14 -487 9 -73 14 -142 10 -153 -4
+-13 -1 -28 8 -38 8 -9 22 -48 31 -87 9 -38 41 -155 71 -260 135 -475 208 -912
+171 -1024 -5 -15 -5 -21 2 -17 16 9 22 -28 33 -214 36 -560 -45 -1241 -217
+-1837 -83 -288 -265 -752 -318 -812 -11 -13 -16 -21 -9 -17 6 3 14 2 18 -3 8
+-13 1908 -13 2075 -1 733 57 1403 620 1595 1341 72 272 66 -96 67 4254 0 2140
+-2 3910 -6 3935 -4 25 -16 86 -26 135 -10 50 -21 110 -25 135 -10 76 -93 307
+-155 430 -267 533 -764 897 -1350 988 -145 22 -7864 29 -8015 7z"/>
+<path fill="#11323b" stroke="#11323b" stroke-width="24" d="M13320 11784 c-906 -53 -1621 -340 -2246 -902 -618 -556 -933 -1188
+-1396 -2802 -25 -86 -115 -314 -159 -402 -115 -230 -196 -333 -614 -783 -374
+-402 -698 -774 -715 -821 -14 -36 -13 -2235 0 -2378 70 -738 556 -1352 1256
+-1585 206 -69 295 -80 742 -92 393 -10 393 -10 442 17 28 15 53 38 60 53 6 14
+51 62 101 106 50 44 180 171 289 282 952 972 1394 1831 1332 2590 -72 893
+-637 1380 -1692 1458 -131 10 -159 23 -160 71 0 50 243 181 570 307 148 57
+221 81 451 148 88 25 88 28 20 182 -335 759 -181 1363 427 1667 273 136 477
+166 1064 155 396 -7 396 -7 441 34 64 59 64 72 3 104 -521 274 -454 1044 106
+1222 560 177 1051 -404 790 -935 -47 -96 -177 -230 -269 -279 -72 -37 -73 -38
+-35 -74 71 -69 270 -62 612 19 58 14 128 29 155 34 28 5 84 20 125 34 41 15
+116 36 165 47 50 11 113 30 140 41 28 11 68 26 90 33 238 77 265 89 307 137
+63 73 52 116 -72 277 -160 207 -407 429 -583 525 -338 185 -950 349 -1066 287
+-31 -17 -66 -13 -86 9 -10 11 -24 20 -32 20 -29 0 -64 48 -57 77 19 79 122
+225 225 317 169 154 442 280 802 374 197 51 216 63 171 113 -66 73 -730 251
+-1102 294 -125 15 -481 26 -602 19z"/>
+<path fill="#c0541a" stroke="#c0541a" stroke-width="24" d="M14920 11369 c-498 -129 -768 -266 -952 -483 -133 -156 -165 -245
+-99 -278 18 -9 43 -26 55 -37 22 -20 24 -20 70 -5 187 64 864 -136 1178 -347
+238 -160 614 -575 594 -655 -8 -32 3 -54 26 -54 12 0 38 -5 59 -11 50 -16 87
+-3 358 122 291 134 462 228 480 264 50 102 -236 613 -498 887 -206 217 -583
+466 -914 603 -127 52 -135 52 -357 -6z M14735 9139 c-145 -34 -284 -56 -426
+-65 -117 -7 -128 -4 -193 53 -28 26 -44 33 -60 29 -159 -47 -237 -47 -443 1
+-15 4 -23 1 -23 -8 -1 -18 -39 -61 -76 -85 -27 -18 -56 -19 -504 -19 -413 0
+-487 -2 -565 -18 -1050 -205 -1316 -1108 -637 -2157 88 -136 127 -188 286
+-380 203 -246 327 -365 921 -886 176 -154 378 -334 449 -400 71 -65 143 -131
+160 -145 38 -33 404 -429 510 -554 316 -369 521 -685 707 -1088 79 -171 92
+-186 138 -163 311 161 881 974 1001 1426 22 83 81 204 113 231 62 53 -3 507
+-142 991 -27 95 -59 211 -71 258 -29 119 -33 126 -73 134 -19 4 -46 15 -60 26
+-31 25 -239 103 -357 135 -145 38 -262 49 -439 40 -542 -29 -705 8 -920 210
+-235 220 -157 592 196 936 188 184 658 547 903 699 396 245 925 428 1240 430
+70 0 99 25 66 55 -30 28 -24 26 -201 64 -268 58 -696 131 -766 131 -38 0 -115
+11 -172 24 -56 13 -136 27 -177 30 -115 10 -148 22 -172 62 -25 43 -46 43
+-213 3z"/>
+<path fill="#cb985f" stroke="#cb985f" stroke-width="24" d="M11649 7072 c-13 -10 -77 -33 -142 -51 -296 -81 -836 -305 -914 -380
+-66 -63 -19 -96 157 -111 444 -37 803 -149 1088 -342 524 -354 725 -1134 487
+-1887 -202 -636 -787 -1437 -1568 -2148 -68 -62 -68 -62 -54 -95 13 -33 13
+-33 723 -41 1007 -11 4162 -1 4180 14 36 29 169 351 264 638 216 652 311 1348
+276 2035 -7 141 -11 171 -26 186 -14 14 -15 21 -7 31 7 6 0 4 -16 -7 -30 -21
+-88 -134 -114 -224 -125 -437 -554 -1086 -899 -1360 -151 -120 -146 -121 -243
+87 -186 403 -391 719 -707 1088 -106 125 -472 521 -510 554 -17 14 -89 80
+-160 145 -71 66 -273 246 -449 400 -386 339 -613 545 -721 657 -212 221 -497
+596 -588 777 -30 60 -26 57 -57 34z"/>
+<path fill="#a6461c" stroke="#a6461c" stroke-width="24" d="M15435 9990 c55 -55 102 -100 105 -100 2 0 -40 45 -95 100 -55 55
+-102 100 -105 100 -2 0 40 -45 95 -100z M12783 9053 c37 -2 97 -2 135 0 37 2
+6 3 -68 3 -74 0 -105 -1 -67 -3z M16448 8798 c-21 -23 -34 -28 -74 -28 -318
+-2 -847 -184 -1244 -430 -245 -152 -715 -515 -903 -699 -353 -344 -431 -716
+-196 -936 215 -202 378 -239 920 -210 177 9 294 -2 439 -40 118 -32 326 -110
+357 -135 73 -57 91 -13 69 172 -27 232 -16 387 37 563 14 44 32 107 42 140 57
+198 232 556 507 1035 292 510 311 553 242 565 -22 4 -69 13 -105 19 -65 12
+-65 12 -91 -16z"/>
+<path fill="#cdb590" stroke="#cdb590" stroke-width="24" d="M16686 9873 c-10 -32 -344 -202 -661 -338 -114 -48 -117 -49 -226
+-30 -34 6 -39 4 -72 -37 -26 -32 -49 -48 -79 -57 -24 -7 -54 -20 -67 -28 -13
+-8 -64 -26 -112 -39 -49 -13 -100 -30 -112 -39 -13 -8 -65 -24 -115 -35 -153
+-32 -291 -80 -298 -102 -15 -48 56 -82 196 -93 78 -6 88 -3 106 30 16 29 42
+32 384 44 173 7 405 19 515 27 322 23 1080 55 1486 61 374 6 376 6 391 -15 31
+-45 81 -47 159 -7 65 34 53 68 -50 145 -221 166 -625 326 -1191 472 -253 65
+-247 64 -254 41z M8175 4790 c0 -520 1 -732 2 -472 2 259 2 685 0 945 -1 259
+-2 47 -2 -473z M16153 4550 c0 -41 2 -58 4 -37 2 20 2 54 0 75 -2 20 -4 3 -4
+-38z M16153 4255 c0 -44 2 -61 4 -37 2 23 2 59 0 80 -2 20 -4 1 -4 -43z
+M10993 2013 c141 -2 373 -2 515 0 141 1 25 2 -258 2 -283 0 -399 -1 -257 -2z
+M14713 2013 c147 -2 387 -2 535 0 147 1 26 2 -268 2 -294 0 -415 -1 -267 -2z"/>
+<path fill="#ac8d66" stroke="#ac8d66" stroke-width="24" d="M16893 9214 c-293 -12 -594 -27 -670 -33 -161 -13 -436 -27 -718 -37
+-217 -8 -243 -11 -259 -37 -28 -44 72 -84 216 -86 111 -1 824 -133 954 -176
+103 -34 281 -57 356 -45 190 29 1103 288 1245 353 27 12 29 34 7 65 -21 30
+-364 29 -1131 -4z M12423 4930 c0 -41 2 -58 4 -37 2 20 2 54 0 75 -2 20 -4 3
+-4 -38z"/>
+</g><circle cx="692.09" cy="294.85" r="33.08" fill="#8a735a"/><circle cx="691.96" cy="294.67" r="26.40" fill="#2f3030"/><circle cx="687.22" cy="285.20" r="11.33" fill="#f0eee0"/></g></g><circle cx="60" cy="60" r="52" fill="none" stroke="#3E2A1C" stroke-width="3.5"/></g><text x="132" y="71" font-family="Fraunces,Georgia,serif" font-weight="700" font-size="58" textLength="276" lengthAdjust="spacing" fill="#3E2A1C">OTELLA</text><text x="132" y="95" font-family="Fraunces,Georgia,serif" font-weight="600" font-size="16" textLength="276" lengthAdjust="spacing" fill="#C0551E">SPEECH + SWALLOW</text></svg>
+            <div style="font:600 7.5px/1.8 'Nunito Sans',sans-serif;color:#3E2A1C;text-align:right">
+              Laura Otella · Certified Practising Speech Pathologist<br>12 West Street, Umina Beach NSW 2257<br>0477 022 828 · HealthLink SW: OTELLASP<br>otellaspeech.com.au
+            </div>
+          </div>
+
+          <div style="padding:22px 42px 0">
+            <div style="font:700 12.5px/1.3 'Fraunces',Georgia,serif;color:#3E2A1C">Swallowing and communication assessment</div>
+            <table style="width:100%;margin-top:12px;border-collapse:collapse;font:600 7.5px/1.5 'Nunito Sans',sans-serif;color:#3E2A1C">
+              <tr>
+                <td style="padding:5px 0;width:22%;color:#6E7B45">Name used</td><td style="border-bottom:.7px solid rgba(62,42,28,.35)"></td>
+                <td style="padding:5px 0 5px 14px;width:18%;color:#6E7B45">Pronouns</td><td style="border-bottom:.7px solid rgba(62,42,28,.35)"></td>
+              </tr>
+              <tr>
+                <td style="padding:5px 0;color:#6E7B45">Name on record</td><td style="border-bottom:.7px solid rgba(62,42,28,.35)"></td>
+                <td style="padding:5px 0 5px 14px;color:#6E7B45">DOB</td><td style="border-bottom:.7px solid rgba(62,42,28,.35)"></td>
+              </tr>
+              <tr>
+                <td style="padding:5px 0;color:#6E7B45">Referred by</td><td style="border-bottom:.7px solid rgba(62,42,28,.35)"></td>
+                <td style="padding:5px 0 5px 14px;color:#6E7B45">Date seen</td><td style="border-bottom:.7px solid rgba(62,42,28,.35)"></td>
+              </tr>
+            </table>
+          </div>
+
+          <div style="padding:20px 42px;flex:1">
+            <div style="font:800 8px/1 'Nunito Sans',sans-serif;color:#6E7B45;letter-spacing:1.5px">IMPRESSION</div>
+            <div style="margin-top:9px;display:flex;flex-direction:column;gap:6px">
+              <span style="height:4px;background:rgba(62,42,28,.16);border-radius:3px;width:100%"></span>
+              <span style="height:4px;background:rgba(62,42,28,.16);border-radius:3px;width:87%"></span>
+            </div>
+
+            <div style="margin-top:18px;border-left:4px solid #9DB2B2;padding-left:14px">
+              <div style="font:800 8px/1 'Nunito Sans',sans-serif;color:#3E2A1C;letter-spacing:1.4px">DIET AND FLUID LEVEL · IDDSI</div>
+              <div style="margin-top:8px;display:flex;flex-direction:column;gap:6px">
+                <span style="height:4px;background:rgba(62,42,28,.16);border-radius:3px;width:74%"></span>
+                <span style="height:4px;background:rgba(62,42,28,.16);border-radius:3px;width:52%"></span>
+              </div>
+            </div>
+
+            <div style="margin-top:18px;border-left:4px solid #9DB2B2;padding-left:14px">
+              <div style="font:800 8px/1 'Nunito Sans',sans-serif;color:#3E2A1C;letter-spacing:1.4px">REFERRED BACK / ONWARD</div>
+              <div style="margin-top:8px;display:flex;flex-direction:column;gap:6px">
+                <span style="height:4px;background:rgba(62,42,28,.16);border-radius:3px;width:81%"></span>
+              </div>
+            </div>
+
+            <div style="margin-top:22px;background:#DFA22C;border:2px solid #3E2A1C;border-radius:16px;padding:14px 16px">
+              <div style="font:700 11px/1.2 'Fraunces',Georgia,serif;color:#3E2A1C">Two things to try at home this fortnight</div>
+              <div style="margin-top:9px;display:flex;flex-direction:column;gap:6px">
+                <span style="height:4px;background:rgba(62,42,28,.32);border-radius:3px;width:80%"></span>
+                <span style="height:4px;background:rgba(62,42,28,.32);border-radius:3px;width:63%"></span>
+              </div>
+            </div>
+
+            <div style="margin-top:20px;font:400 italic 11px/1.5 'Fraunces',Georgia,serif;color:#C0551E">Any questions before next time, just ring me.</div>
+            <div style="font:700 17px/1 'Fraunces',Georgia,serif;color:#3E2A1C;margin-top:6px">— Laura</div>
+          </div>
+
+          <div style="border-top:2.5px solid #3E2A1C;background:#F1E4CB;padding:11px 42px;font:600 7px/1.7 'Nunito Sans',sans-serif;color:#3E2A1C;display:flex;justify-content:space-between">
+            <span>Certified Practising Speech Pathologist · Member, Speech Pathology Australia</span>
+            <span>ABN 00 000 000 000</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p style="color:#4A4A44;font-size:15.5px;max-width:46ch;margin:0 0 14px">One shell, two audiences, on the same page. The chalk-ruled blocks are the clinical register and are written for the referrer; the gold panel is the family register and is capped at two items. A specialist reads the top two thirds and stops. A parent skips to the gold box.</p>
+        <p style="color:#4A4A44;font-size:15.5px;max-width:46ch;margin:0 0 14px">The two chalk blocks that matter are the IDDSI diet and fluid level, and what she has referred onward. Both are safety items, and both are the things that get lost in a wall of prose.</p>
+        <p style="color:#4A4A44;font-size:15.5px;max-width:46ch;margin:0 0 14px">Handwritten sign-off stays even on specialist correspondence. It costs nothing in credibility once the clinical structure above it is right, and it is the whole reason a family stays.</p>
+        <p style="color:#4A4A44;font-size:15.5px;max-width:46ch;margin:0 0 14px">Name used and pronouns are the first row of the header, above name on record. That ordering is the whole policy: the name someone goes by is the name that appears in correspondence to a specialist, and the legal name sits in one field for billing.</p>
+        <p style="color:#7A7A72;font-size:14.5px;max-width:46ch;margin:0">Two body templates share this shell: full assessment (shown), and a one-page session note that drops the impression block and keeps the gold panel.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3 class="sec">Workbook and reference sheets — A4 Word template</h3>
+    <div class="artefact-grid">
+      <div class="sheet" style="background:#FCF6E9">
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column">
+
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 34px 10px;border-bottom:1.5px solid #3E2A1C">
+            <div style="display:flex;align-items:center;gap:9px">
+              <svg width="26" height="26" viewBox="0 0 120 120" style="flex:none"><circle cx="60" cy="60" r="52" fill="#ECDFCD" stroke="#3E2A1C" stroke-width="5"/><defs><clipPath id="wbmark"><circle cx="60" cy="60" r="52"/></clipPath></defs><g clip-path="url(#wbmark)"><g transform="translate(60,60) scale(0.1925) translate(-688.5,-402.15)"><g transform="translate(0,784) scale(.05,-.05)" stroke-linejoin="round">
+<path fill="#ecdfcd" stroke="#ecdfcd" stroke-width="24" d="M9785 13245 c-571 -84 -1026 -388 -1338 -895 -114 -186 -232 -554
+-257 -800 -17 -174 -18 -5373 -1 -5394 20 -24 36 -20 63 17 54 70 420 482 592
+667 648 694 690 765 921 1565 287 995 584 1655 947 2105 486 603 1210 1044
+1975 1204 413 87 1005 102 1399 36 252 -43 638 -143 827 -215 91 -35 107 -46
+145 -101 10 -15 26 -19 80 -19 190 -1 816 -379 1062 -642 222 -238 491 -692
+502 -846 1 -26 7 -37 22 -40 666 -158 1164 -344 1407 -527 65 -49 103 -97 91
+-117 -12 -18 -91 -54 -125 -56 -18 -1 -35 -6 -39 -12 -4 -6 -8 -1 -9 10 -1 16
+-2 15 -8 -5 -6 -23 -28 -32 -223 -97 -350 -116 -917 -273 -1048 -289 -59 -7
+-90 -26 -90 -55 0 -23 -93 -201 -212 -408 -268 -464 -401 -719 -501 -961 -51
+-123 -67 -174 -128 -400 -30 -110 -36 -319 -14 -487 9 -73 14 -142 10 -153 -4
+-13 -1 -28 8 -38 8 -9 22 -48 31 -87 9 -38 41 -155 71 -260 135 -475 208 -912
+171 -1024 -5 -15 -5 -21 2 -17 16 9 22 -28 33 -214 36 -560 -45 -1241 -217
+-1837 -83 -288 -265 -752 -318 -812 -11 -13 -16 -21 -9 -17 6 3 14 2 18 -3 8
+-13 1908 -13 2075 -1 733 57 1403 620 1595 1341 72 272 66 -96 67 4254 0 2140
+-2 3910 -6 3935 -4 25 -16 86 -26 135 -10 50 -21 110 -25 135 -10 76 -93 307
+-155 430 -267 533 -764 897 -1350 988 -145 22 -7864 29 -8015 7z"/>
+<path fill="#11323b" stroke="#11323b" stroke-width="24" d="M13320 11784 c-906 -53 -1621 -340 -2246 -902 -618 -556 -933 -1188
+-1396 -2802 -25 -86 -115 -314 -159 -402 -115 -230 -196 -333 -614 -783 -374
+-402 -698 -774 -715 -821 -14 -36 -13 -2235 0 -2378 70 -738 556 -1352 1256
+-1585 206 -69 295 -80 742 -92 393 -10 393 -10 442 17 28 15 53 38 60 53 6 14
+51 62 101 106 50 44 180 171 289 282 952 972 1394 1831 1332 2590 -72 893
+-637 1380 -1692 1458 -131 10 -159 23 -160 71 0 50 243 181 570 307 148 57
+221 81 451 148 88 25 88 28 20 182 -335 759 -181 1363 427 1667 273 136 477
+166 1064 155 396 -7 396 -7 441 34 64 59 64 72 3 104 -521 274 -454 1044 106
+1222 560 177 1051 -404 790 -935 -47 -96 -177 -230 -269 -279 -72 -37 -73 -38
+-35 -74 71 -69 270 -62 612 19 58 14 128 29 155 34 28 5 84 20 125 34 41 15
+116 36 165 47 50 11 113 30 140 41 28 11 68 26 90 33 238 77 265 89 307 137
+63 73 52 116 -72 277 -160 207 -407 429 -583 525 -338 185 -950 349 -1066 287
+-31 -17 -66 -13 -86 9 -10 11 -24 20 -32 20 -29 0 -64 48 -57 77 19 79 122
+225 225 317 169 154 442 280 802 374 197 51 216 63 171 113 -66 73 -730 251
+-1102 294 -125 15 -481 26 -602 19z"/>
+<path fill="#c0541a" stroke="#c0541a" stroke-width="24" d="M14920 11369 c-498 -129 -768 -266 -952 -483 -133 -156 -165 -245
+-99 -278 18 -9 43 -26 55 -37 22 -20 24 -20 70 -5 187 64 864 -136 1178 -347
+238 -160 614 -575 594 -655 -8 -32 3 -54 26 -54 12 0 38 -5 59 -11 50 -16 87
+-3 358 122 291 134 462 228 480 264 50 102 -236 613 -498 887 -206 217 -583
+466 -914 603 -127 52 -135 52 -357 -6z M14735 9139 c-145 -34 -284 -56 -426
+-65 -117 -7 -128 -4 -193 53 -28 26 -44 33 -60 29 -159 -47 -237 -47 -443 1
+-15 4 -23 1 -23 -8 -1 -18 -39 -61 -76 -85 -27 -18 -56 -19 -504 -19 -413 0
+-487 -2 -565 -18 -1050 -205 -1316 -1108 -637 -2157 88 -136 127 -188 286
+-380 203 -246 327 -365 921 -886 176 -154 378 -334 449 -400 71 -65 143 -131
+160 -145 38 -33 404 -429 510 -554 316 -369 521 -685 707 -1088 79 -171 92
+-186 138 -163 311 161 881 974 1001 1426 22 83 81 204 113 231 62 53 -3 507
+-142 991 -27 95 -59 211 -71 258 -29 119 -33 126 -73 134 -19 4 -46 15 -60 26
+-31 25 -239 103 -357 135 -145 38 -262 49 -439 40 -542 -29 -705 8 -920 210
+-235 220 -157 592 196 936 188 184 658 547 903 699 396 245 925 428 1240 430
+70 0 99 25 66 55 -30 28 -24 26 -201 64 -268 58 -696 131 -766 131 -38 0 -115
+11 -172 24 -56 13 -136 27 -177 30 -115 10 -148 22 -172 62 -25 43 -46 43
+-213 3z"/>
+<path fill="#cb985f" stroke="#cb985f" stroke-width="24" d="M11649 7072 c-13 -10 -77 -33 -142 -51 -296 -81 -836 -305 -914 -380
+-66 -63 -19 -96 157 -111 444 -37 803 -149 1088 -342 524 -354 725 -1134 487
+-1887 -202 -636 -787 -1437 -1568 -2148 -68 -62 -68 -62 -54 -95 13 -33 13
+-33 723 -41 1007 -11 4162 -1 4180 14 36 29 169 351 264 638 216 652 311 1348
+276 2035 -7 141 -11 171 -26 186 -14 14 -15 21 -7 31 7 6 0 4 -16 -7 -30 -21
+-88 -134 -114 -224 -125 -437 -554 -1086 -899 -1360 -151 -120 -146 -121 -243
+87 -186 403 -391 719 -707 1088 -106 125 -472 521 -510 554 -17 14 -89 80
+-160 145 -71 66 -273 246 -449 400 -386 339 -613 545 -721 657 -212 221 -497
+596 -588 777 -30 60 -26 57 -57 34z"/>
+<path fill="#a6461c" stroke="#a6461c" stroke-width="24" d="M15435 9990 c55 -55 102 -100 105 -100 2 0 -40 45 -95 100 -55 55
+-102 100 -105 100 -2 0 40 -45 95 -100z M12783 9053 c37 -2 97 -2 135 0 37 2
+6 3 -68 3 -74 0 -105 -1 -67 -3z M16448 8798 c-21 -23 -34 -28 -74 -28 -318
+-2 -847 -184 -1244 -430 -245 -152 -715 -515 -903 -699 -353 -344 -431 -716
+-196 -936 215 -202 378 -239 920 -210 177 9 294 -2 439 -40 118 -32 326 -110
+357 -135 73 -57 91 -13 69 172 -27 232 -16 387 37 563 14 44 32 107 42 140 57
+198 232 556 507 1035 292 510 311 553 242 565 -22 4 -69 13 -105 19 -65 12
+-65 12 -91 -16z"/>
+<path fill="#cdb590" stroke="#cdb590" stroke-width="24" d="M16686 9873 c-10 -32 -344 -202 -661 -338 -114 -48 -117 -49 -226
+-30 -34 6 -39 4 -72 -37 -26 -32 -49 -48 -79 -57 -24 -7 -54 -20 -67 -28 -13
+-8 -64 -26 -112 -39 -49 -13 -100 -30 -112 -39 -13 -8 -65 -24 -115 -35 -153
+-32 -291 -80 -298 -102 -15 -48 56 -82 196 -93 78 -6 88 -3 106 30 16 29 42
+32 384 44 173 7 405 19 515 27 322 23 1080 55 1486 61 374 6 376 6 391 -15 31
+-45 81 -47 159 -7 65 34 53 68 -50 145 -221 166 -625 326 -1191 472 -253 65
+-247 64 -254 41z M8175 4790 c0 -520 1 -732 2 -472 2 259 2 685 0 945 -1 259
+-2 47 -2 -473z M16153 4550 c0 -41 2 -58 4 -37 2 20 2 54 0 75 -2 20 -4 3 -4
+-38z M16153 4255 c0 -44 2 -61 4 -37 2 23 2 59 0 80 -2 20 -4 1 -4 -43z
+M10993 2013 c141 -2 373 -2 515 0 141 1 25 2 -258 2 -283 0 -399 -1 -257 -2z
+M14713 2013 c147 -2 387 -2 535 0 147 1 26 2 -268 2 -294 0 -415 -1 -267 -2z"/>
+<path fill="#ac8d66" stroke="#ac8d66" stroke-width="24" d="M16893 9214 c-293 -12 -594 -27 -670 -33 -161 -13 -436 -27 -718 -37
+-217 -8 -243 -11 -259 -37 -28 -44 72 -84 216 -86 111 -1 824 -133 954 -176
+103 -34 281 -57 356 -45 190 29 1103 288 1245 353 27 12 29 34 7 65 -21 30
+-364 29 -1131 -4z M12423 4930 c0 -41 2 -58 4 -37 2 20 2 54 0 75 -2 20 -4 3
+-4 -38z"/>
+</g><circle cx="692.09" cy="294.85" r="33.08" fill="#8a735a"/><circle cx="691.96" cy="294.67" r="26.40" fill="#2f3030"/><circle cx="687.22" cy="285.20" r="11.33" fill="#f0eee0"/></g></g></svg>
+              <div style="font:700 9px/1.15 'Fraunces',Georgia,serif;color:#3E2A1C;letter-spacing:.4px">OTELLA<br><span style="color:#C0551E">SPEECH + SWALLOW</span></div>
+            </div>
+            <div style="font:800 7px/1 'Nunito Sans',sans-serif;letter-spacing:1.3px;color:#3E2A1C;background:#DFA22C;border:1.5px solid #3E2A1C;border-radius:999px;padding:5px 11px">HOME PRACTICE</div>
+          </div>
+
+          <div style="padding:18px 34px 0">
+            <div style="font:700 20px/1.1 'Fraunces',Georgia,serif;color:#3E2A1C;letter-spacing:-.4px">Saying “s” at the start of words</div>
+            <div style="font:600 7.5px/1.7 'Nunito Sans',sans-serif;color:#6E7B45;margin-top:5px;letter-spacing:.2px">For ————— &nbsp;·&nbsp; Week of ————— &nbsp;·&nbsp; Sheet 1 of 4</div>
+            <div style="font:400 italic 9.5px/1.55 'Fraunces',Georgia,serif;color:#3E2A1C;margin-top:11px;max-width:44ch">Five minutes, twice a day. Stop while it is still going well rather than pushing to the end of the list.</div>
+          </div>
+
+          <div style="padding:16px 34px 0;flex:1">
+            <div style="font:800 7px/1 'Nunito Sans',sans-serif;letter-spacing:1.4px;color:#6E7B45">HOW TO DO IT</div>
+            <div style="margin-top:10px;display:flex;flex-direction:column;gap:11px">
+              <div style="display:grid;grid-template-columns:17px 1fr;gap:10px;align-items:start">
+                <div style="font:700 12px/1 'Fraunces',Georgia,serif;color:#C0551E">1</div>
+                <div style="display:flex;flex-direction:column;gap:5px;padding-top:2px">
+                  <span style="height:3.5px;background:rgba(62,42,28,.16);border-radius:2px;width:96%"></span>
+                  <span style="height:3.5px;background:rgba(62,42,28,.16);border-radius:2px;width:72%"></span>
+                </div>
+              </div>
+              <div style="display:grid;grid-template-columns:17px 1fr;gap:10px;align-items:start">
+                <div style="font:700 12px/1 'Fraunces',Georgia,serif;color:#C0551E">2</div>
+                <div style="display:flex;flex-direction:column;gap:5px;padding-top:2px">
+                  <span style="height:3.5px;background:rgba(62,42,28,.16);border-radius:2px;width:88%"></span>
+                  <span style="height:3.5px;background:rgba(62,42,28,.16);border-radius:2px;width:59%"></span>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top:16px;background:#DFA22C;border:1.5px solid #3E2A1C;border-radius:12px;padding:12px 14px">
+              <div style="font:700 10px/1.2 'Fraunces',Georgia,serif;color:#3E2A1C">Two things to try this week</div>
+              <div style="margin-top:8px;display:flex;flex-direction:column;gap:5px">
+                <span style="height:3.5px;background:rgba(62,42,28,.32);border-radius:2px;width:82%"></span>
+                <span style="height:3.5px;background:rgba(62,42,28,.32);border-radius:2px;width:64%"></span>
+              </div>
+            </div>
+
+            <div style="margin-top:14px;border-left:3px solid #9DB2B2;padding-left:11px">
+              <div style="font:800 7px/1 'Nunito Sans',sans-serif;letter-spacing:1.3px;color:#3E2A1C">STOP AND RING ME IF</div>
+              <div style="margin-top:7px;display:flex;flex-direction:column;gap:5px">
+                <span style="height:3.5px;background:rgba(62,42,28,.16);border-radius:2px;width:76%"></span>
+              </div>
+            </div>
+
+            <div style="margin-top:16px">
+              <div style="font:800 7px/1 'Nunito Sans',sans-serif;letter-spacing:1.4px;color:#6E7B45;margin-bottom:7px">TICK EACH TIME YOU PRACTISE</div>
+              <table style="width:100%;border-collapse:collapse;font:700 7px/1 'Nunito Sans',sans-serif;color:#3E2A1C;table-layout:fixed">
+                <tr>
+                  <td style="border:1px solid #3E2A1C;padding:5px 0;text-align:center;background:#F1E4CB">M</td>
+                  <td style="border:1px solid #3E2A1C;padding:5px 0;text-align:center;background:#F1E4CB">T</td>
+                  <td style="border:1px solid #3E2A1C;padding:5px 0;text-align:center;background:#F1E4CB">W</td>
+                  <td style="border:1px solid #3E2A1C;padding:5px 0;text-align:center;background:#F1E4CB">T</td>
+                  <td style="border:1px solid #3E2A1C;padding:5px 0;text-align:center;background:#F1E4CB">F</td>
+                  <td style="border:1px solid #3E2A1C;padding:5px 0;text-align:center;background:#F1E4CB">S</td>
+                  <td style="border:1px solid #3E2A1C;padding:5px 0;text-align:center;background:#F1E4CB">S</td>
+                </tr>
+                <tr><td style="border:1px solid #3E2A1C;height:19px"></td><td style="border:1px solid #3E2A1C"></td><td style="border:1px solid #3E2A1C"></td><td style="border:1px solid #3E2A1C"></td><td style="border:1px solid #3E2A1C"></td><td style="border:1px solid #3E2A1C"></td><td style="border:1px solid #3E2A1C"></td></tr>
+                <tr><td style="border:1px solid #3E2A1C;height:19px"></td><td style="border:1px solid #3E2A1C"></td><td style="border:1px solid #3E2A1C"></td><td style="border:1px solid #3E2A1C"></td><td style="border:1px solid #3E2A1C"></td><td style="border:1px solid #3E2A1C"></td><td style="border:1px solid #3E2A1C"></td></tr>
+              </table>
+            </div>
+          </div>
+
+          <div style="margin:0 34px 16px;padding-top:8px;border-top:1px solid rgba(62,42,28,.3);font:600 6.5px/1.6 'Nunito Sans',sans-serif;color:rgba(62,42,28,.75);display:flex;justify-content:space-between">
+            <span>Laura Otella · 0477 022 828 · otellaspeech.com.au</span>
+            <span>Page 1 of 2</span>
+          </div>
+
+        </div>
+      </div>
+
+      <div>
+        <p style="color:#4A4A44;font-size:15.5px;max-width:46ch;margin:0 0 14px">A handout is not a short letter, so it does not get the letterhead. The full lockup and the address block come off, and the header collapses to a 14mm band: mark, stacked wordmark at 9pt, and a topic pill naming which series the sheet belongs to. That buys back about a fifth of the page for content, which is the whole point.</p>
+        <p style="color:#4A4A44;font-size:15.5px;max-width:46ch;margin:0 0 14px">Everything below it is the same furniture as the letterhead — gold practice box capped at two items, chalk rule for anything clinical, hand-signed voice — so a family that has both in the kitchen drawer reads them as one system.</p>
+        <p style="color:#4A4A44;font-size:15.5px;max-width:46ch;margin:0 0 14px">The tick grid is what makes it a workbook rather than an information sheet. It is also the only honest way to find out whether the home programme actually happened, which is the single most useful thing to know at the next session.</p>
+        <p style="color:#7A7A72;font-size:14.5px;max-width:46ch;margin:0">Built as a .dotx with real named Word styles, not direct formatting — otherwise the numbering, the tables and any later table of contents come apart the first time someone edits it.</p>
+      </div>
+    </div>
+
+    <h4 style="font:600 15px/1 'Inter Tight',sans-serif;margin:38px 0 14px;color:#23231F">Word styles</h4>
+    <table class="spec-table">
+      <tr><th>Style name</th><th>Typeface</th><th>Size / leading</th><th>Colour</th><th>Spacing</th></tr>
+      <tr><td>Title</td><td>Fraunces Semibold</td><td>20 pt / 22 pt</td><td>Chocolate #3E2A1C</td><td>0 before, 4 pt after</td></tr>
+      <tr><td>Meta line</td><td>Nunito Sans Semibold</td><td>8 pt / 13 pt</td><td>Olive #6E7B45</td><td>0 before, 10 pt after</td></tr>
+      <tr><td>Standfirst</td><td>Fraunces Regular Italic</td><td>10 pt / 15 pt</td><td>Chocolate</td><td>0 before, 12 pt after</td></tr>
+      <tr><td>Section label</td><td>Nunito Sans ExtraBold, caps</td><td>7.5 pt, +130 tracking</td><td>Olive</td><td>14 pt before, 6 pt after</td></tr>
+      <tr><td>Body</td><td>Nunito Sans Regular</td><td>10.5 pt / 15 pt</td><td>Chocolate</td><td>0 before, 6 pt after</td></tr>
+      <tr><td>Numbered step</td><td>Fraunces Semibold (numeral only)</td><td>12 pt</td><td>Rust #C0551E</td><td>hanging indent 8 mm</td></tr>
+      <tr><td>Practice box</td><td>Fraunces Semibold + Nunito Sans</td><td>10 pt heading, 10 pt body</td><td>On gold #DFA22C, 1 pt chocolate rule</td><td>12 pt before, 12 pt after</td></tr>
+      <tr><td>Clinical note</td><td>Nunito Sans Regular</td><td>10 pt / 14 pt</td><td>Chocolate, 3 pt chalk #9DB2B2 left rule</td><td>10 pt before and after</td></tr>
+      <tr><td>Table header</td><td>Nunito Sans Bold, caps</td><td>7.5 pt</td><td>Chocolate on wheat #F1E4CB</td><td>0.75 pt chocolate grid</td></tr>
+      <tr><td>Footer</td><td>Nunito Sans Semibold</td><td>7 pt</td><td>Chocolate at 75%</td><td>0.75 pt rule above</td></tr>
+    </table>
+
+    <h4 style="font:600 15px/1 'Inter Tight',sans-serif;margin:34px 0 14px;color:#23231F">Rules for the template</h4>
+    <ul class="notes">
+      <li><span>·</span><span><b>Margins.</b> 18 mm left and right, 12 mm top to the header band, 16 mm foot. Header band 14 mm; nothing else lives up there.</span></li>
+      <li><span>·</span><span><b>One accent per sheet.</b> Gold for the thing to do, chalk for the thing to watch. Never both in the same block, and never a third colour.</span></li>
+      <li><span>·</span><span><b>It has to survive a photocopier.</b> Every sheet is checked in greyscale at 90%. Colour never carries meaning on its own — the gold box also has a rule and a heading, the chalk note also has a label.</span></li>
+      <li><span>·</span><span><b>Two items, not twenty.</b> The practice box is capped at two by the template, not by discipline. If a sheet needs more, it is two sheets.</span></li>
+      <li><span>·</span><span><b>Fonts will not be on the client’s machine.</b> Fraunces and Nunito Sans are webfonts. Either embed them in the .dotx (File › Options › Save › Embed fonts) or set the substitution pair now — Georgia for Fraunces, Verdana for Nunito Sans — so a sheet opened on a school laptop still looks deliberate.</span></li>
+      <li><span>·</span><span><b>Named styles only.</b> No direct formatting anywhere in the file. It is the difference between a template and a document someone once liked.</span></li>
+    </ul>
+
+    <p class="caption">The sheet shown is the home-practice variant. The same shell carries three others by swapping the pill and the body furniture: <i>Reference</i> (no tick grid, longer body, for things like a plain-English explanation of aphasia), <i>Carer instructions</i> (chalk rule promoted to the top, for mealtime and diet-level guidance in residential care), and <i>Session summary</i> (what the letterhead’s short template does today).</p>
+  </div>
+
+  <div class="block">
+    <h3 class="sec">Website — homepage</h3>
+    <div class="browser">
+      <div class="chrome"><i></i><i></i><i></i><span>otellaspeech.com.au</span></div>
+      <div class="viewport">
+        <div class="site E-site">
+
+          <div class="E-hero">
+            <div class="E-in">
+              <div class="E-nav">
+                <svg width="276" height="82" viewBox="0 0 424 126"><g transform="translate(2,3)"><circle cx="60" cy="60" r="52" fill="#ECDFCD" stroke="#3E2A1C" stroke-width="3.5"/><defs><clipPath id="sw8"><circle cx="60" cy="60" r="52"/></clipPath></defs><g clip-path="url(#sw8)"><g transform="translate(60,60) scale(0.1925) translate(-688.5,-402.15)"><g transform="translate(0,784) scale(.05,-.05)" stroke-linejoin="round">
+<path fill="#ecdfcd" stroke="#ecdfcd" stroke-width="24" d="M9785 13245 c-571 -84 -1026 -388 -1338 -895 -114 -186 -232 -554
+-257 -800 -17 -174 -18 -5373 -1 -5394 20 -24 36 -20 63 17 54 70 420 482 592
+667 648 694 690 765 921 1565 287 995 584 1655 947 2105 486 603 1210 1044
+1975 1204 413 87 1005 102 1399 36 252 -43 638 -143 827 -215 91 -35 107 -46
+145 -101 10 -15 26 -19 80 -19 190 -1 816 -379 1062 -642 222 -238 491 -692
+502 -846 1 -26 7 -37 22 -40 666 -158 1164 -344 1407 -527 65 -49 103 -97 91
+-117 -12 -18 -91 -54 -125 -56 -18 -1 -35 -6 -39 -12 -4 -6 -8 -1 -9 10 -1 16
+-2 15 -8 -5 -6 -23 -28 -32 -223 -97 -350 -116 -917 -273 -1048 -289 -59 -7
+-90 -26 -90 -55 0 -23 -93 -201 -212 -408 -268 -464 -401 -719 -501 -961 -51
+-123 -67 -174 -128 -400 -30 -110 -36 -319 -14 -487 9 -73 14 -142 10 -153 -4
+-13 -1 -28 8 -38 8 -9 22 -48 31 -87 9 -38 41 -155 71 -260 135 -475 208 -912
+171 -1024 -5 -15 -5 -21 2 -17 16 9 22 -28 33 -214 36 -560 -45 -1241 -217
+-1837 -83 -288 -265 -752 -318 -812 -11 -13 -16 -21 -9 -17 6 3 14 2 18 -3 8
+-13 1908 -13 2075 -1 733 57 1403 620 1595 1341 72 272 66 -96 67 4254 0 2140
+-2 3910 -6 3935 -4 25 -16 86 -26 135 -10 50 -21 110 -25 135 -10 76 -93 307
+-155 430 -267 533 -764 897 -1350 988 -145 22 -7864 29 -8015 7z"/>
+<path fill="#11323b" stroke="#11323b" stroke-width="24" d="M13320 11784 c-906 -53 -1621 -340 -2246 -902 -618 -556 -933 -1188
+-1396 -2802 -25 -86 -115 -314 -159 -402 -115 -230 -196 -333 -614 -783 -374
+-402 -698 -774 -715 -821 -14 -36 -13 -2235 0 -2378 70 -738 556 -1352 1256
+-1585 206 -69 295 -80 742 -92 393 -10 393 -10 442 17 28 15 53 38 60 53 6 14
+51 62 101 106 50 44 180 171 289 282 952 972 1394 1831 1332 2590 -72 893
+-637 1380 -1692 1458 -131 10 -159 23 -160 71 0 50 243 181 570 307 148 57
+221 81 451 148 88 25 88 28 20 182 -335 759 -181 1363 427 1667 273 136 477
+166 1064 155 396 -7 396 -7 441 34 64 59 64 72 3 104 -521 274 -454 1044 106
+1222 560 177 1051 -404 790 -935 -47 -96 -177 -230 -269 -279 -72 -37 -73 -38
+-35 -74 71 -69 270 -62 612 19 58 14 128 29 155 34 28 5 84 20 125 34 41 15
+116 36 165 47 50 11 113 30 140 41 28 11 68 26 90 33 238 77 265 89 307 137
+63 73 52 116 -72 277 -160 207 -407 429 -583 525 -338 185 -950 349 -1066 287
+-31 -17 -66 -13 -86 9 -10 11 -24 20 -32 20 -29 0 -64 48 -57 77 19 79 122
+225 225 317 169 154 442 280 802 374 197 51 216 63 171 113 -66 73 -730 251
+-1102 294 -125 15 -481 26 -602 19z"/>
+<path fill="#c0541a" stroke="#c0541a" stroke-width="24" d="M14920 11369 c-498 -129 -768 -266 -952 -483 -133 -156 -165 -245
+-99 -278 18 -9 43 -26 55 -37 22 -20 24 -20 70 -5 187 64 864 -136 1178 -347
+238 -160 614 -575 594 -655 -8 -32 3 -54 26 -54 12 0 38 -5 59 -11 50 -16 87
+-3 358 122 291 134 462 228 480 264 50 102 -236 613 -498 887 -206 217 -583
+466 -914 603 -127 52 -135 52 -357 -6z M14735 9139 c-145 -34 -284 -56 -426
+-65 -117 -7 -128 -4 -193 53 -28 26 -44 33 -60 29 -159 -47 -237 -47 -443 1
+-15 4 -23 1 -23 -8 -1 -18 -39 -61 -76 -85 -27 -18 -56 -19 -504 -19 -413 0
+-487 -2 -565 -18 -1050 -205 -1316 -1108 -637 -2157 88 -136 127 -188 286
+-380 203 -246 327 -365 921 -886 176 -154 378 -334 449 -400 71 -65 143 -131
+160 -145 38 -33 404 -429 510 -554 316 -369 521 -685 707 -1088 79 -171 92
+-186 138 -163 311 161 881 974 1001 1426 22 83 81 204 113 231 62 53 -3 507
+-142 991 -27 95 -59 211 -71 258 -29 119 -33 126 -73 134 -19 4 -46 15 -60 26
+-31 25 -239 103 -357 135 -145 38 -262 49 -439 40 -542 -29 -705 8 -920 210
+-235 220 -157 592 196 936 188 184 658 547 903 699 396 245 925 428 1240 430
+70 0 99 25 66 55 -30 28 -24 26 -201 64 -268 58 -696 131 -766 131 -38 0 -115
+11 -172 24 -56 13 -136 27 -177 30 -115 10 -148 22 -172 62 -25 43 -46 43
+-213 3z"/>
+<path fill="#cb985f" stroke="#cb985f" stroke-width="24" d="M11649 7072 c-13 -10 -77 -33 -142 -51 -296 -81 -836 -305 -914 -380
+-66 -63 -19 -96 157 -111 444 -37 803 -149 1088 -342 524 -354 725 -1134 487
+-1887 -202 -636 -787 -1437 -1568 -2148 -68 -62 -68 -62 -54 -95 13 -33 13
+-33 723 -41 1007 -11 4162 -1 4180 14 36 29 169 351 264 638 216 652 311 1348
+276 2035 -7 141 -11 171 -26 186 -14 14 -15 21 -7 31 7 6 0 4 -16 -7 -30 -21
+-88 -134 -114 -224 -125 -437 -554 -1086 -899 -1360 -151 -120 -146 -121 -243
+87 -186 403 -391 719 -707 1088 -106 125 -472 521 -510 554 -17 14 -89 80
+-160 145 -71 66 -273 246 -449 400 -386 339 -613 545 -721 657 -212 221 -497
+596 -588 777 -30 60 -26 57 -57 34z"/>
+<path fill="#a6461c" stroke="#a6461c" stroke-width="24" d="M15435 9990 c55 -55 102 -100 105 -100 2 0 -40 45 -95 100 -55 55
+-102 100 -105 100 -2 0 40 -45 95 -100z M12783 9053 c37 -2 97 -2 135 0 37 2
+6 3 -68 3 -74 0 -105 -1 -67 -3z M16448 8798 c-21 -23 -34 -28 -74 -28 -318
+-2 -847 -184 -1244 -430 -245 -152 -715 -515 -903 -699 -353 -344 -431 -716
+-196 -936 215 -202 378 -239 920 -210 177 9 294 -2 439 -40 118 -32 326 -110
+357 -135 73 -57 91 -13 69 172 -27 232 -16 387 37 563 14 44 32 107 42 140 57
+198 232 556 507 1035 292 510 311 553 242 565 -22 4 -69 13 -105 19 -65 12
+-65 12 -91 -16z"/>
+<path fill="#cdb590" stroke="#cdb590" stroke-width="24" d="M16686 9873 c-10 -32 -344 -202 -661 -338 -114 -48 -117 -49 -226
+-30 -34 6 -39 4 -72 -37 -26 -32 -49 -48 -79 -57 -24 -7 -54 -20 -67 -28 -13
+-8 -64 -26 -112 -39 -49 -13 -100 -30 -112 -39 -13 -8 -65 -24 -115 -35 -153
+-32 -291 -80 -298 -102 -15 -48 56 -82 196 -93 78 -6 88 -3 106 30 16 29 42
+32 384 44 173 7 405 19 515 27 322 23 1080 55 1486 61 374 6 376 6 391 -15 31
+-45 81 -47 159 -7 65 34 53 68 -50 145 -221 166 -625 326 -1191 472 -253 65
+-247 64 -254 41z M8175 4790 c0 -520 1 -732 2 -472 2 259 2 685 0 945 -1 259
+-2 47 -2 -473z M16153 4550 c0 -41 2 -58 4 -37 2 20 2 54 0 75 -2 20 -4 3 -4
+-38z M16153 4255 c0 -44 2 -61 4 -37 2 23 2 59 0 80 -2 20 -4 1 -4 -43z
+M10993 2013 c141 -2 373 -2 515 0 141 1 25 2 -258 2 -283 0 -399 -1 -257 -2z
+M14713 2013 c147 -2 387 -2 535 0 147 1 26 2 -268 2 -294 0 -415 -1 -267 -2z"/>
+<path fill="#ac8d66" stroke="#ac8d66" stroke-width="24" d="M16893 9214 c-293 -12 -594 -27 -670 -33 -161 -13 -436 -27 -718 -37
+-217 -8 -243 -11 -259 -37 -28 -44 72 -84 216 -86 111 -1 824 -133 954 -176
+103 -34 281 -57 356 -45 190 29 1103 288 1245 353 27 12 29 34 7 65 -21 30
+-364 29 -1131 -4z M12423 4930 c0 -41 2 -58 4 -37 2 20 2 54 0 75 -2 20 -4 3
+-4 -38z"/>
+</g><circle cx="692.09" cy="294.85" r="33.08" fill="#8a735a"/><circle cx="691.96" cy="294.67" r="26.40" fill="#2f3030"/><circle cx="687.22" cy="285.20" r="11.33" fill="#f0eee0"/></g></g><circle cx="60" cy="60" r="52" fill="none" stroke="#3E2A1C" stroke-width="3.5"/></g><text x="132" y="71" font-family="Fraunces,Georgia,serif" font-weight="700" font-size="58" textLength="276" lengthAdjust="spacing" fill="#3E2A1C">OTELLA</text><text x="132" y="95" font-family="Fraunces,Georgia,serif" font-weight="600" font-size="16" textLength="276" lengthAdjust="spacing" fill="#C0551E">SPEECH + SWALLOW</text></svg>
+                <ul>
+                  <li>What I work with</li><li>How I work</li><li>Fees</li>
+                  <li><a class="E-btn cool" href="#">For referrers</a></li>
+                  <li><a class="E-btn" href="#">Ring me</a></li>
+                </ul>
+              </div>
+              <div class="grid">
+                <div>
+                  <h1>Talking and eating.</h1>
+                  <p>The two things nobody thinks about until they stop working.</p>
+                  <p style="font-size:19px;color:rgba(62,42,28,.78)">I’m Laura. I see children and adults in Umina Beach — feeding and speech from the first year, swallowing and communication after a stroke, a diagnosis or an operation. It’s just me, so you get the same person every time.</p>
+                  <div class="row">
+                    <a class="E-btn" href="#">Ring 0477 022 828</a>
+                    <a class="E-btn alt" href="#">Send me a note</a>
+                    <span style="font-size:16px;color:rgba(62,42,28,.72)">First call is free. About three weeks to an appointment.</span>
+                  </div>
+                </div>
+                <div style="display:flex;justify-content:center">
+                  <svg width="250" height="250" viewBox="0 0 168 168">
+                    <defs>
+                      
+                      <clipPath id="eclip"><circle cx="84" cy="84" r="57"/></clipPath>
+                    </defs>
+                    <circle cx="84" cy="84" r="79" fill="#FCF6E9" stroke="#3E2A1C" stroke-width="3"/>
+                    
+                    <g clip-path="url(#eclip)" transform="translate(84,84) scale(1.263) translate(-84,-84)">
+                      <rect x="27" y="27" width="114" height="114" fill="#DFA22C"/>
+                      <path d="M27 130 A62 62 0 0 1 141 130" fill="#C0551E"/>
+                      <circle cx="84" cy="76" r="27" fill="#3E2A1C"/>
+                      <path d="M34 144 C40 114, 60 100, 84 100 C108 100, 128 114, 134 144Z" fill="#3E2A1C"/>
+                    </g>
+                    <circle cx="84" cy="84" r="72" fill="none" stroke="#3E2A1C" stroke-width="2.5"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="E-doors">
+            <div class="E-door fam">
+              <h3>You’ve noticed something</h3>
+              <p>A toddler who isn’t talking, a child nobody outside the family can understand, a parent whose words have gone since the stroke, or meals that have started ending in coughing.</p>
+              <ul>
+                <li>No referral needed</li>
+                <li>Free fifteen-minute call first</li>
+                <li>NDIS, Medicare and private health</li>
+              </ul>
+              <a class="E-btn" href="#">Ring 0477 022 828</a>
+            </div>
+            <div class="E-door clin">
+              <h3>You’re referring a patient</h3>
+              <p>Referrals accepted from ENT, gastroenterology, neurology, paediatrics and general practice. Scope, turnaround and limits are published rather than negotiated case by case.</p>
+              <ul>
+                <li>HealthLink SW: OTELLASP, or scanned to email</li>
+                <li>Seen within 10 working days, report back within 5</li>
+                <li>One clinician — no triage queue, no handover</li>
+              </ul>
+              <a class="E-btn cool" href="#">Referral details and scope</a>
+            </div>
+          </div>
+
+          <div class="E-in" style="padding-top:70px">
+            <h2 class="E-h2">What I work with</h2>
+            <p class="E-sub">Written the way people describe it on the phone, with the clinical name beside it so a referrer can find their patient just as fast.</p>
+            <ul class="E-list">
+              <li>
+                <svg width="42" height="42" viewBox="0 0 46 46"><circle cx="23" cy="23" r="21" fill="#C0551E"/><path d="M12 30 A11 11 0 0 1 34 30" fill="none" stroke="#FCF6E9" stroke-width="4" stroke-linecap="round"/><circle cx="23" cy="14" r="3" fill="#FCF6E9"/></svg>
+                <div><b>Babies and toddlers who won’t eat</b><p>Gagging, refusing textures, a shrinking list of safe foods, or a bottle that takes an hour. Paediatric feeding difficulty and ARFID-pattern restriction.</p><span class="who">Gastro · paeds · ENT</span></div>
+              </li>
+              <li>
+                <svg width="42" height="42" viewBox="0 0 46 46"><circle cx="23" cy="23" r="21" fill="#DFA22C"/><path d="M13 17h20M13 23h20M13 29h12" stroke="#3E2A1C" stroke-width="3.4" stroke-linecap="round"/></svg>
+                <div><b>Nobody can understand my child</b><p>Speech sound disorder, including the ones that persist after grommets or a tongue-tie release.</p><span class="who">ENT · paeds · direct</span></div>
+              </li>
+              <li>
+                <svg width="42" height="42" viewBox="0 0 46 46"><circle cx="23" cy="23" r="21" fill="#6E7B45"/><path d="M14 14h18v18H14z" fill="none" stroke="#FCF6E9" stroke-width="3.2" stroke-linejoin="round"/><path d="M23 14v18" stroke="#FCF6E9" stroke-width="3.2"/></svg>
+                <div><b>First words, sentences and reading</b><p>Late talkers, language delay, and the phonics that works at school and falls apart at home.</p><span class="who">Direct · paeds</span></div>
+              </li>
+              <li>
+                <svg width="42" height="42" viewBox="0 0 46 46"><circle cx="23" cy="23" r="21" fill="#3E2A1C"/><path d="M13 29 A10 10 0 0 1 33 29M17 22 A6 6 0 0 1 29 22" fill="none" stroke="#DFA22C" stroke-width="3.2" stroke-linecap="round"/></svg>
+                <div><b>The words won’t come out</b><p>Aphasia and dysarthria after stroke or brain injury, and speech changes in Parkinson’s and MND.</p><span class="who">Neuro · GP</span></div>
+              </li>
+              <li>
+                <svg width="42" height="42" viewBox="0 0 46 46"><circle cx="23" cy="23" r="21" fill="#9DB2B2"/><path d="M18 13v11a5 5 0 0 0 10 0V13M23 24v9" fill="none" stroke="#3E2A1C" stroke-width="3.2" stroke-linecap="round"/></svg>
+                <div><b>Food going down the wrong way</b><p>Adult dysphagia — coughing at meals, food sticking, weight loss, repeated chest infections. Assessment, diet and fluid levels, and training for whoever helps at mealtimes.</p><span class="who">Gastro · neuro · ENT</span></div>
+              </li>
+              <li>
+                <svg width="42" height="42" viewBox="0 0 46 46"><circle cx="23" cy="23" r="21" fill="#C0551E"/><path d="M13 23h4l3-8 5 16 3-8h5" fill="none" stroke="#FCF6E9" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div><b>A voice that has changed</b><p>Hoarseness, vocal fatigue and post-operative voice work, on referral once the larynx has been looked at.</p><span class="who">ENT</span></div>
+              </li>
+              <li>
+                <svg width="42" height="42" viewBox="0 0 46 46"><circle cx="23" cy="23" r="21" fill="#DFA22C"/><path d="M23 12v22M16 18l7-6 7 6" fill="none" stroke="#3E2A1C" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div><b>A voice that matches who you are</b><p>Gender-affirming voice and communication training — pitch, resonance and everything around them, at whatever pace suits you. No diagnosis or letter needed to start.</p><span class="who">ENT · endocrinology · GP · direct</span></div>
+              </li>
+              <li>
+                <svg width="42" height="42" viewBox="0 0 46 46"><circle cx="23" cy="23" r="21" fill="#6E7B45"/><path d="M13 23h4l3-8 5 16 3-8h5" fill="none" stroke="#FCF6E9" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div><b>Stuttering</b><p>In children, where early intervention does the most work, and in adults who have never been given much say in how it is managed.</p><span class="who">Direct · paeds · GP</span></div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="E-ref">
+            <div class="E-in">
+              <h2>For referring clinicians</h2>
+              <p class="lead">Everything a registrar needs before deciding where to send someone, on one screen, so nobody has to ring the rooms to find out whether I take this.</p>
+              <table>
+                <tr><th>Item</th><th>Detail</th></tr>
+                <tr><td>Accepting from</td><td>ENT, gastroenterology, neurology, paediatrics, geriatrics, general practice. Families may also self-refer.</td></tr>
+                <tr><td>How to send</td><td>HealthLink SW: OTELLASP, secure messaging, or scanned to laura@otellaspeech.com.au. Include the clinic letter and any imaging or endoscopy report.</td></tr>
+                <tr><td>Turnaround</td><td>Patient contacted within two working days. Assessed within ten. Written correspondence back to you within five days of assessment.</td></tr>
+                <tr><td>Where</td><td>Rooms in Umina Beach; home and residential care visits from Gosford to Killcare; telehealth for review and carer training.</td></tr>
+                <tr><td>Funding</td><td>NDIS, Home Care Packages, DVA, Medicare CDM, private health. Fee schedule on request.</td></tr>
+              </table>
+              <div class="limits">
+                <b>What I don’t do</b>
+                <p>No instrumental assessment. If a patient needs videofluoroscopy or FEES to answer the question, I will say so in the first letter and send them back to you rather than working around it for six weeks. Same for anything needing a laryngeal view before voice therapy, and for tracheostomy or ventilated patients.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="E-in" style="padding-top:70px">
+            <h2 class="E-h2">How I work</h2>
+            <p class="E-sub">Four things, and they’re the same whether you came from a specialist or found me on a noticeboard.</p>
+            <ol class="E-how">
+              <li><div><b>You get me</b><p>Same clinician every session, for as long as you’re coming. No rotating therapists, no handover when someone goes on leave.</p></div></li>
+              <li><div><b>The first call is free</b><p>Fifteen minutes on the phone. Some of those calls end with me saying you don’t need me yet.</p></div></li>
+              <li><div><b>Two things, not twenty</b><p>You leave each session with a short written note and two things to practise. Enough to matter, small enough to actually do.</p></div></li>
+              <li><div><b>The goal is to finish</b><p>I’ll tell you when we’re done, and I’ll tell your referrer why. I don’t keep people on the books because the slot is filled.</p></div></li>
+            </ol>
+          </div>
+
+          <div class="E-in" style="padding-top:70px">
+            <div class="E-incl">
+              <div style="display:flex;justify-content:center">
+                <svg width="200" height="200" viewBox="0 0 168 168" role="img" aria-label="All welcome here decal">
+                  <defs>
+                    
+                    <clipPath id="eclip3"><circle cx="84" cy="84" r="57"/></clipPath>
+                  </defs>
+                  <circle cx="84" cy="84" r="79" fill="#FCF6E9" stroke="#3E2A1C" stroke-width="3"/>
+                  
+                  <g clip-path="url(#eclip3)" transform="translate(84,84) scale(1.263) translate(-84,-84)">
+                    <rect x="27" y="27" width="114" height="19" fill="#B8412A"/>
+                    <rect x="27" y="46" width="114" height="19" fill="#D9782E"/>
+                    <rect x="27" y="65" width="114" height="19" fill="#DFA22C"/>
+                    <rect x="27" y="84" width="114" height="19" fill="#6E7B45"/>
+                    <rect x="27" y="103" width="114" height="19" fill="#4A6E8A"/>
+                    <rect x="27" y="122" width="114" height="19" fill="#6B4A7A"/>
+                    <path d="M27 27 L27 141 L62 84 Z" fill="#7FC3E8"/>
+                    <path d="M27 45 L27 123 L51 84 Z" fill="#E8A0B8"/>
+                    <path d="M27 63 L27 105 L40 84 Z" fill="#FCF6E9"/>
+                    <g transform="translate(84,84) scale(1.096) translate(-60,-60)">
+                      <defs><clipPath id="sw9"><circle cx="60" cy="60" r="52"/></clipPath></defs><g clip-path="url(#sw9)"><g transform="translate(60,60) scale(0.1925) translate(-688.5,-402.15)"><g transform="translate(0,784) scale(.05,-.05)" stroke-linejoin="round"><path fill="#3E2A1C" stroke="#3E2A1C" stroke-width="24" d="M9785 13245 c-571 -84 -1026 -388 -1338 -895 -114 -186 -232 -554
+-257 -800 -17 -174 -18 -5373 -1 -5394 20 -24 36 -20 63 17 54 70 420 482 592
+667 648 694 690 765 921 1565 287 995 584 1655 947 2105 486 603 1210 1044
+1975 1204 413 87 1005 102 1399 36 252 -43 638 -143 827 -215 91 -35 107 -46
+145 -101 10 -15 26 -19 80 -19 190 -1 816 -379 1062 -642 222 -238 491 -692
+502 -846 1 -26 7 -37 22 -40 666 -158 1164 -344 1407 -527 65 -49 103 -97 91
+-117 -12 -18 -91 -54 -125 -56 -18 -1 -35 -6 -39 -12 -4 -6 -8 -1 -9 10 -1 16
+-2 15 -8 -5 -6 -23 -28 -32 -223 -97 -350 -116 -917 -273 -1048 -289 -59 -7
+-90 -26 -90 -55 0 -23 -93 -201 -212 -408 -268 -464 -401 -719 -501 -961 -51
+-123 -67 -174 -128 -400 -30 -110 -36 -319 -14 -487 9 -73 14 -142 10 -153 -4
+-13 -1 -28 8 -38 8 -9 22 -48 31 -87 9 -38 41 -155 71 -260 135 -475 208 -912
+171 -1024 -5 -15 -5 -21 2 -17 16 9 22 -28 33 -214 36 -560 -45 -1241 -217
+-1837 -83 -288 -265 -752 -318 -812 -11 -13 -16 -21 -9 -17 6 3 14 2 18 -3 8
+-13 1908 -13 2075 -1 733 57 1403 620 1595 1341 72 272 66 -96 67 4254 0 2140
+-2 3910 -6 3935 -4 25 -16 86 -26 135 -10 50 -21 110 -25 135 -10 76 -93 307
+-155 430 -267 533 -764 897 -1350 988 -145 22 -7864 29 -8015 7z"/></g><circle cx="687.22" cy="285.20" r="27" fill="#FCF6E9"/></g></g>
+                    </g>
+                  </g>
+                  <circle cx="84" cy="84" r="72" fill="none" stroke="#3E2A1C" stroke-width="2.5"/>
+                </svg>
+              </div>
+              <div>
+                <h2>You won’t have to explain yourself</h2>
+                <p>Some of this needs saying plainly, rather than being left for you to work out from a sticker on the door.</p>
+                <ul>
+                  <li><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#C0551E"/></svg><span>The name and pronouns you use go on my file, in my notes, and in every letter I write about you — whatever your Medicare card says. Your legal name sits in one field for billing and nowhere else.</span></li>
+                  <li><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#DFA22C"/></svg><span>Gender-affirming voice work is a service I offer, not a favour I’ll consider. You don’t need a diagnosis, a letter, or anyone’s permission to book it.</span></li>
+                  <li><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#6E7B45"/></svg><span>Aboriginal and Torres Strait Islander families are welcome, and I’ll work alongside your Aboriginal health worker or hospital liaison officer if you’d like. Interpreters are arranged at no cost to you.</span></li>
+                  <li><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#9DB2B2"/></svg><span>Bring whoever you want into the room. Partner, parent, support worker, or a friend who does the talking on hard days.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="E-in" style="padding-top:70px">
+            <div class="E-me">
+              <div style="display:flex;justify-content:center">
+                <svg width="290" height="290" viewBox="0 0 200 200">
+                  <defs><clipPath id="eclip2"><rect x="8" y="8" width="184" height="184" rx="32"/></clipPath></defs>
+                  <rect x="8" y="8" width="184" height="184" rx="32" fill="#6E7B45" stroke="#3E2A1C" stroke-width="3"/>
+                  <g clip-path="url(#eclip2)">
+                    <path d="M8 152 A70 70 0 0 1 148 152" fill="#DFA22C"/>
+                    <path d="M30 152 A48 48 0 0 1 126 152" fill="#C0551E"/>
+                    <circle cx="132" cy="50" r="19" fill="#F1E4CB"/>
+                    <circle cx="78" cy="112" r="29" fill="#3E2A1C"/>
+                    <path d="M20 192 C26 153 48 138 78 138 C108 138 130 153 136 192Z" fill="#3E2A1C"/>
+                  </g>
+                </svg>
+              </div>
+              <div>
+                <h2 class="E-h2">A bit about me</h2>
+                <p>I trained in Sydney and came up here in 2013 for what was meant to be a couple of years. Schools, early intervention, and six years on the wards at Gosford covering acute stroke and the head and neck list — which is where most of the swallowing work comes from.</p>
+                <p>Three kids of my own, two of whom have been through therapy themselves, which is how I know exactly how much homework a tired parent can realistically do on a Wednesday night.</p>
+                <ul class="E-facts">
+                  <li>Certified Practising Speech Pathologist</li>
+                  <li>Speech Pathology Australia</li>
+                  <li>NDIS registered</li>
+                  <li>Hanen trained</li>
+                  <li>SOS Approach to Feeding</li>
+                  <li>Working with Children Check</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="E-in" style="padding-top:70px">
+            <div class="E-money">
+              <div>
+                <h3>What it costs</h3>
+                <table>
+                  <tr><td>First phone call</td><td>Free</td></tr>
+                  <tr><td>Assessment and written report</td><td>$310</td></tr>
+                  <tr><td>Session, 45 minutes</td><td>$195</td></tr>
+                  <tr><td>Home or facility visit</td><td>$250</td></tr>
+                </table>
+                <p class="note">Indicative only, confirmed in writing before we start. If the assessment fee is the thing stopping you, say so — we can split it.</p>
+              </div>
+              <div>
+                <h3>Help paying</h3>
+                <ul>
+                  <li>NDIS, self-managed or plan-managed</li>
+                  <li>Medicare, with a care plan from your GP — five sessions a year</li>
+                  <li>Private health extras</li>
+                  <li>Home Care Packages and DVA</li>
+                </ul>
+                <p class="note">Not sure which of these you’re eligible for? Most people aren’t. Ask on the first call — sorting it out is part of the job.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="E-foot">
+            <div class="E-in">
+              <div class="cols">
+                <div>
+                  <svg width="249" height="74" viewBox="0 0 424 126"><g transform="translate(2,3)"><circle cx="60" cy="60" r="52" fill="#ECDFCD" stroke="#3E2A1C" stroke-width="3.5"/><defs><clipPath id="sw10"><circle cx="60" cy="60" r="52"/></clipPath></defs><g clip-path="url(#sw10)"><g transform="translate(60,60) scale(0.1925) translate(-688.5,-402.15)"><g transform="translate(0,784) scale(.05,-.05)" stroke-linejoin="round">
+<path fill="#ecdfcd" stroke="#ecdfcd" stroke-width="24" d="M9785 13245 c-571 -84 -1026 -388 -1338 -895 -114 -186 -232 -554
+-257 -800 -17 -174 -18 -5373 -1 -5394 20 -24 36 -20 63 17 54 70 420 482 592
+667 648 694 690 765 921 1565 287 995 584 1655 947 2105 486 603 1210 1044
+1975 1204 413 87 1005 102 1399 36 252 -43 638 -143 827 -215 91 -35 107 -46
+145 -101 10 -15 26 -19 80 -19 190 -1 816 -379 1062 -642 222 -238 491 -692
+502 -846 1 -26 7 -37 22 -40 666 -158 1164 -344 1407 -527 65 -49 103 -97 91
+-117 -12 -18 -91 -54 -125 -56 -18 -1 -35 -6 -39 -12 -4 -6 -8 -1 -9 10 -1 16
+-2 15 -8 -5 -6 -23 -28 -32 -223 -97 -350 -116 -917 -273 -1048 -289 -59 -7
+-90 -26 -90 -55 0 -23 -93 -201 -212 -408 -268 -464 -401 -719 -501 -961 -51
+-123 -67 -174 -128 -400 -30 -110 -36 -319 -14 -487 9 -73 14 -142 10 -153 -4
+-13 -1 -28 8 -38 8 -9 22 -48 31 -87 9 -38 41 -155 71 -260 135 -475 208 -912
+171 -1024 -5 -15 -5 -21 2 -17 16 9 22 -28 33 -214 36 -560 -45 -1241 -217
+-1837 -83 -288 -265 -752 -318 -812 -11 -13 -16 -21 -9 -17 6 3 14 2 18 -3 8
+-13 1908 -13 2075 -1 733 57 1403 620 1595 1341 72 272 66 -96 67 4254 0 2140
+-2 3910 -6 3935 -4 25 -16 86 -26 135 -10 50 -21 110 -25 135 -10 76 -93 307
+-155 430 -267 533 -764 897 -1350 988 -145 22 -7864 29 -8015 7z"/>
+<path fill="#11323b" stroke="#11323b" stroke-width="24" d="M13320 11784 c-906 -53 -1621 -340 -2246 -902 -618 -556 -933 -1188
+-1396 -2802 -25 -86 -115 -314 -159 -402 -115 -230 -196 -333 -614 -783 -374
+-402 -698 -774 -715 -821 -14 -36 -13 -2235 0 -2378 70 -738 556 -1352 1256
+-1585 206 -69 295 -80 742 -92 393 -10 393 -10 442 17 28 15 53 38 60 53 6 14
+51 62 101 106 50 44 180 171 289 282 952 972 1394 1831 1332 2590 -72 893
+-637 1380 -1692 1458 -131 10 -159 23 -160 71 0 50 243 181 570 307 148 57
+221 81 451 148 88 25 88 28 20 182 -335 759 -181 1363 427 1667 273 136 477
+166 1064 155 396 -7 396 -7 441 34 64 59 64 72 3 104 -521 274 -454 1044 106
+1222 560 177 1051 -404 790 -935 -47 -96 -177 -230 -269 -279 -72 -37 -73 -38
+-35 -74 71 -69 270 -62 612 19 58 14 128 29 155 34 28 5 84 20 125 34 41 15
+116 36 165 47 50 11 113 30 140 41 28 11 68 26 90 33 238 77 265 89 307 137
+63 73 52 116 -72 277 -160 207 -407 429 -583 525 -338 185 -950 349 -1066 287
+-31 -17 -66 -13 -86 9 -10 11 -24 20 -32 20 -29 0 -64 48 -57 77 19 79 122
+225 225 317 169 154 442 280 802 374 197 51 216 63 171 113 -66 73 -730 251
+-1102 294 -125 15 -481 26 -602 19z"/>
+<path fill="#c0541a" stroke="#c0541a" stroke-width="24" d="M14920 11369 c-498 -129 -768 -266 -952 -483 -133 -156 -165 -245
+-99 -278 18 -9 43 -26 55 -37 22 -20 24 -20 70 -5 187 64 864 -136 1178 -347
+238 -160 614 -575 594 -655 -8 -32 3 -54 26 -54 12 0 38 -5 59 -11 50 -16 87
+-3 358 122 291 134 462 228 480 264 50 102 -236 613 -498 887 -206 217 -583
+466 -914 603 -127 52 -135 52 -357 -6z M14735 9139 c-145 -34 -284 -56 -426
+-65 -117 -7 -128 -4 -193 53 -28 26 -44 33 -60 29 -159 -47 -237 -47 -443 1
+-15 4 -23 1 -23 -8 -1 -18 -39 -61 -76 -85 -27 -18 -56 -19 -504 -19 -413 0
+-487 -2 -565 -18 -1050 -205 -1316 -1108 -637 -2157 88 -136 127 -188 286
+-380 203 -246 327 -365 921 -886 176 -154 378 -334 449 -400 71 -65 143 -131
+160 -145 38 -33 404 -429 510 -554 316 -369 521 -685 707 -1088 79 -171 92
+-186 138 -163 311 161 881 974 1001 1426 22 83 81 204 113 231 62 53 -3 507
+-142 991 -27 95 -59 211 -71 258 -29 119 -33 126 -73 134 -19 4 -46 15 -60 26
+-31 25 -239 103 -357 135 -145 38 -262 49 -439 40 -542 -29 -705 8 -920 210
+-235 220 -157 592 196 936 188 184 658 547 903 699 396 245 925 428 1240 430
+70 0 99 25 66 55 -30 28 -24 26 -201 64 -268 58 -696 131 -766 131 -38 0 -115
+11 -172 24 -56 13 -136 27 -177 30 -115 10 -148 22 -172 62 -25 43 -46 43
+-213 3z"/>
+<path fill="#cb985f" stroke="#cb985f" stroke-width="24" d="M11649 7072 c-13 -10 -77 -33 -142 -51 -296 -81 -836 -305 -914 -380
+-66 -63 -19 -96 157 -111 444 -37 803 -149 1088 -342 524 -354 725 -1134 487
+-1887 -202 -636 -787 -1437 -1568 -2148 -68 -62 -68 -62 -54 -95 13 -33 13
+-33 723 -41 1007 -11 4162 -1 4180 14 36 29 169 351 264 638 216 652 311 1348
+276 2035 -7 141 -11 171 -26 186 -14 14 -15 21 -7 31 7 6 0 4 -16 -7 -30 -21
+-88 -134 -114 -224 -125 -437 -554 -1086 -899 -1360 -151 -120 -146 -121 -243
+87 -186 403 -391 719 -707 1088 -106 125 -472 521 -510 554 -17 14 -89 80
+-160 145 -71 66 -273 246 -449 400 -386 339 -613 545 -721 657 -212 221 -497
+596 -588 777 -30 60 -26 57 -57 34z"/>
+<path fill="#a6461c" stroke="#a6461c" stroke-width="24" d="M15435 9990 c55 -55 102 -100 105 -100 2 0 -40 45 -95 100 -55 55
+-102 100 -105 100 -2 0 40 -45 95 -100z M12783 9053 c37 -2 97 -2 135 0 37 2
+6 3 -68 3 -74 0 -105 -1 -67 -3z M16448 8798 c-21 -23 -34 -28 -74 -28 -318
+-2 -847 -184 -1244 -430 -245 -152 -715 -515 -903 -699 -353 -344 -431 -716
+-196 -936 215 -202 378 -239 920 -210 177 9 294 -2 439 -40 118 -32 326 -110
+357 -135 73 -57 91 -13 69 172 -27 232 -16 387 37 563 14 44 32 107 42 140 57
+198 232 556 507 1035 292 510 311 553 242 565 -22 4 -69 13 -105 19 -65 12
+-65 12 -91 -16z"/>
+<path fill="#cdb590" stroke="#cdb590" stroke-width="24" d="M16686 9873 c-10 -32 -344 -202 -661 -338 -114 -48 -117 -49 -226
+-30 -34 6 -39 4 -72 -37 -26 -32 -49 -48 -79 -57 -24 -7 -54 -20 -67 -28 -13
+-8 -64 -26 -112 -39 -49 -13 -100 -30 -112 -39 -13 -8 -65 -24 -115 -35 -153
+-32 -291 -80 -298 -102 -15 -48 56 -82 196 -93 78 -6 88 -3 106 30 16 29 42
+32 384 44 173 7 405 19 515 27 322 23 1080 55 1486 61 374 6 376 6 391 -15 31
+-45 81 -47 159 -7 65 34 53 68 -50 145 -221 166 -625 326 -1191 472 -253 65
+-247 64 -254 41z M8175 4790 c0 -520 1 -732 2 -472 2 259 2 685 0 945 -1 259
+-2 47 -2 -473z M16153 4550 c0 -41 2 -58 4 -37 2 20 2 54 0 75 -2 20 -4 3 -4
+-38z M16153 4255 c0 -44 2 -61 4 -37 2 23 2 59 0 80 -2 20 -4 1 -4 -43z
+M10993 2013 c141 -2 373 -2 515 0 141 1 25 2 -258 2 -283 0 -399 -1 -257 -2z
+M14713 2013 c147 -2 387 -2 535 0 147 1 26 2 -268 2 -294 0 -415 -1 -267 -2z"/>
+<path fill="#ac8d66" stroke="#ac8d66" stroke-width="24" d="M16893 9214 c-293 -12 -594 -27 -670 -33 -161 -13 -436 -27 -718 -37
+-217 -8 -243 -11 -259 -37 -28 -44 72 -84 216 -86 111 -1 824 -133 954 -176
+103 -34 281 -57 356 -45 190 29 1103 288 1245 353 27 12 29 34 7 65 -21 30
+-364 29 -1131 -4z M12423 4930 c0 -41 2 -58 4 -37 2 20 2 54 0 75 -2 20 -4 3
+-4 -38z"/>
+</g><circle cx="692.09" cy="294.85" r="33.08" fill="#8a735a"/><circle cx="691.96" cy="294.67" r="26.40" fill="#2f3030"/><circle cx="687.22" cy="285.20" r="11.33" fill="#f0eee0"/></g></g><circle cx="60" cy="60" r="52" fill="none" stroke="#3E2A1C" stroke-width="3.5"/></g><text x="132" y="71" font-family="Fraunces,Georgia,serif" font-weight="700" font-size="58" textLength="276" lengthAdjust="spacing" fill="#3E2A1C">OTELLA</text><text x="132" y="95" font-family="Fraunces,Georgia,serif" font-weight="600" font-size="16" textLength="276" lengthAdjust="spacing" fill="#C0551E">SPEECH + SWALLOW</text></svg>
+                </div>
+                <div><b>Where to find me</b>12 West Street<br>Umina Beach NSW 2257<br>Parking out the back</div>
+                <div><b>Getting in touch</b>Tuesday to Friday, 8am–4pm<br>0477 022 828<br>laura@otellaspeech.com.au<br>HealthLink SW: OTELLASP</div>
+              </div>
+              <div class="fine">I work on Darkinjung land, and I pay respect to Elders past and present. This has always been a place where people met and talked, and sovereignty was never ceded.<br>ABN 00 000 000 000 · If someone is choking, or speech or swallowing has changed suddenly, ring 000 — this page isn’t for emergencies.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <p class="caption">The stated position sits after the four promises and before the personal section, in the warm register rather than the clinical one, because it is addressed to patients and not to referrers. The decal is now wordless — stripes, chevron and bird, no ring text — so it reads at a glance from the footpath and needs no reprint if the wording ever changes. It is deliberately a separate artefact from the logo: the mark stays clinical for correspondence, and the loud version goes on the door and the window, which is where people actually check before walking in.</p>
+    <p class="caption">The two doors sit directly under the hero, above everything else, and are the only place on the page where the palette flips cold. A parent and a registrar both land on the same URL and are sorted in one second without either being made to read the other’s copy. The service list then carries a small olive tag naming the pathway each item usually arrives by, which is a detail for referrers that costs a family nothing to ignore.</p>
+  </div>
+
+</div>
+</section>
+
+</body>
+</html>

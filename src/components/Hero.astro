@@ -1,0 +1,26 @@
+---
+import { Image } from 'astro:assets';
+import portrait from '../assets/laura-hero.jpg';
+import { PHONE, PHONE_TEL, EMAIL } from '../data/contact.js';
+---
+<div class="E-hero">
+  <div class="E-in">
+    <div class="grid">
+      <div>
+        <h1>Talking and eating.</h1>
+        <p>The two things nobody thinks about until they stop working.</p>
+        <p style="font-size:19px;color:rgba(62,42,28,.78)">I'm Laura. I see children and adults in Umina Beach: feeding and speech from the first year, swallowing and communication after a stroke, a diagnosis or an operation. It's just me, so you get the same person every time.</p>
+        <div class="row">
+          <a class="E-btn" href={`tel:${PHONE_TEL}`}>Ring {PHONE}</a>
+          <a class="E-btn alt" href={`mailto:${EMAIL}`}>Send me a note</a>
+          <span style="font-size:16px;color:rgba(62,42,28,.72)">First call is free. About three weeks to an appointment.</span>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:center">
+        <div class="E-portrait">
+          <Image src={portrait} width={780} height={780} quality={90} alt="Laura, speech pathologist at Otella Speech + Swallow" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

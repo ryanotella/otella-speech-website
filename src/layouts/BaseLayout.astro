@@ -1,17 +1,34 @@
 ---
-const { title = 'Otella Speech + Swallow' } = Astro.props;
+import '../styles/reset.css';
+import '../styles/palette.css';
+import '../styles/site.css';
+
+const {
+  title = 'Otella Speech + Swallow: speech pathology, Umina Beach',
+  description = "Speech pathology and swallowing care in Umina Beach for children and adults: feeding, speech, language, voice and stuttering, and adult dysphagia after stroke or surgery. Direct bookings and specialist referrals.",
+} = Astro.props;
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#F1E4CB" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,400..700&family=Nunito+Sans:ital,wght@0,300..800;1,400..700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="kE">
+  <a class="E-skip" href="#main">Skip to content</a>
+  <div class="E-construction">Under construction — this site is a work in progress.</div>
   <slot />
-  <footer>
-    <p>&copy; {new Date().getFullYear()} Otella Speech + Swallow</p>
-  </footer>
 </body>
 </html>

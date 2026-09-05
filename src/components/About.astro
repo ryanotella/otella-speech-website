@@ -1,0 +1,29 @@
+---
+import { Image } from 'astro:assets';
+import portrait from '../assets/laura-about-me.jpg';
+const facts = [
+  'Certified Practising Speech Pathologist',
+  'Speech Pathology Australia',
+  'NDIS registered',
+  'Hanen trained',
+  'SOS Approach to Feeding',
+  'Working with Children Check',
+];
+---
+<div class="E-in" style="padding-top:70px">
+  <div class="E-me">
+    <div style="display:flex;justify-content:center">
+      <div class="E-portrait-sq">
+        <Image src={portrait} width={580} height={580} quality={90} alt="Laura, speech pathologist at Otella Speech + Swallow" loading="eager" />
+      </div>
+    </div>
+    <div>
+      <h2 class="E-h2">A bit about me</h2>
+      <p>I trained in Sydney and came up here in 2013 for what was meant to be a couple of years. Schools, early intervention, and six years on the wards at Gosford covering acute stroke and the head and neck list, which is where most of the swallowing work comes from.</p>
+      <p>Three kids of my own, two of whom have been through therapy themselves, which is how I know exactly how much homework a tired parent can realistically do on a Wednesday night.</p>
+      <ul class="E-facts">
+        {facts.map((f) => <li>{f}</li>)}
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,29 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import TopNav from '../components/TopNav.astro';
+import Hero from '../components/Hero.astro';
+import Doors from '../components/Doors.astro';
+import ServiceList from '../components/ServiceList.astro';
+import HowIWork from '../components/HowIWork.astro';
+import InclusionPanel from '../components/InclusionPanel.astro';
+import About from '../components/About.astro';
+import Acknowledgement from '../components/Acknowledgement.astro';
+import Fees from '../components/Fees.astro';
+import Footer from '../components/Footer.astro';
 ---
-<BaseLayout title="Otella Speech">
-  <h1>Otella Speech</h1>
+<BaseLayout>
+  <div class="E-site">
+    <TopNav />
+    <Hero />
+    <main id="main">
+      <Doors />
+      <ServiceList />
+      <HowIWork />
+      <InclusionPanel />
+      <About />
+      <Acknowledgement />
+      <Fees />
+    </main>
+    <Footer />
+  </div>
 </BaseLayout>

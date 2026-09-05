@@ -1,0 +1,72 @@
+---
+const services = [
+  {
+    fill: '#C0551E',
+    icon: '<path d="M12 30 A11 11 0 0 1 34 30" fill="none" stroke="#FCF6E9" stroke-width="4" stroke-linecap="round"/><circle cx="23" cy="14" r="3" fill="#FCF6E9"/>',
+    title: "Babies and toddlers who won't eat",
+    body: 'Gagging, refusing textures, a shrinking list of safe foods, or a bottle that takes an hour. Paediatric feeding difficulty and ARFID-pattern restriction.',
+    who: 'Gastro · paeds · ENT',
+  },
+  {
+    fill: '#DFA22C',
+    icon: '<path d="M13 17h20M13 23h20M13 29h12" stroke="#3E2A1C" stroke-width="3.4" stroke-linecap="round"/>',
+    title: 'Nobody can understand my child',
+    body: 'Speech sound disorder, including the ones that persist after grommets or a tongue-tie release.',
+    who: 'ENT · paeds · direct',
+  },
+  {
+    fill: '#6E7B45',
+    icon: '<path d="M14 14h18v18H14z" fill="none" stroke="#FCF6E9" stroke-width="3.2" stroke-linejoin="round"/><path d="M23 14v18" stroke="#FCF6E9" stroke-width="3.2"/>',
+    title: 'First words, sentences and reading',
+    body: 'Late talkers, language delay, and the phonics that works at school and falls apart at home.',
+    who: 'Direct · paeds',
+  },
+  {
+    fill: '#3E2A1C',
+    icon: '<path d="M13 29 A10 10 0 0 1 33 29M17 22 A6 6 0 0 1 29 22" fill="none" stroke="#DFA22C" stroke-width="3.2" stroke-linecap="round"/>',
+    title: "The words won't come out",
+    body: "Aphasia and dysarthria after stroke or brain injury, and speech changes in Parkinson's and MND.",
+    who: 'Neuro · GP',
+  },
+  {
+    fill: '#9DB2B2',
+    icon: '<path d="M18 13v11a5 5 0 0 0 10 0V13M23 24v9" fill="none" stroke="#3E2A1C" stroke-width="3.2" stroke-linecap="round"/>',
+    title: 'Food going down the wrong way',
+    body: 'Adult dysphagia: coughing at meals, food sticking, weight loss, repeated chest infections. Assessment, diet and fluid levels, and training for whoever helps at mealtimes.',
+    who: 'Gastro · neuro · ENT',
+  },
+  {
+    fill: '#C0551E',
+    icon: '<path d="M13 23h4l3-8 5 16 3-8h5" fill="none" stroke="#FCF6E9" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>',
+    title: 'A voice that has changed',
+    body: 'Hoarseness, vocal fatigue and post-operative voice work, on referral once the larynx has been looked at.',
+    who: 'ENT',
+  },
+  {
+    fill: '#DFA22C',
+    icon: '<path d="M23 12v22M16 18l7-6 7 6" fill="none" stroke="#3E2A1C" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>',
+    title: 'A voice that matches who you are',
+    body: 'Gender-affirming voice and communication training: pitch, resonance and everything around them, at whatever pace suits you. No diagnosis or letter needed to start.',
+    who: 'ENT · endocrinology · GP · direct',
+  },
+  {
+    fill: '#6E7B45',
+    icon: '<path d="M13 23h4l3-8 5 16 3-8h5" fill="none" stroke="#FCF6E9" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>',
+    title: 'Stuttering',
+    body: 'In children, where early intervention does the most work, and in adults who have never been given much say in how it is managed.',
+    who: 'Direct · paeds · GP',
+  },
+];
+---
+<div class="E-in" id="what-i-work-with" style="padding-top:70px">
+  <h2 class="E-h2">What I work with</h2>
+  <p class="E-sub">Written the way people describe it on the phone, with the clinical name beside it so a referrer can find their patient just as fast.</p>
+  <ul class="E-list">
+    {services.map((s) => (
+      <li>
+        <svg width="42" height="42" viewBox="0 0 46 46"><circle cx="23" cy="23" r="21" fill={s.fill} /><Fragment set:html={s.icon} /></svg>
+        <div><b>{s.title}</b><p>{s.body}</p><span class="who">{s.who}</span></div>
+      </li>
+    ))}
+  </ul>
+</div>

@@ -1,0 +1,27 @@
+---
+import { PHONE, PHONE_TEL } from '../data/contact.js';
+---
+<div class="E-in E-doors-band">
+  <div class="E-doors">
+    <div class="E-door fam">
+      <h2>You've noticed something</h2>
+      <p>A toddler who isn't talking, a child nobody outside the family can understand, a parent whose words have gone since the stroke, or meals that have started ending in coughing.</p>
+      <ul>
+        <li>No referral needed</li>
+        <li>Free fifteen-minute call first</li>
+        <li>NDIS, Medicare and private health</li>
+      </ul>
+      <a class="E-btn" href={`tel:${PHONE_TEL}`}>Ring {PHONE}</a>
+    </div>
+    <div class="E-door clin" id="for-referrers">
+      <h2>You're referring a patient</h2>
+      <p>Referrals accepted from ENT, gastroenterology, neurology, paediatrics and general practice. Scope, turnaround and limits are published rather than negotiated case by case.</p>
+      <ul>
+        <li>HealthLink SW: OTELLASP, or scanned to email</li>
+        <li>Seen within 10 working days, report back within 5</li>
+        <li>One clinician: no triage queue, no handover</li>
+      </ul>
+      <a class="E-btn cool" href="/referrers">Referral details and scope</a>
+    </div>
+  </div>
+</div>

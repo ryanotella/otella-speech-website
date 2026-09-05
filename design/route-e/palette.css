@@ -7,9 +7,11 @@
   --chalk:#9DB2B2;    /* Chalk — the ONLY cool colour in the system, reserved for clinical/referrer material */
   --wheat:#F1E4CB;    /* Wheat */
   --paper:#FCF6E9;    /* Paper */
-  --disp:"Fraunces",Georgia,serif;       /* Display / headline typeface */
+  --disp:"Fraunces",Georgia,serif;       /* Display / headline typeface — also the logotype wordmark face */
   --body:"Nunito Sans",system-ui,sans-serif; /* Body typeface */
-  /* Logotype-only typeface: Jost (Futura-like geometric sans), used ONLY inside the logo lockup, not in body copy */
+  /* Jost has no confirmed role in the design system. An earlier drafting pass used it for
+     the logotype; the canonical source (otella-speech-swallow-identity.html) sets the
+     OTELLA / SPEECH + SWALLOW wordmark in Fraunces everywhere. Don't reintroduce Jost. */
 }
 
 /* NOTE on crown colour: the final canonical swallow.svg asset (supplied separately,

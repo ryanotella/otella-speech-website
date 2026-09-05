@@ -1,0 +1,39 @@
+---
+import SwallowArt from './SwallowArt.astro';
+
+// Lockup "D1": mark 92px, gap 22px, "Otella" Fraunces 700 38px,
+// "SPEECH + SWALLOW" Nunito Sans 700 17px/.13em rust, line gap 3px.
+// Natural letter-spacing throughout, no textLength stretching.
+interface Props {
+  width?: number;
+  withWordmark?: boolean;
+}
+const { width = 220, withWordmark = true } = Astro.props;
+
+const R = 46;
+const SW = 3;
+const markCenter = R + SW / 2;
+const viewBoxHeight = 2 * R + SW;
+const gap = 22;
+const textX = viewBoxHeight + gap;
+const textBlockWidth = 214;
+const viewBoxWidth = withWordmark ? textX + textBlockWidth : viewBoxHeight;
+const height = Math.round(width * (viewBoxHeight / viewBoxWidth));
+const clipId = `logo-clip-${crypto.randomUUID()}`;
+---
+<svg width={width} height={height} viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`} role="img" aria-label="Otella Speech + Swallow">
+  <circle cx={markCenter} cy={markCenter} r={R} fill="#ECDFCD" stroke="#3E2A1C" stroke-width={SW}/>
+  <defs><clipPath id={clipId}><circle cx={markCenter} cy={markCenter} r={R}/></clipPath></defs>
+  <g clip-path={`url(#${clipId})`}>
+    <g transform={`translate(${markCenter},${markCenter}) scale(0.1703) translate(-688.5,-402.15)`}>
+      <SwallowArt mode="color" />
+    </g>
+  </g>
+  <circle cx={markCenter} cy={markCenter} r={R} fill="none" stroke="#3E2A1C" stroke-width={SW}/>
+  {withWordmark && (
+    <>
+      <text x={textX} y="48.3" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="38" fill="#3E2A1C" aria-hidden="true">Otella</text>
+      <text x={textX} y="77.8" font-family="Nunito Sans, system-ui, sans-serif" font-weight="700" font-size="17" letter-spacing="0.13em" fill="#C0551E" aria-hidden="true">SPEECH + SWALLOW</text>
+    </>
+  )}
+</svg>

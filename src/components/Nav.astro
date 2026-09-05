@@ -1,0 +1,15 @@
+---
+import Logo from './Logo.astro';
+import { PHONE_TEL } from '../data/contact.js';
+const isReferrers = Astro.url.pathname.startsWith('/referrers');
+---
+<nav class="E-nav">
+  <a href="/" aria-label="Otella Speech + Swallow, home"><Logo width={252} /></a>
+  <ul>
+    <li><a href="/#what-i-work-with">What I work with</a></li>
+    <li><a href="/#how-i-work">How I work</a></li>
+    <li><a href="/#fees">Fees</a></li>
+    <li><a href="/referrers" aria-current={isReferrers ? 'page' : undefined}>Referrers</a></li>
+    <li><a class="E-btn" href={`tel:${PHONE_TEL}`}>Ring me</a></li>
+  </ul>
+</nav>

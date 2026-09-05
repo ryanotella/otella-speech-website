@@ -1,5 +1,5 @@
 <!--
-  Route E — Otella Speech + Swallow — homepage markup fragment
+  Route E: Otella Speech + Swallow, homepage markup fragment
 
   NOTE: The <svg> logo/mark instances below use PLACEHOLDER hand-drawn bird
   paths from the pre-canonical-asset design pass. The FINAL brand uses a
@@ -7,11 +7,11 @@
   Welcome Swallow reference), integrated across 10 placements: primary
   lockup, roundel badge, nav, business card, letterhead, hero, footer,
   dark tile, door decal, and small-size (16px/24px) demos. That final
-  artwork is NOT included here — swap swallow.svg in manually.
+  artwork is NOT included here. Swap swallow.svg in manually.
 
   Derived variants needed from the final asset (documented in the other
   chat, not yet produced as separate files):
-    - Single-colour chocolate (#3E2A1C) silhouette, eye knocked out —
+    - Single-colour chocolate (#3E2A1C) silhouette, eye knocked out,
       used at 16px/24px, for stamps, embroidery, faxed correspondence
       (the 7-colour traced original doesn't reduce cleanly)
     - Dark-background variant: mark keeps its own light disc rather than
@@ -19,13 +19,22 @@
 
   Known deviation: canonical asset's crown colour is #11323B (outside
   palette). See palette.css for the rationale/fix.
+
+  CORRECTIONS applied after cross-checking against the canonical source
+  (otella-speech-swallow-identity.html), confirmed by the practice:
+    - Wordmark font-family below is Fraunces, not this file's original
+      Jost. Jost has no confirmed role in the design system, see
+      DESIGN-LANGUAGE-GUIDE.md §5.
+    - Phone number below is 0477 022 828, the confirmed/authoritative
+      number (matches src/data/contact.js in the live site), not this
+      file's original 0400 000 000 placeholder.
 -->
 <div class="site E-site">
 
   <div class="E-hero">
     <div class="E-in">
       <div class="E-nav">
-        <svg width="240" height="82" viewBox="0 0 368 126"><g transform="translate(2,3)"><circle cx="60" cy="60" r="52" fill="#FCF6E9" stroke="#3E2A1C" stroke-width="3.5"/><!-- PLACEHOLDER: replace with canonical swallow.svg, clipped to this circle --><path d="M26 92 C46 100, 76 94, 96 78" fill="none" stroke="#C0551E" stroke-width="5.5" stroke-linecap="round"/><path d="M46 76 C54 60, 70 46, 92 40 C84 58, 66 72, 50 80 Z" fill="#3E2A1C"/><path d="M62 58 C54 44, 42 34, 28 28 C42 40, 54 52, 66 60 Z" fill="#3E2A1C"/><path d="M48 74 L22 66 L44 82 Z" fill="#3E2A1C"/><path d="M48 78 L26 96 L52 82 Z" fill="#3E2A1C"/></g><text x="132" y="52" font-family="Jost,Futura,sans-serif" font-weight="700" font-size="40" letter-spacing="-1.3" fill="#3E2A1C">OTELLA</text><text x="132" y="83" font-family="Jost,Futura,sans-serif" font-weight="500" font-size="21" letter-spacing="3.4" fill="#C0551E">SPEECH + SWALLOW</text><text x="133" y="106" font-family="Nunito Sans,sans-serif" font-weight="700" font-size="14" letter-spacing=".2" fill="#6E7B45">Laura Otella · Umina Beach</text></svg>
+        <svg width="240" height="82" viewBox="0 0 368 126"><g transform="translate(2,3)"><circle cx="60" cy="60" r="52" fill="#FCF6E9" stroke="#3E2A1C" stroke-width="3.5"/><!-- PLACEHOLDER: replace with canonical swallow.svg, clipped to this circle --><path d="M26 92 C46 100, 76 94, 96 78" fill="none" stroke="#C0551E" stroke-width="5.5" stroke-linecap="round"/><path d="M46 76 C54 60, 70 46, 92 40 C84 58, 66 72, 50 80 Z" fill="#3E2A1C"/><path d="M62 58 C54 44, 42 34, 28 28 C42 40, 54 52, 66 60 Z" fill="#3E2A1C"/><path d="M48 74 L22 66 L44 82 Z" fill="#3E2A1C"/><path d="M48 78 L26 96 L52 82 Z" fill="#3E2A1C"/></g><text x="132" y="52" font-family="Fraunces,Georgia,serif" font-weight="700" font-size="40" letter-spacing="-1.3" fill="#3E2A1C">OTELLA</text><text x="132" y="83" font-family="Fraunces,Georgia,serif" font-weight="500" font-size="21" letter-spacing="3.4" fill="#C0551E">SPEECH + SWALLOW</text><text x="133" y="106" font-family="Nunito Sans,sans-serif" font-weight="700" font-size="14" letter-spacing=".2" fill="#6E7B45">Laura Otella · Umina Beach</text></svg>
         <ul>
           <li>What I work with</li><li>How I work</li><li>Fees</li>
           <li><a class="E-btn cool" href="#">For referrers</a></li>
@@ -38,7 +47,7 @@
           <p>The two things nobody thinks about until they stop working.</p>
           <p style="font-size:19px;color:rgba(62,42,28,.78)">I’m Laura. I see children and adults in Umina Beach — feeding and speech from the first year, swallowing and communication after a stroke, a diagnosis or an operation. It’s just me, so you get the same person every time.</p>
           <div class="row">
-            <a class="E-btn" href="#">Ring 0400 000 000</a>
+            <a class="E-btn" href="#">Ring 0477 022 828</a>
             <a class="E-btn alt" href="#">Send me a note</a>
             <span style="font-size:16px;color:rgba(62,42,28,.72)">First call is free. About three weeks to an appointment.</span>
           </div>
@@ -56,7 +65,7 @@
         <li>Free fifteen-minute call first</li>
         <li>NDIS, Medicare and private health</li>
       </ul>
-      <a class="E-btn" href="#">Ring 0400 000 000</a>
+      <a class="E-btn" href="#">Ring 0477 022 828</a>
     </div>
     <div class="E-door clin">
       <h3>You’re referring a patient</h3>
@@ -161,7 +170,7 @@
       <div class="cols">
         <div><!-- footer logo lockup, same SVG as nav --></div>
         <div><b>Where to find me</b>12 West Street<br>Umina Beach NSW 2257<br>Parking out the back</div>
-        <div><b>Getting in touch</b>Tuesday to Friday, 8am–4pm<br>0400 000 000<br>laura@otellaspeech.com.au<br>HealthLink SW: OTELLASP</div>
+        <div><b>Getting in touch</b>Tuesday to Friday, 8am–4pm<br>0477 022 828<br>laura@otellaspeech.com.au<br>HealthLink SW: OTELLASP</div>
       </div>
       <div class="fine">ABN 00 000 000 000 · I work on Darkinjung land. · If someone is choking, or speech or swallowing has changed suddenly, ring 000 — this page isn’t for emergencies.</div>
     </div>

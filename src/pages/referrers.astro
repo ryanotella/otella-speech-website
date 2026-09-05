@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TopNav from '../components/TopNav.astro';
+import ReferrerSection from '../components/ReferrerSection.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout
+  title="Referral details and scope: Otella Speech + Swallow"
+  description="What Otella Speech + Swallow accepts, how to send a referral, turnaround times and published scope limits, for ENT, gastroenterology, neurology, paediatrics and general practice."
+>
+  <div class="E-site">
+    <TopNav />
+    <div class="E-hero">
+      <div class="E-in">
+        <div class="E-ref-hero">
+          <h1>Referral details and scope</h1>
+          <p>What I accept, how to send it, turnaround times, and where the line sits, on one screen, so nobody has to ring the rooms to find out.</p>
+        </div>
+      </div>
+    </div>
+    <main id="main">
+      <ReferrerSection />
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>
