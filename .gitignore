@@ -4,3 +4,4 @@ dist
 .astro
 .terragrunt-cache/
 .DS_Store
+.playwright-mcp
