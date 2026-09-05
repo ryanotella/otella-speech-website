@@ -1,13 +1,13 @@
 ---
 import Logo from './Logo.astro';
-import { PHONE, PHONE_TEL, EMAIL, HEALTHLINK, ADDRESS_LINE1, ADDRESS_LINE2, ABN, HOURS } from '../data/contact.js';
+import { PHONE, PHONE_TEL, EMAIL, ADDRESS_LINE2, ABN, HOURS } from '../data/contact.js';
 ---
 <footer class="E-foot">
   <div class="E-in">
     <div class="cols">
       <div class="brand"><Logo width={252} /></div>
-      <div><b>Where to find me</b>{ADDRESS_LINE1}<br />{ADDRESS_LINE2}<br />Parking out the back</div>
-      <div><b>Getting in touch</b>{HOURS}<br /><a href={`tel:${PHONE_TEL}`}>{PHONE}</a><br /><a href={`mailto:${EMAIL}`}>{EMAIL}</a><br />HealthLink SW: {HEALTHLINK}</div>
+      <div><b>Where to find me</b>{ADDRESS_LINE2}<br />Parking out the back</div>
+      <div><b>Getting in touch</b>{HOURS}<br /><a href={`tel:${PHONE_TEL}`}>{PHONE}</a><br /><a href={`mailto:${EMAIL}`}>{EMAIL}</a></div>
     </div>
     <div class="fine">
       <p>ABN {ABN}</p>
