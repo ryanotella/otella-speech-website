@@ -1,6 +1,7 @@
 ---
 import Logo from './Logo.astro';
 import { PHONE, PHONE_TEL, EMAIL, ADDRESS_LINE2, ABN, HOURS } from '../data/contact.js';
+const updated = new Date().toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
 <footer class="E-foot">
   <div class="E-in">
@@ -13,6 +14,7 @@ import { PHONE, PHONE_TEL, EMAIL, ADDRESS_LINE2, ABN, HOURS } from '../data/cont
       <p>ABN {ABN}</p>
       <p>If someone is choking, or speech or swallowing has changed suddenly, ring 000. This page isn't for emergencies.</p>
       <p>I work on Darkinjung land. Sovereignty was never ceded.</p>
+      <p>Updated {updated}</p>
     </div>
   </div>
 </footer>
