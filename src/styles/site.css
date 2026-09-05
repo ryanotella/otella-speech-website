@@ -1,6 +1,6 @@
 .E-site{background:var(--paper);color:var(--ink);font-family:var(--body)}
 .E-in{max-width:1080px;margin:0 auto;padding:0 54px}
-.E-construction{background:var(--ink);color:var(--paper);text-align:center;font-weight:800;font-size:13.5px;letter-spacing:.3px;padding:9px 16px}
+.E-construction{background:var(--rust);color:var(--paper);text-align:center;font-weight:800;font-size:16px;letter-spacing:.4px;padding:14px 16px;border-bottom:3px solid var(--ink)}
 .E-topnav{position:sticky;top:0;z-index:50;background:var(--wheat);border-bottom:3px solid transparent}
 .E-topnav.is-stuck{border-bottom-color:var(--ink)}
 .E-nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0 16px;flex-wrap:wrap;gap:14px}
@@ -21,8 +21,8 @@
 .E-portrait-sq img{width:100%;height:100%;object-fit:cover;display:block}
 .E-doors-band{margin-top:48px;margin-bottom:48px}
 .E-doors{display:grid;grid-template-columns:1fr 1fr;gap:0;border:3px solid var(--ink);border-radius:28px;overflow:hidden}
-.E-door{padding:38px 54px 40px}
-.E-door.fam{background:var(--gold);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.E-door{padding:38px 54px 40px;display:flex;flex-direction:column;justify-content:center}
+.E-door.fam{background:var(--gold);text-align:center;align-items:center}
 .E-door.fam p{margin-left:auto;margin-right:auto}
 .E-door.fam ul{display:inline-block;text-align:left}
 .E-door.clin{background:var(--ink);color:var(--paper);border-left:3px solid var(--ink)}
