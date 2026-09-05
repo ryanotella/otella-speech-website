@@ -1,0 +1,21 @@
+/* Route E — Otella Speech + Swallow — palette + design tokens */
+.kE{
+  --ink:#3E2A1C;      /* Chocolate */
+  --rust:#C0551E;     /* Burnt orange */
+  --gold:#DFA22C;     /* Harvest gold */
+  --olive:#6E7B45;    /* Olive */
+  --chalk:#9DB2B2;    /* Chalk — the ONLY cool colour in the system, reserved for clinical/referrer material */
+  --wheat:#F1E4CB;    /* Wheat */
+  --paper:#FCF6E9;    /* Paper */
+  --disp:"Fraunces",Georgia,serif;       /* Display / headline typeface */
+  --body:"Nunito Sans",system-ui,sans-serif; /* Body typeface */
+  /* Logotype-only typeface: Jost (Futura-like geometric sans), used ONLY inside the logo lockup, not in body copy */
+}
+
+/* NOTE on crown colour: the final canonical swallow.svg asset (supplied separately,
+   not committed here) uses a crown colour of #11323B, a blue-black outside this
+   palette. This is a known, documented deviation — it's what the real bird looks
+   like, but it is the only other cool colour in a system where chalk (#9DB2B2) is
+   meant to be the sole cool colour, carrying the meaning "this part is for
+   clinicians." Swapping the crown to --ink (#3E2A1C) is a one-line fix if palette
+   consistency is wanted; left as-is if the fidelity to the reference photo matters more. */
