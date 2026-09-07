@@ -1,12 +1,12 @@
 /* Route E: Otella Speech + Swallow, palette + design tokens */
 .kE{
-  --ink:#3E2A1C;      /* Chocolate */
-  --rust:#C0551E;     /* Burnt orange */
-  --gold:#DFA22C;     /* Harvest gold */
-  --olive:#6E7B45;    /* Olive */
-  --chalk:#9DB2B2;    /* Chalk: the ONLY cool colour in the system, reserved for clinical/referrer material */
-  --wheat:#F1E4CB;    /* Wheat */
-  --paper:#FCF6E9;    /* Paper */
+  --ink:#362A20;      /* Chocolate (desaturated ~30%) */
+  --rust:#A2593D;     /* Burnt orange (desaturated ~30%) */
+  --gold:#C29752;     /* Harvest gold (desaturated ~30%) */
+  --olive:#6B7350;    /* Olive (desaturated ~30%) */
+  --chalk:#9AACAA;    /* Chalk: the ONLY cool colour in the system, reserved for clinical/referrer material */
+  --wheat:#EEE3CE;    /* Wheat (desaturated ~30%) */
+  --paper:#FBF7EF;    /* Paper (desaturated ~30%) */
   --disp:"Fraunces",Georgia,serif;       /* Display / headline typeface */
   --body:"Nunito Sans",system-ui,sans-serif; /* Body typeface */
 }
@@ -14,8 +14,8 @@
 /* NOTE on crown colour: the canonical swallow.svg mark uses a crown colour of
    #11323B, a blue-black outside this palette. This is a known, documented
    deviation: it's what the real bird looks like, but it is the only other
-   cool colour in a system where chalk (#9DB2B2) is meant to be the sole cool
+   cool colour in a system where chalk (#9AACAA) is meant to be the sole cool
    colour, carrying the meaning "this part is for clinicians". Swapping the
-   crown to --ink (#3E2A1C) is a one-line fix if palette consistency is
+   crown to --ink (#362A20) is a one-line fix if palette consistency is
    wanted; left as-is because fidelity to the reference photo was the reason
    it was kept. */

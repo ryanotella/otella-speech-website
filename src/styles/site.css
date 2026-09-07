@@ -21,15 +21,17 @@
 .E-portrait-sq img{width:100%;height:100%;object-fit:cover;display:block}
 .E-doors-band{margin-top:48px;margin-bottom:48px}
 .E-doors{display:grid;grid-template-columns:1fr 1fr;gap:0;border:3px solid var(--ink);border-radius:28px;overflow:hidden}
-.E-door{padding:38px 54px 40px;display:flex;flex-direction:column;justify-content:center}
-.E-door.fam{background:var(--gold);text-align:center;align-items:center}
-.E-door.fam p{margin-left:auto;margin-right:auto}
+.E-door{padding:32px 46px 34px;display:flex;flex-direction:column;justify-content:flex-start}
+.E-door.fam{background:var(--wheat);text-align:center;align-items:center}
+.E-door.fam p{margin-left:auto;margin-right:auto;color:color-mix(in srgb, var(--ink) 78%, transparent)}
 .E-door.fam ul{display:inline-block;text-align:left}
-.E-door.clin{background:var(--ink);color:var(--paper);border-left:3px solid var(--ink)}
+.E-door.clin{background:var(--olive);color:var(--paper);border-left:3px solid var(--ink)}
+.E-door.clin .E-btn{align-self:center}
 .E-door h2{font-family:var(--disp);font-weight:700;font-size:32px;margin:0 0 8px;letter-spacing:-.02em}
-.E-door.clin h2{color:var(--chalk);text-align:center}
+.E-door.fam h2{color:var(--rust)}
+.E-door.clin h2{color:var(--paper);text-align:center}
 .E-door p{margin:0 0 18px;font-size:17.5px;line-height:1.5;max-width:40ch}
-.E-door.clin p{color:rgba(252,246,233,.82)}
+.E-door.clin p{color:color-mix(in srgb, var(--paper) 82%, transparent)}
 .E-door ul{margin:0 0 20px;padding-left:19px;font-size:16px;line-height:1.7}
 .E-h2{font-family:var(--disp);font-weight:700;font-size:44px;line-height:1.02;letter-spacing:-.03em;margin:0 0 10px}
 .E-sub{font-size:18.5px;line-height:1.6;color:rgba(62,42,28,.78);margin:0 0 32px;max-width:52ch}
@@ -100,7 +102,7 @@
   .E-hero h1{font-size:clamp(44px,12vw,64px)}
   .E-portrait{width:320px;height:320px}
   .E-doors{grid-template-columns:1fr}
-  .E-door{padding:32px 24px}
+  .E-door{padding:27px 20px}
   .E-list{grid-template-columns:1fr}
   .E-how{grid-template-columns:1fr}
   .E-incl{grid-template-columns:1fr;padding:32px 24px;text-align:center}
