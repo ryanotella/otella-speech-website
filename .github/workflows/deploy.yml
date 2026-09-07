@@ -28,8 +28,25 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Show environment info
+        run: |
+          node -v
+          npm -v
+          echo n | npx astro info
+
       - name: Build site
-        run: npm run build
+        run: npm run build -- --verbose
+
+      - name: Upload build log on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: astro-build-output
+          path: |
+            dist
+            npm-debug.log*
+          retention-days: 7
+          if-no-files-found: ignore
 
       - name: Configure AWS credentials via OIDC
         uses: aws-actions/configure-aws-credentials@v6
