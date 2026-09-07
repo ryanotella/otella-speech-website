@@ -5,7 +5,17 @@ const isReferrers = Astro.url.pathname.startsWith('/referrers');
 ---
 <nav class="E-nav">
   <a href="/" aria-label="Otella Speech + Swallow, home"><Logo width={252} /></a>
-  <ul>
+  <button
+    class="E-burger"
+    id="nav-toggle"
+    aria-expanded="false"
+    aria-controls="nav-menu"
+    aria-label="Open menu"
+  >
+    <span></span>
+    <span></span>
+  </button>
+  <ul id="nav-menu">
     <li><a href="/#what-i-work-with">What I work with</a></li>
     <li><a href="/#how-i-work">How I work</a></li>
     <li><a href="/#fees">Fees</a></li>
@@ -13,3 +23,19 @@ const isReferrers = Astro.url.pathname.startsWith('/referrers');
     <li><a class="E-btn" href={`tel:${PHONE_TEL}`}>Ring me</a></li>
   </ul>
 </nav>
+<script>
+  const btn = document.getElementById('nav-toggle');
+  const menu = document.getElementById('nav-menu');
+  btn?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  menu?.addEventListener('click', (e) => {
+    if ((e.target as HTMLElement).tagName === 'A') {
+      menu.classList.remove('is-open');
+      btn?.setAttribute('aria-expanded', 'false');
+      btn?.setAttribute('aria-label', 'Open menu');
+    }
+  });
+</script>
