@@ -2,7 +2,7 @@
 Developer: Ryan Otella
 Site: https://github.com/ryanotella/otella-speech-website
 
-Speech Pathologist: Laura Atella
+Speech Pathologist: Laura Otella
 
 /* SITE */
 Last update: 2026/09/08
