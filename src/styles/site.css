@@ -120,7 +120,7 @@
   .E-ref td{border-bottom:none;padding:2px 0}
   .E-ref td:first-child{color:var(--olive);font-size:13px;letter-spacing:.4px;text-transform:uppercase;width:auto}
 
-  .E-nav{padding:10px 0;flex-wrap:nowrap}
+  .E-nav{padding:10px 0;flex-wrap:nowrap;position:static}
   .E-burger{display:flex}
   .E-nav ul{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--wheat);border-bottom:3px solid var(--ink);padding:6px 0;max-height:0;overflow:hidden;visibility:hidden}
   .E-nav ul.is-open{max-height:60vh;visibility:visible}
