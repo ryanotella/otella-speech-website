@@ -32,7 +32,7 @@ const isReferrers = Astro.url.pathname.startsWith('/referrers');
     btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   });
   menu?.addEventListener('click', (e) => {
-    if ((e.target as HTMLElement).tagName === 'A') {
+    if (e.target && e.target.tagName === 'A') {
       menu.classList.remove('is-open');
       btn?.setAttribute('aria-expanded', 'false');
       btn?.setAttribute('aria-label', 'Open menu');
