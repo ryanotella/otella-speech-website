@@ -3,13 +3,15 @@
 .E-construction{background:var(--rust);color:var(--paper);text-align:center;font-weight:800;font-size:16px;letter-spacing:.4px;padding:14px 16px;border-bottom:3px solid var(--ink)}
 .E-topnav{position:sticky;top:0;z-index:50;background:var(--wheat);border-bottom:3px solid transparent}
 .E-topnav.is-stuck{border-bottom-color:var(--ink)}
-.E-nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0 16px;flex-wrap:wrap;gap:14px}
-.E-nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:16px;font-weight:700;align-items:center;flex-wrap:wrap}
+.E-nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:14px;position:relative}
+.E-nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:16px;font-weight:700;align-items:center}
 .E-nav ul li>a:not(.E-btn){text-decoration:none;border-bottom:1.5px solid transparent}
 .E-nav ul li>a:not(.E-btn):hover{border-bottom-color:var(--ink)}
 .E-btn{background:var(--rust);color:var(--paper);border:none;border-radius:999px;padding:13px 24px;font-weight:800;font-size:15.5px;text-decoration:none;display:inline-block}
 .E-btn.alt{background:var(--gold);color:var(--ink)}
 .E-btn.cool{background:var(--chalk);color:var(--ink)}
+.E-burger{display:none;flex-direction:column;justify-content:center;gap:6px;width:40px;height:36px;background:transparent;border:none;cursor:pointer;padding:0}
+.E-burger span{display:block;width:100%;height:3px;border-radius:2px;background:var(--ink)}
 .E-hero{background:var(--wheat);border-bottom:3px solid var(--ink)}
 .E-hero .grid{display:grid;grid-template-columns:1.3fr .75fr;gap:48px;align-items:center;padding:44px 0 56px}
 .E-hero h1{font-family:var(--disp);font-weight:700;font-size:84px;line-height:.95;letter-spacing:-.035em;margin:0 0 20px}
@@ -117,6 +119,14 @@
   .E-ref tr{padding:13px 0;border-bottom:1px solid rgba(62,42,28,.15)}
   .E-ref td{border-bottom:none;padding:2px 0}
   .E-ref td:first-child{color:var(--olive);font-size:13px;letter-spacing:.4px;text-transform:uppercase;width:auto}
+
+  .E-nav{padding:10px 0;flex-wrap:nowrap}
+  .E-burger{display:flex}
+  .E-nav ul{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--wheat);border-bottom:3px solid var(--ink);padding:6px 0;max-height:0;overflow:hidden;visibility:hidden}
+  .E-nav ul.is-open{max-height:60vh;visibility:visible}
+  .E-nav ul li{width:100%}
+  .E-nav ul li>a{display:block;padding:11px 24px}
+  .E-nav ul li>a.E-btn{margin:8px 24px;padding:11px 24px;text-align:center}
 }
 @media(max-width:480px){
   .E-hero h1{font-size:clamp(36px,14vw,48px)}
