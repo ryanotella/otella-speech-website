@@ -1,7 +1,7 @@
 .E-site{background:var(--paper);color:var(--ink);font-family:var(--body)}
 .E-in{max-width:1080px;margin:0 auto;padding:0 54px}
 .E-construction{background:var(--rust);color:var(--paper);text-align:center;font-weight:800;font-size:16px;letter-spacing:.4px;padding:14px 16px;border-bottom:3px solid var(--ink)}
-.E-topnav{position:sticky;top:0;z-index:50;background:var(--wheat);border-bottom:3px solid transparent}
+.E-topnav{position:sticky;top:var(--banner-h,0px);z-index:50;background:var(--wheat);border-bottom:3px solid transparent}
 .E-topnav.is-stuck{border-bottom-color:var(--ink)}
 .E-nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:14px;position:relative}
 .E-nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:16px;font-weight:700;align-items:center}

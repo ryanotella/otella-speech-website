@@ -112,8 +112,20 @@ const {
       <p class="E-gate-error" id="gateError" hidden>Incorrect password — try again.</p>
     </form>
   </div>
-  <div class="E-construction-banner" role="status">Site under construction — content and details are still being finalised</div>
+  <div class="E-construction-banner" id="constructionBanner" role="status">Site under construction — content and details are still being finalised</div>
   <slot />
+  <script is:inline>
+    (function () {
+      var banner = document.getElementById('constructionBanner');
+      if (!banner) return;
+      function setBannerHeight() {
+        document.documentElement.style.setProperty('--banner-h', banner.getBoundingClientRect().height + 'px');
+      }
+      setBannerHeight();
+      window.addEventListener('resize', setBannerHeight);
+      window.addEventListener('load', setBannerHeight);
+    })();
+  </script>
   <script is:inline>
     (function () {
       var form = document.getElementById('gateForm');
