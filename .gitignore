@@ -5,3 +5,4 @@ dist
 .terragrunt-cache/
 .DS_Store
 .playwright-mcp
+.claude
