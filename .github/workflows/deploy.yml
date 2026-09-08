@@ -3,6 +3,8 @@ name: Deploy to S3 + CloudFront
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - "infra/**"
 
 permissions:
   id-token: write   # required for OIDC
