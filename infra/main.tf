@@ -192,3 +192,38 @@ resource "aws_route53_record" "www_aaaa" {
     evaluate_target_health = false
   }
 }
+
+# --- Fastmail email (MX / DKIM / SPF) ---
+
+resource "aws_route53_record" "email_mx" {
+  zone_id = data.aws_route53_zone.this.zone_id
+  name    = var.domain_name
+  type    = "MX"
+  ttl     = 300
+  records = [
+    "10 us1-smtp.messagingengine.com",
+    "20 us2-smtp.messagingengine.com",
+  ]
+}
+
+resource "aws_route53_record" "email_dkim" {
+  for_each = {
+    fm1 = "fm1.${var.domain_name}.dkim.fmhosted.com"
+    fm2 = "fm2.${var.domain_name}.dkim.fmhosted.com"
+    fm3 = "fm3.${var.domain_name}.dkim.fmhosted.com"
+  }
+
+  zone_id = data.aws_route53_zone.this.zone_id
+  name    = "${each.key}._domainkey.${var.domain_name}"
+  type    = "CNAME"
+  ttl     = 300
+  records = [each.value]
+}
+
+resource "aws_route53_record" "email_spf" {
+  zone_id = data.aws_route53_zone.this.zone_id
+  name    = var.domain_name
+  type    = "TXT"
+  ttl     = 300
+  records = ["v=spf1 include:spf.messagingengine.com ~all"]
+}
