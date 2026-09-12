@@ -1,0 +1,46 @@
+---
+const stages = [
+  {
+    fill: '#C0551E',
+    icon: '<rect x="13" y="14" width="20" height="15" rx="4" fill="none" stroke="#FCF6E9" stroke-width="2.8"/><path d="M18 29l-3 4v-4" fill="none" stroke="#FCF6E9" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M18 21h4M27 21h1" fill="none" stroke="#FCF6E9" stroke-width="2.8" stroke-linecap="round"/>',
+    title: 'After a stroke or brain injury',
+    body: "Words that will not come, speech that has become hard for others to follow, or trouble managing food and drink safely. Work usually starts once you are home and settled, and is paced to what you can manage.",
+  },
+  {
+    fill: '#6E7B45',
+    icon: '<path d="M13 23c2-6 4-6 6 0c2 6 4 6 6 0c2-6 4-6 6 0" fill="none" stroke="#FCF6E9" stroke-width="2.8" stroke-linecap="round"/>',
+    title: 'Living with a progressive condition',
+    body: "Parkinson's disease, motor neurone disease and similar conditions change speech, voice and swallowing gradually. The aim is to keep you understood and eating comfortably for as long as possible, and to plan ahead rather than wait for a crisis.",
+  },
+  {
+    fill: '#3E2A1C',
+    icon: '<path d="M16,15 C16,15 20,20 23,20 C26,20 30,15 30,15 M23,20 L19,33 M23,20 L27,33" fill="none" stroke="#DFA22C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>',
+    title: 'During and after cancer treatment',
+    body: 'Surgery and radiotherapy to the head and neck change how you speak, how you sound, and how you swallow. Support through treatment and through the rebuilding afterwards, including rehabilitation following laryngectomy.',
+  },
+  {
+    fill: '#9DB2B2',
+    icon: '<circle cx="23" cy="23" r="9" fill="none" stroke="#3E2A1C" stroke-width="2.8"/><path d="M23 17v6l4 3" fill="none" stroke="#3E2A1C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>',
+    title: 'Changes that come with age',
+    body: 'Swallowing and voice shift slowly over the years. Coughing at meals, food that feels like it sticks, a voice that tires quickly or has lost its strength. Often very treatable, and rarely something you simply have to put up with.',
+  },
+  {
+    fill: '#DFA22C',
+    icon: '<path d="M18 18a5 5 0 1 1 5 5v4" fill="none" stroke="#3E2A1C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="23" cy="33" r="1.9" fill="#3E2A1C"/>',
+    title: 'Something longstanding, never looked at',
+    body: 'A stutter, a voice you have never liked the sound of, or a speech difficulty you have worked around since childhood. There is no age limit on having it properly assessed.',
+  },
+];
+---
+<div class="E-in" id="what-i-work-with" style="padding-top:70px">
+  <h2 class="E-h2">Who I work with</h2>
+  <p class="E-sub">Adults only. If you are a clinician after referral criteria and clinical scope, that detail is on the <a href="/referrers">referrals page</a>.</p>
+  <ul class="E-list">
+    {stages.map((s) => (
+      <li>
+        <svg width="42" height="42" viewBox="0 0 46 46"><circle cx="23" cy="23" r="21" fill={s.fill} /><Fragment set:html={s.icon} /></svg>
+        <div><b>{s.title}</b><p>{s.body}</p></div>
+      </li>
+    ))}
+  </ul>
+</div>
